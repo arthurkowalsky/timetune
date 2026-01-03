@@ -1,0 +1,77 @@
+{
+  "app": {
+    "name": "TimeTune",
+    "subtitle": "Polska Edycja",
+    "loading": "Ładowanie piosenek...",
+    "loadError": "Nie udało się załadować piosenek"
+  },
+  "start": {
+    "playerPlaceholder": "Nazwa gracza / drużyny...",
+    "addButton": "Dodaj",
+    "teamsTitle": "Drużyny",
+    "minTeamsWarning": "Dodaj minimum 2 drużyny aby rozpocząć",
+    "goalTitle": "Cel gry",
+    "goalDescription": "Wygrywa kto pierwszy zbierze:",
+    "cards5": "5 kart",
+    "cards7": "7 kart",
+    "cards10": "10 kart",
+    "cards15": "15 kart",
+    "startGame": "Rozpocznij grę!",
+    "startGameDisabled": "Dodaj minimum 2 drużyny",
+    "rulesTitle": "Zasady:",
+    "rulesDescription": "Posłuchaj piosenki i umieść ją na swojej osi czasu we właściwym miejscu chronologicznym."
+  },
+  "game": {
+    "yourTimeline": "Twoja oś czasu",
+    "drawCard": "Losuj piosenkę!",
+    "confirmSelection": "Kliknij \"Zatwierdź\" aby potwierdzić wybór",
+    "wherePlaceSong": "Gdzie umieścisz tę piosenkę?",
+    "confirmButton": "Zatwierdź wybór",
+    "turn": "Tura:",
+    "otherTeams": "Pozostałe drużyny",
+    "cards": "kart",
+    "resetGame": "Resetuj grę",
+    "resetConfirmTitle": "Resetować grę?",
+    "resetConfirmMessage": "Cały postęp zostanie utracony.",
+    "cancel": "Anuluj",
+    "reset": "Resetuj",
+    "timelineOf": "Oś czasu:",
+    "noCards": "Brak kart",
+    "close": "Zamknij"
+  },
+  "reveal": {
+    "correct": "DOBRZE!",
+    "wrong": "PUDŁO!",
+    "getsCard": "zdobywa kartę!",
+    "notThisTime": "Nie tym razem...",
+    "hasNow": "ma teraz",
+    "card_one": "kartę",
+    "card_few": "karty",
+    "card_many": "kart",
+    "bonus": "bonus",
+    "bonusQuestion": "Zgadliście wykonawcę lub tytuł?",
+    "bonusButton": "+1 BONUS",
+    "bonusAwarded": "Bonus +1 przyznany!",
+    "nextTurn": "Następna tura →"
+  },
+  "end": {
+    "winner": "WYGRANA!",
+    "gameOver": "KONIEC GRY!",
+    "wins": "wygrywa!",
+    "finalRanking": "Ranking końcowy",
+    "winnerTimeline": "Oś czasu zwycięzcy",
+    "playAgain": "Zagraj ponownie"
+  },
+  "timeline": {
+    "empty": "Twoja oś czasu jest pusta",
+    "selected": "Wybrano!",
+    "placeHereOldest": "Tutaj (najstarsza)",
+    "placeHere": "Umieść tutaj"
+  },
+  "player": {
+    "listen": "Posłuchaj i zgadnij rok wydania!",
+    "playSong": "Odtwórz piosenkę",
+    "listenCarefully": "Słuchaj uważnie! Potem wybierz miejsce na osi czasu.",
+    "playing": "Odtwarzanie..."
+  }
+}

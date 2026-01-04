@@ -64,30 +64,41 @@ export function YouTubePlayer({ song, showYear = false }: YouTubePlayerProps) {
 }
 
 function AudioVisualizer() {
-  const [bars, setBars] = useState<number[]>([30, 50, 40, 60, 35, 55, 45]);
+  const [bars, setBars] = useState<number[]>(() => Array(15).fill(0).map(() => 30 + Math.random() * 60));
   const { t } = useTranslations();
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setBars(prev => prev.map(() => 20 + Math.random() * 50));
-    }, 150);
+      setBars(Array(15).fill(0).map(() => 25 + Math.random() * 75));
+    }, 120);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-2xl p-8 flex flex-col items-center">
-      <div className="text-5xl mb-4">🎧</div>
-      <div className="flex items-end gap-1 h-16">
+    <div className="bg-gradient-to-br from-primary/30 via-purple-600/20 to-pink-500/20 rounded-2xl p-8 flex flex-col items-center relative overflow-hidden">
+      {/* Glow background effect */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent animate-pulse-slow" />
+
+      <div className="text-6xl mb-6 drop-shadow-lg relative z-10">🎧</div>
+
+      <div className="flex items-end justify-center gap-1.5 h-28 relative z-10">
         {bars.map((height, i) => (
           <div
             key={i}
-            className="w-3 bg-gradient-to-t from-primary to-purple-500 rounded-full transition-all duration-150"
-            style={{ height: `${height}px` }}
+            className="w-2.5 rounded-full transition-all duration-100 shadow-lg visualizer-bar"
+            style={{
+              height: `${height}px`,
+              background: `linear-gradient(to top, #8b5cf6, #a855f7, #ec4899)`,
+              boxShadow: `0 0 12px rgba(139, 92, 246, 0.5), 0 0 24px rgba(168, 85, 247, 0.3)`,
+              animationDelay: `${i * 0.05}s`,
+            }}
           />
         ))}
       </div>
 
-      <p className="text-white mt-4 font-medium">{t('player.playing')}</p>
+      <p className="text-white mt-6 font-bold text-lg relative z-10 drop-shadow-md">
+        {t('player.playing')}
+      </p>
     </div>
   );
 }

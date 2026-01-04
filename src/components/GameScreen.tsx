@@ -21,16 +21,36 @@ export function GameScreen() {
   const [viewingPlayerIndex, setViewingPlayerIndex] = useState<number | null>(null);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [lastPhase, setLastPhase] = useState(phase);
 
   const currentPlayer = players[currentPlayerIndex];
   const viewingPlayer = viewingPlayerIndex !== null ? players[viewingPlayerIndex] : null;
 
-  // Reset selected position when phase changes
-  useEffect(() => {
+  // Reset selected position when phase changes (using derived state pattern)
+  if (phase !== lastPhase) {
+    setLastPhase(phase);
     if (phase !== 'placing') {
       setSelectedPosition(null);
     }
-  }, [phase]);
+  }
+
+  // Track fullscreen state
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen().catch(() => {});
+    }
+  };
 
   const handleSelectPosition = (position: number) => {
     if (selectedPosition === position) {
@@ -55,6 +75,8 @@ export function GameScreen() {
             players={players}
             targetScore={targetScore}
             onReset={() => setShowResetConfirm(true)}
+            isFullscreen={isFullscreen}
+            onToggleFullscreen={toggleFullscreen}
           />
           <div className="bg-surface rounded-xl p-4 mb-6 max-h-[50vh] overflow-y-auto">
             <h3 className="text-lg font-bold text-white mb-4">
@@ -102,6 +124,8 @@ export function GameScreen() {
             players={players}
             targetScore={targetScore}
             onReset={() => setShowResetConfirm(true)}
+            isFullscreen={isFullscreen}
+            onToggleFullscreen={toggleFullscreen}
           />
           <div className="mb-6">
             <YouTubePlayer song={currentSong} showYear={false} />
@@ -159,15 +183,31 @@ interface HeaderProps {
   players: { id: string; name: string; timeline: { id: string }[]; bonusPoints: number }[];
   targetScore: number;
   onReset: () => void;
+  isFullscreen: boolean;
+  onToggleFullscreen: () => void;
 }
 
-function Header({ currentPlayer, players, targetScore, onReset }: HeaderProps) {
+function Header({ currentPlayer, players, targetScore, onReset, isFullscreen, onToggleFullscreen }: HeaderProps) {
   const { t } = useTranslations();
 
   return (
     <div className="text-center mb-6">
       <div className="flex items-center justify-between mb-2">
-        <div className="w-10" />
+        <button
+          onClick={onToggleFullscreen}
+          className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
+          title={isFullscreen ? t('game.exitFullscreen') : t('game.fullscreen')}
+        >
+          {isFullscreen ? (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 9L4 4m0 0v5m0-5h5m6 6l5 5m0 0v-5m0 5h-5M9 15l-5 5m0 0v-5m0 5h5m6-6l5-5m0 0v5m0-5h-5" />
+            </svg>
+          ) : (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5h-4m4 0v-4m0 4l-5-5" />
+            </svg>
+          )}
+        </button>
         <h1 className="text-3xl font-black text-white">
           🎵 {t('app.name').toUpperCase()}
         </h1>

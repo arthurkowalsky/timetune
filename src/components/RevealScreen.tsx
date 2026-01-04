@@ -15,12 +15,14 @@ export function RevealScreen() {
   const { t } = useTranslations();
 
   const [bonusClaimed, setBonusClaimed] = useState(false);
+  const [lastSongId, setLastSongId] = useState(currentSong?.id);
   const currentPlayer = players[currentPlayerIndex];
 
-  // Reset bonus state when song changes
-  useEffect(() => {
+  // Reset bonus state when song changes (derived state pattern)
+  if (currentSong?.id !== lastSongId) {
+    setLastSongId(currentSong?.id);
     setBonusClaimed(false);
-  }, [currentSong?.id]);
+  }
 
   useEffect(() => {
     if ('vibrate' in navigator) {

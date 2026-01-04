@@ -5,9 +5,10 @@ import { useTranslations } from '../i18n';
 interface YouTubePlayerProps {
   song: Song;
   showYear?: boolean;
+  onPlayStarted?: () => void;
 }
 
-export function YouTubePlayer({ song, showYear = false }: YouTubePlayerProps) {
+export function YouTubePlayer({ song, showYear = false, onPlayStarted }: YouTubePlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const { t } = useTranslations();
 
@@ -29,7 +30,10 @@ export function YouTubePlayer({ song, showYear = false }: YouTubePlayerProps) {
       )}
       {!isPlaying ? (
         <button
-          onClick={() => setIsPlaying(true)}
+          onClick={() => {
+            setIsPlaying(true);
+            onPlayStarted?.();
+          }}
           className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-xl font-bold transition-all hover:scale-105 flex items-center gap-3 mx-auto min-h-[56px]"
         >
           <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">

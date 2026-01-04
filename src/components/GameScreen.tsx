@@ -22,16 +22,18 @@ export function GameScreen() {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [lastPhase, setLastPhase] = useState(phase);
 
   const currentPlayer = players[currentPlayerIndex];
   const viewingPlayer = viewingPlayerIndex !== null ? players[viewingPlayerIndex] : null;
 
-  // Reset selected position when phase changes (using derived state pattern)
+  // Reset state when phase changes (using derived state pattern)
   if (phase !== lastPhase) {
     setLastPhase(phase);
     if (phase !== 'placing') {
       setSelectedPosition(null);
+      setIsMusicPlaying(false);
     }
   }
 
@@ -128,19 +130,21 @@ export function GameScreen() {
             onToggleFullscreen={toggleFullscreen}
           />
           <div className="mb-6">
-            <YouTubePlayer song={currentSong} showYear={false} />
+            <YouTubePlayer song={currentSong} showYear={false} onPlayStarted={() => setIsMusicPlaying(true)} />
           </div>
           <div className="bg-surface rounded-xl p-4 max-h-[45vh] overflow-y-auto">
             <h3 className="text-lg font-bold text-white mb-4">
-              {selectedPosition !== null
-                ? t('game.confirmSelection')
-                : `${t('game.wherePlaceSong')} 🤔`}
+              {!isMusicPlaying
+                ? t('game.listenFirst')
+                : selectedPosition !== null
+                  ? t('game.confirmSelection')
+                  : `${t('game.wherePlaceSong')} 🤔`}
             </h3>
             <Timeline
               songs={currentPlayer.timeline}
               onSelectPosition={handleSelectPosition}
               selectedPosition={selectedPosition}
-              isInteractive={true}
+              isInteractive={isMusicPlaying}
             />
           </div>
           {showResetConfirm && (

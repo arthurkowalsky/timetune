@@ -124,7 +124,7 @@ export const useGameStore = create<GameStore>()(
 
       nextTurn: () => {
         const { players, currentPlayerIndex, targetScore } = get();
-        const winner = players.find((p) => p.timeline.length >= targetScore);
+        const winner = players.find((p) => p.timeline.length + p.bonusPoints >= targetScore);
         if (winner) {
           set({ phase: 'finished' });
           return;

@@ -1,7 +1,5 @@
-// Origin types - can be extended in the future
 export type Origin = 'PL' | 'INT';
 
-// Genre tags for filtering
 export type Genre =
   | 'pop'
   | 'rock'
@@ -24,7 +22,6 @@ export interface Song {
   genres: Genre[];
 }
 
-// Filter configuration for game modes
 export interface GameFilter {
   origins?: Origin[];
   genres?: Genre[];

@@ -132,12 +132,10 @@ function generateSongsJson(): void {
       return hasValidId && hasValidYear;
     })
     .map((record, index) => {
-      // Parse genres from pipe-separated string (e.g., "rock|pop")
       const genres: Genre[] = record.genres
         ? (record.genres.split("|").map(g => g.trim()).filter(Boolean) as Genre[])
         : [];
 
-      // Default to 'PL' if origin not specified
       const origin: Origin = (record.origin as Origin) || 'PL';
 
       return {

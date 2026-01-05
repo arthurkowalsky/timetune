@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { useGameStore } from '../store';
+import { useGameStore, useSettingsStore } from '../store';
 import { useTranslations } from '../i18n';
 
 export function StartScreen() {
   const [teamName, setTeamName] = useState('');
   const { players, addPlayer, removePlayer, startGame, targetScore, setTargetScore } = useGameStore();
+  const { autoPlayOnDraw, setAutoPlayOnDraw } = useSettingsStore();
   const { t } = useTranslations();
 
   const handleAddTeam = (e: React.FormEvent) => {
@@ -95,6 +96,30 @@ export function StartScreen() {
               <option value={15}>{t('start.cards15')}</option>
             </select>
           </div>
+        </div>
+        <div className="bg-surface rounded-xl p-4 mb-6">
+          <h2 className="text-lg font-bold text-white mb-3">{t('settings.title')}</h2>
+          <label className="flex items-center justify-between cursor-pointer">
+            <div>
+              <span className="text-white">{t('settings.autoPlay')}</span>
+              <p className="text-gray-500 text-sm">{t('settings.autoPlayDescription')}</p>
+            </div>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={autoPlayOnDraw}
+              onClick={() => setAutoPlayOnDraw(!autoPlayOnDraw)}
+              className={`relative inline-flex h-7 w-12 shrink-0 items-center rounded-full transition-colors ${
+                autoPlayOnDraw ? 'bg-primary' : 'bg-surface-light'
+              }`}
+            >
+              <span
+                className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                  autoPlayOnDraw ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </label>
         </div>
         <button
           onClick={startGame}

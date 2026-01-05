@@ -36,3 +36,11 @@ export interface GameActions {
   nextTurn: () => void;
   resetGame: () => void;
 }
+
+export interface GameSettings {
+  autoPlayOnDraw: boolean;
+}
+
+export interface SettingsActions {
+  setAutoPlayOnDraw: (value: boolean) => void;
+}

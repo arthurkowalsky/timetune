@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2025-01-05
+
+### Added
+- Bottom action bar for mobile - all game controls in one place
+- Mystery card animation after drawing a song
+- Auto-play setting - skip manual play button
+- Settings section on start screen
+
+### Changed
+- Song database expanded to 303 songs (1950-2024)
+- Removed nested scrolling - better mobile UX
+- Sticky header during gameplay
+
 ## [0.3.0] - 2025-01-04
 
 ### Added

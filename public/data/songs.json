@@ -1,6 +1,326 @@
 [
   {
     "id": "1",
+    "artist": "Chór Czejanda",
+    "title": "Na prawo most, na lewo most",
+    "year": 1950,
+    "youtubeId": "iov99B98bcI",
+    "region": "PL"
+  },
+  {
+    "id": "2",
+    "artist": "Marta Mirska",
+    "title": "Pierwszy siwy włos",
+    "year": 1950,
+    "youtubeId": "0b7FzxuqYjA",
+    "region": "PL"
+  },
+  {
+    "id": "3",
+    "artist": "Andrzej Bogucki i Chór Czejanda",
+    "title": "Jak przygoda, to tylko w Warszawie",
+    "year": 1950,
+    "youtubeId": "S9K0xj9DFuc",
+    "region": "PL"
+  },
+  {
+    "id": "4",
+    "artist": "Maria Koterbska",
+    "title": "Wrocławska piosenka",
+    "year": 1950,
+    "youtubeId": "wu20lRZct_c",
+    "region": "PL"
+  },
+  {
+    "id": "5",
+    "artist": "Andrzej Bogucki",
+    "title": "Czerwony autobus",
+    "year": 1951,
+    "youtubeId": "nxwKRrUmQLo",
+    "region": "PL"
+  },
+  {
+    "id": "6",
+    "artist": "Jadwiga Prolińska i Chór Czejanda",
+    "title": "Pójdę na Stare Miasto",
+    "year": 1951,
+    "youtubeId": "ZsWqzxNa4zM",
+    "region": "PL"
+  },
+  {
+    "id": "7",
+    "artist": "Chór Czejanda",
+    "title": "Wesoły pociąg",
+    "year": 1951,
+    "youtubeId": "vEtWKu3-tf0",
+    "region": "PL"
+  },
+  {
+    "id": "8",
+    "artist": "Chór Czejanda",
+    "title": "Trzej przyjaciele z boiska",
+    "year": 1951,
+    "youtubeId": "Ak1MYII-wOw",
+    "region": "PL"
+  },
+  {
+    "id": "9",
+    "artist": "Maria Koterbska",
+    "title": "Bo mój chłopiec piłkę kopie",
+    "year": 1952,
+    "youtubeId": "pHDSkcGwazc",
+    "region": "PL"
+  },
+  {
+    "id": "10",
+    "artist": "Chór Cztery Asy",
+    "title": "Budujemy nowy dom",
+    "year": 1952,
+    "youtubeId": "ECY636UKxS4",
+    "region": "PL"
+  },
+  {
+    "id": "11",
+    "artist": "Irena Małkiewicz",
+    "title": "Gdy zaświecą latarenki",
+    "year": 1952,
+    "youtubeId": "Ot8DNr0Unec",
+    "region": "PL"
+  },
+  {
+    "id": "12",
+    "artist": "Mieczysław Fogg",
+    "title": "Wisłą do Młocin",
+    "year": 1952,
+    "youtubeId": "4TUQ-iHAS30",
+    "region": "PL"
+  },
+  {
+    "id": "13",
+    "artist": "Adolf Dymsza",
+    "title": "Warszawa da się lubić",
+    "year": 1953,
+    "youtubeId": "TO3UNGhggQ8",
+    "region": "PL"
+  },
+  {
+    "id": "14",
+    "artist": "Andrzej Bogucki i Chór Czejanda",
+    "title": "Złoty piasek",
+    "year": 1953,
+    "youtubeId": "iktqDHT9r-g",
+    "region": "PL"
+  },
+  {
+    "id": "15",
+    "artist": "Andrzej Bogucki i Chór Czejanda",
+    "title": "Piosenka warszawska",
+    "year": 1953,
+    "youtubeId": "0FCobjcT4Bk",
+    "region": "PL"
+  },
+  {
+    "id": "16",
+    "artist": "Maria Koterbska",
+    "title": "Srebrna mucha i ja",
+    "year": 1953,
+    "youtubeId": "5HNUqUodDc8",
+    "region": "PL"
+  },
+  {
+    "id": "17",
+    "artist": "Zbigniew Kurtycz",
+    "title": "Taki jestem zimny drań",
+    "year": 1954,
+    "youtubeId": "ciwENJu_11M",
+    "region": "PL"
+  },
+  {
+    "id": "18",
+    "artist": "Zbigniew Kurtycz",
+    "title": "Cicha woda",
+    "year": 1954,
+    "youtubeId": "IwSwcSh1F2M",
+    "region": "PL"
+  },
+  {
+    "id": "19",
+    "artist": "Julian Sztatler",
+    "title": "Wio koniku",
+    "year": 1954,
+    "youtubeId": "89nk4BKecg0",
+    "region": "PL"
+  },
+  {
+    "id": "20",
+    "artist": "Maria Koterbska",
+    "title": "Serduszko puka w rytmie cha-cha",
+    "year": 1954,
+    "youtubeId": "maqdqO9G9Rk",
+    "region": "PL"
+  },
+  {
+    "id": "21",
+    "artist": "Natasza Zylska",
+    "title": "Kasztany",
+    "year": 1955,
+    "youtubeId": "H0vHLdOmbok",
+    "region": "PL"
+  },
+  {
+    "id": "22",
+    "artist": "Natasza Zylska",
+    "title": "Baja Bongo",
+    "year": 1955,
+    "youtubeId": "AuJhz8oYUus",
+    "region": "PL"
+  },
+  {
+    "id": "23",
+    "artist": "Cezary Fabiński",
+    "title": "Pies Dingo",
+    "year": 1955,
+    "youtubeId": "x3UZJF9qFng",
+    "region": "PL"
+  },
+  {
+    "id": "24",
+    "artist": "Julian Sztatler",
+    "title": "Pełną parą",
+    "year": 1955,
+    "youtubeId": "D2HJDfMj3gk",
+    "region": "PL"
+  },
+  {
+    "id": "25",
+    "artist": "Natasza Zylska",
+    "title": "Mój mąż łowi ryby",
+    "year": 1956,
+    "youtubeId": "D6tfRkTH1PI",
+    "region": "PL"
+  },
+  {
+    "id": "26",
+    "artist": "Natasza Zylska",
+    "title": "Pik, pik, pik",
+    "year": 1956,
+    "youtubeId": "oDw64MM2MKs",
+    "region": "PL"
+  },
+  {
+    "id": "27",
+    "artist": "Mieczysław Fogg",
+    "title": "Siwy włos",
+    "year": 1956,
+    "youtubeId": "B_5L1ZkaSjg",
+    "region": "PL"
+  },
+  {
+    "id": "28",
+    "artist": "Maria Koterbska",
+    "title": "Augustowskie noce",
+    "year": 1956,
+    "youtubeId": "QTCBVwwVbqY",
+    "region": "PL"
+  },
+  {
+    "id": "29",
+    "artist": "Maria Koterbska",
+    "title": "Parasolki",
+    "year": 1957,
+    "youtubeId": "yugEIsB2wV0",
+    "region": "PL"
+  },
+  {
+    "id": "30",
+    "artist": "Maria Koterbska",
+    "title": "Brzydula i rudzielec",
+    "year": 1957,
+    "youtubeId": "mz9Ut_Cqiqo",
+    "region": "PL"
+  },
+  {
+    "id": "31",
+    "artist": "Maria Koterbska",
+    "title": "Do jutra, do zobaczenia",
+    "year": 1957,
+    "youtubeId": "EGv0f8j7lVs",
+    "region": "PL"
+  },
+  {
+    "id": "32",
+    "artist": "Hanna Rek",
+    "title": "Jesteś cza-cza-czarująca",
+    "year": 1957,
+    "youtubeId": "aD4DdHwKKis",
+    "region": "PL"
+  },
+  {
+    "id": "33",
+    "artist": "Sława Przybylska",
+    "title": "Już nigdy",
+    "year": 1958,
+    "youtubeId": "rDbS9ziRbMc",
+    "region": "PL"
+  },
+  {
+    "id": "34",
+    "artist": "Maria Koterbska",
+    "title": "Karuzela",
+    "year": 1958,
+    "youtubeId": "lu5m_qW94ak",
+    "region": "PL"
+  },
+  {
+    "id": "35",
+    "artist": "Sława Przybylska",
+    "title": "Pamiętasz była jesień",
+    "year": 1958,
+    "youtubeId": "A7VTiP5dl9o",
+    "region": "PL"
+  },
+  {
+    "id": "36",
+    "artist": "Sława Przybylska",
+    "title": "Gorącą nocą",
+    "year": 1958,
+    "youtubeId": "1tLM8TNSucc",
+    "region": "PL"
+  },
+  {
+    "id": "37",
+    "artist": "Halina Kowalewska",
+    "title": "Na katarynce",
+    "year": 1959,
+    "youtubeId": "FKj1R5QB2f4",
+    "region": "PL"
+  },
+  {
+    "id": "38",
+    "artist": "Ludmiła Jakubczak",
+    "title": "Alabama",
+    "year": 1959,
+    "youtubeId": "-2bcHVffVyI",
+    "region": "PL"
+  },
+  {
+    "id": "39",
+    "artist": "Zbigniew Kurtycz",
+    "title": "Traf",
+    "year": 1959,
+    "youtubeId": "_PwDpR1EFRM",
+    "region": "PL"
+  },
+  {
+    "id": "40",
+    "artist": "Zbigniew Rawicz",
+    "title": "Walczyk Warszawy",
+    "year": 1959,
+    "youtubeId": "Ip8nSIFnsP4",
+    "region": "PL"
+  },
+  {
+    "id": "41",
     "artist": "Ludmiła Jakubczak",
     "title": "Gdy mi Ciebie zabraknie",
     "year": 1960,
@@ -8,7 +328,7 @@
     "region": "PL"
   },
   {
-    "id": "2",
+    "id": "42",
     "artist": "Hanna Rek",
     "title": "Romeo",
     "year": 1960,
@@ -16,7 +336,15 @@
     "region": "PL"
   },
   {
-    "id": "3",
+    "id": "43",
+    "artist": "Wiesława Drojecka",
+    "title": "Marjolane",
+    "year": 1960,
+    "youtubeId": "j9QKLhk0B0M",
+    "region": "PL"
+  },
+  {
+    "id": "44",
     "artist": "Sława Przybylska",
     "title": "Miłość w Portofino",
     "year": 1961,
@@ -24,7 +352,7 @@
     "region": "PL"
   },
   {
-    "id": "4",
+    "id": "45",
     "artist": "Irena Santor",
     "title": "Embarras",
     "year": 1961,
@@ -32,7 +360,7 @@
     "region": "PL"
   },
   {
-    "id": "5",
+    "id": "46",
     "artist": "Karin Stanek",
     "title": "Malowana lala",
     "year": 1962,
@@ -40,7 +368,7 @@
     "region": "PL"
   },
   {
-    "id": "6",
+    "id": "47",
     "artist": "Czerwono-Czarni",
     "title": "Jedziemy autostopem",
     "year": 1962,
@@ -48,7 +376,15 @@
     "region": "PL"
   },
   {
-    "id": "7",
+    "id": "48",
+    "artist": "Katarzyna Sobczyk",
+    "title": "O mnie się nie martw",
+    "year": 1962,
+    "youtubeId": "EpvDBgKWBmI",
+    "region": "PL"
+  },
+  {
+    "id": "49",
     "artist": "Karin Stanek",
     "title": "Chłopiec z gitarą",
     "year": 1963,
@@ -56,7 +392,7 @@
     "region": "PL"
   },
   {
-    "id": "8",
+    "id": "50",
     "artist": "Helena Majdaniec",
     "title": "Rudy rydz",
     "year": 1963,
@@ -64,7 +400,23 @@
     "region": "PL"
   },
   {
-    "id": "9",
+    "id": "51",
+    "artist": "Czesław Niemen",
+    "title": "Pod papugami",
+    "year": 1963,
+    "youtubeId": "ePwwMgrPMW8",
+    "region": "PL"
+  },
+  {
+    "id": "52",
+    "artist": "Bogdan Czyżewski",
+    "title": "Zginęła mi dziewczyna",
+    "year": 1963,
+    "youtubeId": "hdB7IZffwvI",
+    "region": "PL"
+  },
+  {
+    "id": "53",
     "artist": "Niebiesko-Czarni",
     "title": "Niedziela będzie dla nas",
     "year": 1964,
@@ -72,7 +424,7 @@
     "region": "PL"
   },
   {
-    "id": "10",
+    "id": "54",
     "artist": "Violetta Villas",
     "title": "Do ciebie, mamo",
     "year": 1964,
@@ -80,7 +432,23 @@
     "region": "PL"
   },
   {
-    "id": "11",
+    "id": "55",
+    "artist": "Hanna Rek",
+    "title": "Nie wolno mi",
+    "year": 1964,
+    "youtubeId": "WD3DkaKrpzo",
+    "region": "PL"
+  },
+  {
+    "id": "56",
+    "artist": "Natasza Zylska",
+    "title": "Chana",
+    "year": 1964,
+    "youtubeId": "f7zMiq96jKw",
+    "region": "PL"
+  },
+  {
+    "id": "57",
     "artist": "Piotr Szczepanik",
     "title": "Kochać",
     "year": 1965,
@@ -88,7 +456,7 @@
     "region": "PL"
   },
   {
-    "id": "12",
+    "id": "58",
     "artist": "Piotr Szczepanik",
     "title": "Goniąc kormorany",
     "year": 1965,
@@ -96,7 +464,23 @@
     "region": "PL"
   },
   {
-    "id": "13",
+    "id": "59",
+    "artist": "Jerzy Matuszkiewicz",
+    "title": "Wojna domowa",
+    "year": 1965,
+    "youtubeId": "Vl7UOup8s9s",
+    "region": "PL"
+  },
+  {
+    "id": "60",
+    "artist": "Wojciech Młynarski",
+    "title": "Jesteśmy",
+    "year": 1965,
+    "youtubeId": "RRfiddT5-aM",
+    "region": "PL"
+  },
+  {
+    "id": "61",
     "artist": "Czerwone Gitary",
     "title": "Nie zadzieraj nosa",
     "year": 1966,
@@ -104,7 +488,7 @@
     "region": "PL"
   },
   {
-    "id": "14",
+    "id": "62",
     "artist": "Skaldowie",
     "title": "Wszystko mi mówi, że mnie ktoś pokochał",
     "year": 1966,
@@ -112,7 +496,23 @@
     "region": "PL"
   },
   {
-    "id": "15",
+    "id": "63",
+    "artist": "Czesław Niemen",
+    "title": "Sen o Warszawie",
+    "year": 1966,
+    "youtubeId": "ePNUSmH3dMI",
+    "region": "PL"
+  },
+  {
+    "id": "64",
+    "artist": "Czerwone Gitary",
+    "title": "Powiedz stary gdzieś ty był",
+    "year": 1966,
+    "youtubeId": "OAU6_Bv9RCY",
+    "region": "PL"
+  },
+  {
+    "id": "65",
     "artist": "Czesław Niemen",
     "title": "Dziwny jest ten świat",
     "year": 1967,
@@ -120,7 +520,7 @@
     "region": "PL"
   },
   {
-    "id": "16",
+    "id": "66",
     "artist": "Czerwone Gitary",
     "title": "Kwiaty we włosach",
     "year": 1967,
@@ -128,7 +528,23 @@
     "region": "PL"
   },
   {
-    "id": "17",
+    "id": "67",
+    "artist": "Edmund Fetting",
+    "title": "Ballada o pancernych",
+    "year": 1967,
+    "youtubeId": "y6foA9AO60Y",
+    "region": "PL"
+  },
+  {
+    "id": "68",
+    "artist": "Breakout",
+    "title": "Gdybyś kochał hej",
+    "year": 1967,
+    "youtubeId": "mv41zHIQIVM",
+    "region": "PL"
+  },
+  {
+    "id": "69",
     "artist": "Czerwone Gitary",
     "title": "Anna Maria",
     "year": 1968,
@@ -136,7 +552,7 @@
     "region": "PL"
   },
   {
-    "id": "18",
+    "id": "70",
     "artist": "Skaldowie",
     "title": "Medytacje wiejskiego listonosza",
     "year": 1968,
@@ -144,7 +560,23 @@
     "region": "PL"
   },
   {
-    "id": "19",
+    "id": "71",
+    "artist": "Irena Jarocka",
+    "title": "Motylem jestem",
+    "year": 1968,
+    "youtubeId": "NTGfIEuy_ys",
+    "region": "PL"
+  },
+  {
+    "id": "72",
+    "artist": "Czerwone Gitary",
+    "title": "Takie ładne oczy",
+    "year": 1968,
+    "youtubeId": "whei_Xu-Q8w",
+    "region": "PL"
+  },
+  {
+    "id": "73",
     "artist": "Alibabki",
     "title": "Kwiat jednej nocy",
     "year": 1969,
@@ -152,7 +584,7 @@
     "region": "PL"
   },
   {
-    "id": "20",
+    "id": "74",
     "artist": "Maryla Rodowicz",
     "title": "Mówiły mu",
     "year": 1969,
@@ -160,7 +592,23 @@
     "region": "PL"
   },
   {
-    "id": "21",
+    "id": "75",
+    "artist": "Skaldowie",
+    "title": "Cała jesteś w skowronkach",
+    "year": 1969,
+    "youtubeId": "vpD9JtVGUHY",
+    "region": "PL"
+  },
+  {
+    "id": "76",
+    "artist": "Edmund Fetting",
+    "title": "Nim wstanie dzień",
+    "year": 1969,
+    "youtubeId": "p266UtzxCpo",
+    "region": "PL"
+  },
+  {
+    "id": "77",
     "artist": "Trubadurzy",
     "title": "Znamy się tylko z widzenia",
     "year": 1970,
@@ -168,7 +616,7 @@
     "region": "PL"
   },
   {
-    "id": "22",
+    "id": "78",
     "artist": "Maryla Rodowicz",
     "title": "Jadą wozy kolorowe",
     "year": 1970,
@@ -176,7 +624,23 @@
     "region": "PL"
   },
   {
-    "id": "23",
+    "id": "79",
+    "artist": "Tadeusz Nalepa",
+    "title": "Kiedy byłem małym chłopcem",
+    "year": 1970,
+    "youtubeId": "lWXSUuosxtk",
+    "region": "PL"
+  },
+  {
+    "id": "80",
+    "artist": "Maryla Rodowicz",
+    "title": "To było w maju",
+    "year": 1970,
+    "youtubeId": "JFk6PPdLaYg",
+    "region": "PL"
+  },
+  {
+    "id": "81",
     "artist": "Marek Grechuta",
     "title": "Dni, których nie znamy",
     "year": 1971,
@@ -184,7 +648,7 @@
     "region": "PL"
   },
   {
-    "id": "24",
+    "id": "82",
     "artist": "Krzysztof Klenczon",
     "title": "10 w skali Beauforta",
     "year": 1971,
@@ -192,7 +656,23 @@
     "region": "PL"
   },
   {
-    "id": "25",
+    "id": "83",
+    "artist": "Andrzej Dąbrowski",
+    "title": "Zielono mi",
+    "year": 1971,
+    "youtubeId": "A3Erhhwt9kg",
+    "region": "PL"
+  },
+  {
+    "id": "84",
+    "artist": "Anna German",
+    "title": "Kupiłabym ci me kochanie",
+    "year": 1971,
+    "youtubeId": "Ve7h1W2fbHM",
+    "region": "PL"
+  },
+  {
+    "id": "85",
     "artist": "Tadeusz Woźniak",
     "title": "Zegarmistrz światła",
     "year": 1972,
@@ -200,7 +680,7 @@
     "region": "PL"
   },
   {
-    "id": "26",
+    "id": "86",
     "artist": "2 plus 1",
     "title": "Chodź, pomaluj mój świat",
     "year": 1972,
@@ -208,7 +688,23 @@
     "region": "PL"
   },
   {
-    "id": "27",
+    "id": "87",
+    "artist": "Irena Jarocka",
+    "title": "Odpływają kawiarenki",
+    "year": 1972,
+    "youtubeId": "XHHDGqh-dLI",
+    "region": "PL"
+  },
+  {
+    "id": "88",
+    "artist": "Bogusław Mec",
+    "title": "Jej portret",
+    "year": 1972,
+    "youtubeId": "8sI4m8t7YmA",
+    "region": "PL"
+  },
+  {
+    "id": "89",
     "artist": "Maryla Rodowicz",
     "title": "Małgośka",
     "year": 1973,
@@ -216,7 +712,7 @@
     "region": "PL"
   },
   {
-    "id": "28",
+    "id": "90",
     "artist": "Stan Borys",
     "title": "Jaskółka uwięziona",
     "year": 1973,
@@ -224,7 +720,23 @@
     "region": "PL"
   },
   {
-    "id": "29",
+    "id": "91",
+    "artist": "Maryla Rodowicz",
+    "title": "Diabeł i raj",
+    "year": 1973,
+    "youtubeId": "pHTxc9Rfor4",
+    "region": "PL"
+  },
+  {
+    "id": "92",
+    "artist": "Dżamble",
+    "title": "Wymyśliłem ciebie",
+    "year": 1973,
+    "youtubeId": "_8kyIah0XGo",
+    "region": "PL"
+  },
+  {
+    "id": "93",
     "artist": "Anna Jantar",
     "title": "Tyle słońca w całym mieście",
     "year": 1974,
@@ -232,7 +744,7 @@
     "region": "PL"
   },
   {
-    "id": "30",
+    "id": "94",
     "artist": "Budka Suflera",
     "title": "Sen o dolinie",
     "year": 1974,
@@ -240,7 +752,23 @@
     "region": "PL"
   },
   {
-    "id": "31",
+    "id": "95",
+    "artist": "Andrzej Rosiewicz",
+    "title": "40 lat minęło",
+    "year": 1974,
+    "youtubeId": "TSgohNm-1cg",
+    "region": "PL"
+  },
+  {
+    "id": "96",
+    "artist": "Maryla Rodowicz",
+    "title": "Urodzajny rok",
+    "year": 1974,
+    "youtubeId": "_yronE5zJ_8",
+    "region": "PL"
+  },
+  {
+    "id": "97",
     "artist": "Krzysztof Krawczyk",
     "title": "Parostatek",
     "year": 1975,
@@ -248,7 +776,7 @@
     "region": "PL"
   },
   {
-    "id": "32",
+    "id": "98",
     "artist": "Anna Jantar",
     "title": "Moje jedyne marzenie",
     "year": 1975,
@@ -256,7 +784,23 @@
     "region": "PL"
   },
   {
-    "id": "33",
+    "id": "99",
+    "artist": "Budka Suflera",
+    "title": "Cień wielkiej góry",
+    "year": 1975,
+    "youtubeId": "-Yryq4DytYY",
+    "region": "PL"
+  },
+  {
+    "id": "100",
+    "artist": "Maryla Rodowicz",
+    "title": "Damą być",
+    "year": 1975,
+    "youtubeId": "pLo5ZyGn_qg",
+    "region": "PL"
+  },
+  {
+    "id": "101",
     "artist": "Maryla Rodowicz",
     "title": "Sing-Sing",
     "year": 1976,
@@ -264,7 +808,7 @@
     "region": "PL"
   },
   {
-    "id": "34",
+    "id": "102",
     "artist": "Krzysztof Krawczyk",
     "title": "Byle było tak",
     "year": 1976,
@@ -272,7 +816,15 @@
     "region": "PL"
   },
   {
-    "id": "35",
+    "id": "103",
+    "artist": "Maryla Rodowicz",
+    "title": "Nie ma jak pompa",
+    "year": 1976,
+    "youtubeId": "sgLHGk3HA6c",
+    "region": "PL"
+  },
+  {
+    "id": "104",
     "artist": "Maryla Rodowicz",
     "title": "Kolorowe jarmarki",
     "year": 1977,
@@ -280,7 +832,7 @@
     "region": "PL"
   },
   {
-    "id": "36",
+    "id": "105",
     "artist": "Halina Frąckowiak",
     "title": "Bądź gotowy do drogi",
     "year": 1977,
@@ -288,7 +840,23 @@
     "region": "PL"
   },
   {
-    "id": "37",
+    "id": "106",
+    "artist": "Maryla Rodowicz",
+    "title": "Krąży złoty pieniądz",
+    "year": 1977,
+    "youtubeId": "iIRoR8_ESzw",
+    "region": "PL"
+  },
+  {
+    "id": "107",
+    "artist": "Maryla Rodowicz",
+    "title": "Cokolwiek robię nie żałuję",
+    "year": 1977,
+    "youtubeId": "0whhZuo3CXQ",
+    "region": "PL"
+  },
+  {
+    "id": "108",
     "artist": "2 plus 1",
     "title": "Windą do nieba",
     "year": 1978,
@@ -296,7 +864,7 @@
     "region": "PL"
   },
   {
-    "id": "38",
+    "id": "109",
     "artist": "Zbigniew Wodecki",
     "title": "Zacznij od Bacha",
     "year": 1978,
@@ -304,7 +872,23 @@
     "region": "PL"
   },
   {
-    "id": "39",
+    "id": "110",
+    "artist": "Maryla Rodowicz",
+    "title": "Remedium",
+    "year": 1978,
+    "youtubeId": "ucfNtTsyjYA",
+    "region": "PL"
+  },
+  {
+    "id": "111",
+    "artist": "Maryla Rodowicz",
+    "title": "Futbol, futbol, futbol",
+    "year": 1978,
+    "youtubeId": "oY-N1607m4I",
+    "region": "PL"
+  },
+  {
+    "id": "112",
     "artist": "Anna Jantar",
     "title": "Nic nie może wiecznie trwać",
     "year": 1979,
@@ -312,7 +896,7 @@
     "region": "PL"
   },
   {
-    "id": "40",
+    "id": "113",
     "artist": "Maanam",
     "title": "Hamlet",
     "year": 1979,
@@ -320,7 +904,23 @@
     "region": "PL"
   },
   {
-    "id": "41",
+    "id": "114",
+    "artist": "Maryla Rodowicz",
+    "title": "Cyrk nocą",
+    "year": 1979,
+    "youtubeId": "K61I4eaXg7A",
+    "region": "PL"
+  },
+  {
+    "id": "115",
+    "artist": "Maryla Rodowicz",
+    "title": "Rajski deser",
+    "year": 1979,
+    "youtubeId": "kKzPVBwtrr4",
+    "region": "PL"
+  },
+  {
+    "id": "116",
     "artist": "Maanam",
     "title": "Boskie Buenos",
     "year": 1980,
@@ -328,7 +928,7 @@
     "region": "PL"
   },
   {
-    "id": "42",
+    "id": "117",
     "artist": "Izabela Trojanowska",
     "title": "Wszystko czego dziś chcę",
     "year": 1980,
@@ -336,7 +936,23 @@
     "region": "PL"
   },
   {
-    "id": "43",
+    "id": "118",
+    "artist": "Maryla Rodowicz",
+    "title": "Głowisia",
+    "year": 1980,
+    "youtubeId": "JUokJ7XDoZ0",
+    "region": "PL"
+  },
+  {
+    "id": "119",
+    "artist": "Andrzej Rosiewicz",
+    "title": "Najwięcej witaminy",
+    "year": 1980,
+    "youtubeId": "8A-xV5hZ3Eg",
+    "region": "PL"
+  },
+  {
+    "id": "120",
     "artist": "Perfect",
     "title": "Nie płacz Ewka",
     "year": 1981,
@@ -344,7 +960,7 @@
     "region": "PL"
   },
   {
-    "id": "44",
+    "id": "121",
     "artist": "Maanam",
     "title": "Cykady na Cykladach",
     "year": 1981,
@@ -352,7 +968,23 @@
     "region": "PL"
   },
   {
-    "id": "45",
+    "id": "122",
+    "artist": "Perfect",
+    "title": "Chcemy być sobą",
+    "year": 1981,
+    "youtubeId": "1qeMxFRD100",
+    "region": "PL"
+  },
+  {
+    "id": "123",
+    "artist": "Krystyna Prońko",
+    "title": "Psalm stojących w kolejce",
+    "year": 1981,
+    "youtubeId": "aU-3t8Wav7U",
+    "region": "PL"
+  },
+  {
+    "id": "124",
     "artist": "Perfect",
     "title": "Autobiografia",
     "year": 1982,
@@ -360,7 +992,7 @@
     "region": "PL"
   },
   {
-    "id": "46",
+    "id": "125",
     "artist": "Budka Suflera",
     "title": "Jolka, Jolka pamiętasz",
     "year": 1982,
@@ -368,7 +1000,23 @@
     "region": "PL"
   },
   {
-    "id": "47",
+    "id": "126",
+    "artist": "Republika",
+    "title": "Biała flaga",
+    "year": 1982,
+    "youtubeId": "gHUDbpI8Ulk",
+    "region": "PL"
+  },
+  {
+    "id": "127",
+    "artist": "Maanam",
+    "title": "Nie rób tyle hałasu",
+    "year": 1982,
+    "youtubeId": "QcKYaAqQEj0",
+    "region": "PL"
+  },
+  {
+    "id": "128",
     "artist": "Lady Pank",
     "title": "Mniej niż zero",
     "year": 1983,
@@ -376,7 +1024,7 @@
     "region": "PL"
   },
   {
-    "id": "48",
+    "id": "129",
     "artist": "Bajm",
     "title": "Józek, nie daruję ci tej nocy",
     "year": 1983,
@@ -384,7 +1032,23 @@
     "region": "PL"
   },
   {
-    "id": "49",
+    "id": "130",
+    "artist": "Maanam",
+    "title": "Kocham cię kochanie moje",
+    "year": 1983,
+    "youtubeId": "nIncb6Gy2js",
+    "region": "PL"
+  },
+  {
+    "id": "131",
+    "artist": "Lady Pank",
+    "title": "Kryzysowa narzeczona",
+    "year": 1983,
+    "youtubeId": "o71HQWqi68U",
+    "region": "PL"
+  },
+  {
+    "id": "132",
     "artist": "Maanam",
     "title": "Krakowski spleen",
     "year": 1984,
@@ -392,7 +1056,7 @@
     "region": "PL"
   },
   {
-    "id": "50",
+    "id": "133",
     "artist": "Aya RL",
     "title": "Skóra",
     "year": 1984,
@@ -400,7 +1064,23 @@
     "region": "PL"
   },
   {
-    "id": "51",
+    "id": "134",
+    "artist": "Lombard",
+    "title": "Szklana pogoda",
+    "year": 1984,
+    "youtubeId": "SCrR7od_fck",
+    "region": "PL"
+  },
+  {
+    "id": "135",
+    "artist": "Kombi",
+    "title": "Słodkiego miłego życia",
+    "year": 1984,
+    "youtubeId": "YMsQ5izhIDo",
+    "region": "PL"
+  },
+  {
+    "id": "136",
     "artist": "Rezerwat",
     "title": "Zaopiekuj się mną",
     "year": 1985,
@@ -408,7 +1088,7 @@
     "region": "PL"
   },
   {
-    "id": "52",
+    "id": "137",
     "artist": "Mr. Zoob",
     "title": "Mój jest ten kawałek podłogi",
     "year": 1985,
@@ -416,7 +1096,23 @@
     "region": "PL"
   },
   {
-    "id": "53",
+    "id": "138",
+    "artist": "Dżem",
+    "title": "Whisky",
+    "year": 1985,
+    "youtubeId": "zfwGiieFkKo",
+    "region": "PL"
+  },
+  {
+    "id": "139",
+    "artist": "Brygada Kryzys",
+    "title": "Centrala",
+    "year": 1985,
+    "youtubeId": "mS5jTh7RkEE",
+    "region": "PL"
+  },
+  {
+    "id": "140",
     "artist": "Papa Dance",
     "title": "Naj story",
     "year": 1986,
@@ -424,7 +1120,7 @@
     "region": "PL"
   },
   {
-    "id": "54",
+    "id": "141",
     "artist": "Obywatel G.C.",
     "title": "Paryż-Moskwa",
     "year": 1986,
@@ -432,7 +1128,23 @@
     "region": "PL"
   },
   {
-    "id": "55",
+    "id": "142",
+    "artist": "Zdzisława Sośnicka",
+    "title": "Aleja gwiazd",
+    "year": 1986,
+    "youtubeId": "Ziqujo1O7rw",
+    "region": "PL"
+  },
+  {
+    "id": "143",
+    "artist": "Halina Frąckowiak",
+    "title": "Papierowy księżyc",
+    "year": 1986,
+    "youtubeId": "rlkzBab-wjA",
+    "region": "PL"
+  },
+  {
+    "id": "144",
     "artist": "Sztywny Pal Azji",
     "title": "Wieża radości, wieża samotności",
     "year": 1987,
@@ -440,7 +1152,7 @@
     "region": "PL"
   },
   {
-    "id": "56",
+    "id": "145",
     "artist": "Tilt",
     "title": "Mówię ci, że",
     "year": 1987,
@@ -448,7 +1160,15 @@
     "region": "PL"
   },
   {
-    "id": "57",
+    "id": "146",
+    "artist": "Kult",
+    "title": "Polska",
+    "year": 1987,
+    "youtubeId": "x3kicEsx7g0",
+    "region": "PL"
+  },
+  {
+    "id": "147",
     "artist": "Obywatel G.C.",
     "title": "Nie pytaj o Polskę",
     "year": 1988,
@@ -456,7 +1176,7 @@
     "region": "PL"
   },
   {
-    "id": "58",
+    "id": "148",
     "artist": "Kult",
     "title": "Arahja",
     "year": 1988,
@@ -464,7 +1184,23 @@
     "region": "PL"
   },
   {
-    "id": "59",
+    "id": "149",
+    "artist": "Papa Dance",
+    "title": "Nasz ostatni raz",
+    "year": 1988,
+    "youtubeId": "IFV7T8gey3I",
+    "region": "PL"
+  },
+  {
+    "id": "150",
+    "artist": "Lady Pank",
+    "title": "To co mam",
+    "year": 1988,
+    "youtubeId": "F4qdgGxdfKg",
+    "region": "PL"
+  },
+  {
+    "id": "151",
     "artist": "De Mono",
     "title": "Kochać inaczej",
     "year": 1989,
@@ -472,7 +1208,7 @@
     "region": "PL"
   },
   {
-    "id": "60",
+    "id": "152",
     "artist": "Chłopcy z Placu Broni",
     "title": "Kocham wolność",
     "year": 1989,
@@ -480,7 +1216,23 @@
     "region": "PL"
   },
   {
-    "id": "61",
+    "id": "153",
+    "artist": "Chłopcy z Placu Broni",
+    "title": "Kocham cię",
+    "year": 1989,
+    "youtubeId": "n7fXVp9YNQw",
+    "region": "PL"
+  },
+  {
+    "id": "154",
+    "artist": "Tilt",
+    "title": "Jeszcze będzie przepięknie",
+    "year": 1989,
+    "youtubeId": "XsgQNfXaAHY",
+    "region": "PL"
+  },
+  {
+    "id": "155",
     "artist": "Lady Pank",
     "title": "Zawsze tam gdzie ty",
     "year": 1990,
@@ -488,7 +1240,7 @@
     "region": "PL"
   },
   {
-    "id": "62",
+    "id": "156",
     "artist": "Elektryczne Gitary",
     "title": "Włosy",
     "year": 1990,
@@ -496,7 +1248,7 @@
     "region": "PL"
   },
   {
-    "id": "63",
+    "id": "157",
     "artist": "T.Love",
     "title": "Warszawa",
     "year": 1990,
@@ -504,7 +1256,15 @@
     "region": "PL"
   },
   {
-    "id": "64",
+    "id": "158",
+    "artist": "Kazimiera Utrata",
+    "title": "Piosenka o okularnikach",
+    "year": 1990,
+    "youtubeId": "o4FW6OvgYc4",
+    "region": "PL"
+  },
+  {
+    "id": "159",
     "artist": "Dżem",
     "title": "List do M.",
     "year": 1991,
@@ -512,7 +1272,7 @@
     "region": "PL"
   },
   {
-    "id": "65",
+    "id": "160",
     "artist": "Bajm",
     "title": "Miłość i ja",
     "year": 1991,
@@ -520,7 +1280,7 @@
     "region": "PL"
   },
   {
-    "id": "66",
+    "id": "161",
     "artist": "Wilki",
     "title": "Eroll",
     "year": 1991,
@@ -528,7 +1288,15 @@
     "region": "PL"
   },
   {
-    "id": "67",
+    "id": "162",
+    "artist": "Stanisław Soyka",
+    "title": "Tolerancja (na miły Bóg)",
+    "year": 1991,
+    "youtubeId": "FWZNF4F1r7Y",
+    "region": "PL"
+  },
+  {
+    "id": "163",
     "artist": "Wilki",
     "title": "Son of the Blue Sky",
     "year": 1992,
@@ -536,7 +1304,7 @@
     "region": "PL"
   },
   {
-    "id": "68",
+    "id": "164",
     "artist": "Róże Europy",
     "title": "Jedwab",
     "year": 1992,
@@ -544,7 +1312,7 @@
     "region": "PL"
   },
   {
-    "id": "69",
+    "id": "165",
     "artist": "IRA",
     "title": "Nadzieja",
     "year": 1992,
@@ -552,7 +1320,23 @@
     "region": "PL"
   },
   {
-    "id": "70",
+    "id": "166",
+    "artist": "Maanam",
+    "title": "Wyjątkowo zimny maj",
+    "year": 1992,
+    "youtubeId": "3Skn4vxU9cA",
+    "region": "PL"
+  },
+  {
+    "id": "167",
+    "artist": "Budka Suflera",
+    "title": "Twoje radio",
+    "year": 1992,
+    "youtubeId": "vhgVHIw1h_4",
+    "region": "PL"
+  },
+  {
+    "id": "168",
     "artist": "Hey",
     "title": "Teksański",
     "year": 1993,
@@ -560,7 +1344,7 @@
     "region": "PL"
   },
   {
-    "id": "71",
+    "id": "169",
     "artist": "Bajm",
     "title": "Ta sama chwila",
     "year": 1993,
@@ -568,7 +1352,7 @@
     "region": "PL"
   },
   {
-    "id": "72",
+    "id": "170",
     "artist": "Edyta Bartosiewicz",
     "title": "Sen",
     "year": 1993,
@@ -576,7 +1360,23 @@
     "region": "PL"
   },
   {
-    "id": "73",
+    "id": "171",
+    "artist": "Grzegorz Turnau",
+    "title": "Pamięć",
+    "year": 1993,
+    "youtubeId": "sXRcQvqaKHc",
+    "region": "PL"
+  },
+  {
+    "id": "172",
+    "artist": "Edyta Bartosiewicz",
+    "title": "Koziorożec",
+    "year": 1993,
+    "youtubeId": "PNNRdZBYLpQ",
+    "region": "PL"
+  },
+  {
+    "id": "173",
     "artist": "Edyta Górniak",
     "title": "To nie ja",
     "year": 1994,
@@ -584,7 +1384,7 @@
     "region": "PL"
   },
   {
-    "id": "74",
+    "id": "174",
     "artist": "Varius Manx",
     "title": "Zanim zrozumiesz",
     "year": 1994,
@@ -592,7 +1392,7 @@
     "region": "PL"
   },
   {
-    "id": "75",
+    "id": "175",
     "artist": "Kasia Kowalska",
     "title": "Jak rzecz",
     "year": 1994,
@@ -600,7 +1400,15 @@
     "region": "PL"
   },
   {
-    "id": "76",
+    "id": "176",
+    "artist": "Justyna Steczkowska",
+    "title": "Dziewczyna Szamana",
+    "year": 1994,
+    "youtubeId": "eVapbhUdI34",
+    "region": "PL"
+  },
+  {
+    "id": "177",
     "artist": "Formacja Nieżywych Schabuff",
     "title": "Lato",
     "year": 1995,
@@ -608,7 +1416,7 @@
     "region": "PL"
   },
   {
-    "id": "77",
+    "id": "178",
     "artist": "Robert Chojnacki & Piasek",
     "title": "Prawie do nieba",
     "year": 1995,
@@ -616,7 +1424,7 @@
     "region": "PL"
   },
   {
-    "id": "78",
+    "id": "179",
     "artist": "Myslovitz",
     "title": "Z twarzą Marilyn Monroe",
     "year": 1995,
@@ -624,7 +1432,23 @@
     "region": "PL"
   },
   {
-    "id": "79",
+    "id": "180",
+    "artist": "Robert Chojnacki & Piasek",
+    "title": "Budzikom śmierć",
+    "year": 1995,
+    "youtubeId": "4ggVYsZoZiA",
+    "region": "PL"
+  },
+  {
+    "id": "181",
+    "artist": "O.N.A.",
+    "title": "Drzwi",
+    "year": 1995,
+    "youtubeId": "DurZn_NcPIA",
+    "region": "PL"
+  },
+  {
+    "id": "182",
     "artist": "O.N.A.",
     "title": "Kiedy powiem sobie dość",
     "year": 1996,
@@ -632,7 +1456,7 @@
     "region": "PL"
   },
   {
-    "id": "80",
+    "id": "183",
     "artist": "Varius Manx",
     "title": "Orła cień",
     "year": 1996,
@@ -640,7 +1464,7 @@
     "region": "PL"
   },
   {
-    "id": "81",
+    "id": "184",
     "artist": "Big Cyc",
     "title": "Makumba",
     "year": 1996,
@@ -648,7 +1472,23 @@
     "region": "PL"
   },
   {
-    "id": "82",
+    "id": "185",
+    "artist": "Robert Chojnacki & Piasek",
+    "title": "Niecierpliwi",
+    "year": 1996,
+    "youtubeId": "laUQy4DVxCA",
+    "region": "PL"
+  },
+  {
+    "id": "186",
+    "artist": "Anita Lipnicka",
+    "title": "I wszystko się może zdarzyć",
+    "year": 1996,
+    "youtubeId": "3YxOZQqNYY8",
+    "region": "PL"
+  },
+  {
+    "id": "187",
     "artist": "Kayah",
     "title": "Supermenka",
     "year": 1997,
@@ -656,7 +1496,7 @@
     "region": "PL"
   },
   {
-    "id": "83",
+    "id": "188",
     "artist": "Budka Suflera",
     "title": "Takie tango",
     "year": 1997,
@@ -664,7 +1504,7 @@
     "region": "PL"
   },
   {
-    "id": "84",
+    "id": "189",
     "artist": "Elektryczne Gitary",
     "title": "Kiler",
     "year": 1997,
@@ -672,7 +1512,15 @@
     "region": "PL"
   },
   {
-    "id": "85",
+    "id": "190",
+    "artist": "Górniak & Szcześniak",
+    "title": "Dumka na dwa serca",
+    "year": 1997,
+    "youtubeId": "wcXAKhwsl6o",
+    "region": "PL"
+  },
+  {
+    "id": "191",
     "artist": "Kult",
     "title": "Gdy nie ma dzieci",
     "year": 1998,
@@ -680,7 +1528,7 @@
     "region": "PL"
   },
   {
-    "id": "86",
+    "id": "192",
     "artist": "Beata Kozidrak",
     "title": "Siedzę i myślę",
     "year": 1998,
@@ -688,7 +1536,7 @@
     "region": "PL"
   },
   {
-    "id": "87",
+    "id": "193",
     "artist": "Urszula",
     "title": "Anioł wie...",
     "year": 1998,
@@ -696,7 +1544,23 @@
     "region": "PL"
   },
   {
-    "id": "88",
+    "id": "194",
+    "artist": "Republika",
+    "title": "Mamona",
+    "year": 1998,
+    "youtubeId": "-R7qqsT6-T8",
+    "region": "PL"
+  },
+  {
+    "id": "195",
+    "artist": "Maanam",
+    "title": "Miłość od pierwszego spojrzenia",
+    "year": 1998,
+    "youtubeId": "Sp_U6oDdsNk",
+    "region": "PL"
+  },
+  {
+    "id": "196",
     "artist": "Kayah & Bregović",
     "title": "Śpij kochanie, śpij",
     "year": 1999,
@@ -704,7 +1568,7 @@
     "region": "PL"
   },
   {
-    "id": "89",
+    "id": "197",
     "artist": "Myslovitz",
     "title": "Długość dźwięku samotności",
     "year": 1999,
@@ -712,7 +1576,7 @@
     "region": "PL"
   },
   {
-    "id": "90",
+    "id": "198",
     "artist": "Golec uOrkiestra",
     "title": "Lornetka",
     "year": 1999,
@@ -720,7 +1584,23 @@
     "region": "PL"
   },
   {
-    "id": "91",
+    "id": "199",
+    "artist": "Czarno-Czarni",
+    "title": "Nogi",
+    "year": 1999,
+    "youtubeId": "gruPiZJHdVg",
+    "region": "PL"
+  },
+  {
+    "id": "200",
+    "artist": "Paweł Kukiz & Piersi",
+    "title": "Całuj mnie",
+    "year": 1999,
+    "youtubeId": "bfPZn2FUuG0",
+    "region": "PL"
+  },
+  {
+    "id": "201",
     "artist": "Brathanki",
     "title": "Czerwone korale",
     "year": 2000,
@@ -728,7 +1608,7 @@
     "region": "PL"
   },
   {
-    "id": "92",
+    "id": "202",
     "artist": "Golec uOrkiestra",
     "title": "Ściernisko",
     "year": 2000,
@@ -736,7 +1616,7 @@
     "region": "PL"
   },
   {
-    "id": "93",
+    "id": "203",
     "artist": "Kayah",
     "title": "Jaka ja Kayah",
     "year": 2000,
@@ -744,7 +1624,23 @@
     "region": "PL"
   },
   {
-    "id": "94",
+    "id": "204",
+    "artist": "Budka Suflera",
+    "title": "Bal wszystkich świętych",
+    "year": 2000,
+    "youtubeId": "kE87oI5rdew",
+    "region": "PL"
+  },
+  {
+    "id": "205",
+    "artist": "Yugoton & Kazik",
+    "title": "Malcziki",
+    "year": 2000,
+    "youtubeId": "iNxDj-i-yi8",
+    "region": "PL"
+  },
+  {
+    "id": "206",
     "artist": "Ich Troje",
     "title": "Powiedz",
     "year": 2001,
@@ -752,7 +1648,7 @@
     "region": "PL"
   },
   {
-    "id": "95",
+    "id": "207",
     "artist": "Ryszard Rynkowski",
     "title": "Dziewczyny lubią brąz",
     "year": 2001,
@@ -760,7 +1656,7 @@
     "region": "PL"
   },
   {
-    "id": "96",
+    "id": "208",
     "artist": "Kasia Kowalska",
     "title": "Starczy słów",
     "year": 2001,
@@ -768,7 +1664,23 @@
     "region": "PL"
   },
   {
-    "id": "97",
+    "id": "209",
+    "artist": "T.Love",
+    "title": "Nie nie nie",
+    "year": 2001,
+    "youtubeId": "6_oPjyy6pMg",
+    "region": "PL"
+  },
+  {
+    "id": "210",
+    "artist": "Peja/Slums Attack",
+    "title": "Na legalu",
+    "year": 2001,
+    "youtubeId": "GkIUC90mQbE",
+    "region": "PL"
+  },
+  {
+    "id": "211",
     "artist": "Wilki",
     "title": "Baśka",
     "year": 2002,
@@ -776,7 +1688,7 @@
     "region": "PL"
   },
   {
-    "id": "98",
+    "id": "212",
     "artist": "Łzy",
     "title": "Agnieszka już dawno...",
     "year": 2002,
@@ -784,7 +1696,7 @@
     "region": "PL"
   },
   {
-    "id": "99",
+    "id": "213",
     "artist": "Myslovitz",
     "title": "Acidland",
     "year": 2002,
@@ -792,7 +1704,23 @@
     "region": "PL"
   },
   {
-    "id": "100",
+    "id": "214",
+    "artist": "Wilki",
+    "title": "Urke",
+    "year": 2002,
+    "youtubeId": "8YKAHgwLEMg",
+    "region": "PL"
+  },
+  {
+    "id": "215",
+    "artist": "Pezet",
+    "title": "Seniorita",
+    "year": 2002,
+    "youtubeId": "CG56BG4-Kao",
+    "region": "PL"
+  },
+  {
+    "id": "216",
     "artist": "Jeden Osiem L",
     "title": "Jak zapomnieć",
     "year": 2003,
@@ -800,7 +1728,7 @@
     "region": "PL"
   },
   {
-    "id": "101",
+    "id": "217",
     "artist": "Ewelina Flinta",
     "title": "Żałuję",
     "year": 2003,
@@ -808,7 +1736,7 @@
     "region": "PL"
   },
   {
-    "id": "102",
+    "id": "218",
     "artist": "Sistars",
     "title": "Synu",
     "year": 2003,
@@ -816,7 +1744,23 @@
     "region": "PL"
   },
   {
-    "id": "103",
+    "id": "219",
+    "artist": "Sistars",
+    "title": "Sutra",
+    "year": 2003,
+    "youtubeId": "kQ9ORnAWqfw",
+    "region": "PL"
+  },
+  {
+    "id": "220",
+    "artist": "Lipnicka & Porter",
+    "title": "Bones of Love",
+    "year": 2003,
+    "youtubeId": "IfmrAqV0n5Q",
+    "region": "PL"
+  },
+  {
+    "id": "221",
     "artist": "Krzysztof Krawczyk & Edyta Bartosiewicz",
     "title": "Trudno tak",
     "year": 2004,
@@ -824,7 +1768,7 @@
     "region": "PL"
   },
   {
-    "id": "104",
+    "id": "222",
     "artist": "Monika Brodka",
     "title": "Ten",
     "year": 2004,
@@ -832,7 +1776,7 @@
     "region": "PL"
   },
   {
-    "id": "105",
+    "id": "223",
     "artist": "Coma",
     "title": "Spadam",
     "year": 2004,
@@ -840,7 +1784,23 @@
     "region": "PL"
   },
   {
-    "id": "106",
+    "id": "224",
+    "artist": "Sidney Polak",
+    "title": "Otwieram wino",
+    "year": 2004,
+    "youtubeId": "b16vSZMJ13k",
+    "region": "PL"
+  },
+  {
+    "id": "225",
+    "artist": "Happysad",
+    "title": "Zanim pójdę",
+    "year": 2004,
+    "youtubeId": "W1jIuwYGIrU",
+    "region": "PL"
+  },
+  {
+    "id": "226",
     "artist": "Virgin",
     "title": "Znak pokoju",
     "year": 2005,
@@ -848,7 +1808,7 @@
     "region": "PL"
   },
   {
-    "id": "107",
+    "id": "227",
     "artist": "Mezo & Kasia Wilk",
     "title": "Ważne",
     "year": 2005,
@@ -856,7 +1816,7 @@
     "region": "PL"
   },
   {
-    "id": "108",
+    "id": "228",
     "artist": "Szymon Wydra & Carpe Diem",
     "title": "Życie jak poemat",
     "year": 2005,
@@ -864,7 +1824,23 @@
     "region": "PL"
   },
   {
-    "id": "109",
+    "id": "229",
+    "artist": "Krzysztof Kiljański",
+    "title": "Prócz ciebie nic",
+    "year": 2005,
+    "youtubeId": "xEGrNHGXPdY",
+    "region": "PL"
+  },
+  {
+    "id": "230",
+    "artist": "Lech Janerka",
+    "title": "Rower",
+    "year": 2005,
+    "youtubeId": "R0jpIzJy2VY",
+    "region": "PL"
+  },
+  {
+    "id": "231",
     "artist": "Gosia Andrzejewicz",
     "title": "Pozwól żyć",
     "year": 2006,
@@ -872,7 +1848,7 @@
     "region": "PL"
   },
   {
-    "id": "110",
+    "id": "232",
     "artist": "Blog 27",
     "title": "Uh La La La",
     "year": 2006,
@@ -880,7 +1856,7 @@
     "region": "PL"
   },
   {
-    "id": "111",
+    "id": "233",
     "artist": "Maria Peszek",
     "title": "Miasto mania",
     "year": 2006,
@@ -888,7 +1864,23 @@
     "region": "PL"
   },
   {
-    "id": "112",
+    "id": "234",
+    "artist": "Stępniak-Wilk & Turnau",
+    "title": "Bombonierka",
+    "year": 2006,
+    "youtubeId": "0uuYicF9eUg",
+    "region": "PL"
+  },
+  {
+    "id": "235",
+    "artist": "Brodka",
+    "title": "Miał być ślub",
+    "year": 2006,
+    "youtubeId": "ty3n87vbVe4",
+    "region": "PL"
+  },
+  {
+    "id": "236",
     "artist": "Feel",
     "title": "A gdy jest już ciemno",
     "year": 2007,
@@ -896,7 +1888,7 @@
     "region": "PL"
   },
   {
-    "id": "113",
+    "id": "237",
     "artist": "Ewa Farna",
     "title": "Cicho",
     "year": 2007,
@@ -904,7 +1896,7 @@
     "region": "PL"
   },
   {
-    "id": "114",
+    "id": "238",
     "artist": "Ania Dąbrowska",
     "title": "Trudno mi się przyznać",
     "year": 2007,
@@ -912,7 +1904,23 @@
     "region": "PL"
   },
   {
-    "id": "115",
+    "id": "239",
+    "artist": "Strachy na Lachy",
+    "title": "Piła tango",
+    "year": 2007,
+    "youtubeId": "nFBBD1Eim1E",
+    "region": "PL"
+  },
+  {
+    "id": "240",
+    "artist": "Goya",
+    "title": "Tylko mnie kochaj",
+    "year": 2007,
+    "youtubeId": "oBQiZMoBlhI",
+    "region": "PL"
+  },
+  {
+    "id": "241",
     "artist": "Feel",
     "title": "Jak anioła głos",
     "year": 2008,
@@ -920,7 +1928,7 @@
     "region": "PL"
   },
   {
-    "id": "116",
+    "id": "242",
     "artist": "Sylwia Grzeszczak & Liber",
     "title": "Nowe szanse",
     "year": 2008,
@@ -928,7 +1936,7 @@
     "region": "PL"
   },
   {
-    "id": "117",
+    "id": "243",
     "artist": "Czesław Śpiewa",
     "title": "Maszynka do świerkania",
     "year": 2008,
@@ -936,7 +1944,23 @@
     "region": "PL"
   },
   {
-    "id": "118",
+    "id": "244",
+    "artist": "Flinta & Zagrobelny",
+    "title": "Nie kłam że kochasz mnie",
+    "year": 2008,
+    "youtubeId": "rvAwap4asps",
+    "region": "PL"
+  },
+  {
+    "id": "245",
+    "artist": "Ania Dąbrowska",
+    "title": "Nigdy więcej nie tańcz ze mną",
+    "year": 2008,
+    "youtubeId": "7IfKnSVPbS8",
+    "region": "PL"
+  },
+  {
+    "id": "246",
     "artist": "Agnieszka Chylińska",
     "title": "Nie mogę Cię zapomnieć",
     "year": 2009,
@@ -944,7 +1968,7 @@
     "region": "PL"
   },
   {
-    "id": "119",
+    "id": "247",
     "artist": "Mrozu",
     "title": "Miliony monet",
     "year": 2009,
@@ -952,7 +1976,7 @@
     "region": "PL"
   },
   {
-    "id": "120",
+    "id": "248",
     "artist": "Afromental",
     "title": "Radio Song",
     "year": 2009,
@@ -960,7 +1984,23 @@
     "region": "PL"
   },
   {
-    "id": "121",
+    "id": "249",
+    "artist": "Hey",
+    "title": "Faza delta",
+    "year": 2009,
+    "youtubeId": "3YtjooV-9OQ",
+    "region": "PL"
+  },
+  {
+    "id": "250",
+    "artist": "T.Love",
+    "title": "Gnijący świat",
+    "year": 2009,
+    "youtubeId": "4VeIWEN18P0",
+    "region": "PL"
+  },
+  {
+    "id": "251",
     "artist": "Brodka",
     "title": "Granda",
     "year": 2010,
@@ -968,7 +2008,7 @@
     "region": "PL"
   },
   {
-    "id": "122",
+    "id": "252",
     "artist": "Acid Drinkers",
     "title": "Love Shack",
     "year": 2010,
@@ -976,7 +2016,7 @@
     "region": "PL"
   },
   {
-    "id": "123",
+    "id": "253",
     "artist": "Ewa Farna",
     "title": "Ewakuacja",
     "year": 2010,
@@ -984,7 +2024,7 @@
     "region": "PL"
   },
   {
-    "id": "124",
+    "id": "254",
     "artist": "Zakopower",
     "title": "Boso",
     "year": 2011,
@@ -992,7 +2032,7 @@
     "region": "PL"
   },
   {
-    "id": "125",
+    "id": "255",
     "artist": "Sylwia Grzeszczak",
     "title": "Małe rzeczy",
     "year": 2011,
@@ -1000,7 +2040,7 @@
     "region": "PL"
   },
   {
-    "id": "126",
+    "id": "256",
     "artist": "Luxtorpeda",
     "title": "Autystyczny",
     "year": 2011,
@@ -1008,7 +2048,7 @@
     "region": "PL"
   },
   {
-    "id": "127",
+    "id": "257",
     "artist": "Enej",
     "title": "Skrzydlate ręce",
     "year": 2012,
@@ -1016,7 +2056,7 @@
     "region": "PL"
   },
   {
-    "id": "128",
+    "id": "258",
     "artist": "Donatan & Borixon",
     "title": "Nie lubimy robić",
     "year": 2012,
@@ -1024,7 +2064,7 @@
     "region": "PL"
   },
   {
-    "id": "129",
+    "id": "259",
     "artist": "Bednarek",
     "title": "Cisza",
     "year": 2012,
@@ -1032,7 +2072,7 @@
     "region": "PL"
   },
   {
-    "id": "130",
+    "id": "260",
     "artist": "Dawid Podsiadło",
     "title": "Trójkąty i kwadraty",
     "year": 2013,
@@ -1040,7 +2080,7 @@
     "region": "PL"
   },
   {
-    "id": "131",
+    "id": "261",
     "artist": "Piersi",
     "title": "Bałkanica",
     "year": 2013,
@@ -1048,7 +2088,7 @@
     "region": "PL"
   },
   {
-    "id": "132",
+    "id": "262",
     "artist": "Donatan & Cleo",
     "title": "My Słowianie",
     "year": 2013,
@@ -1056,7 +2096,7 @@
     "region": "PL"
   },
   {
-    "id": "133",
+    "id": "263",
     "artist": "Artur Rojek",
     "title": "Syreny",
     "year": 2014,
@@ -1064,7 +2104,7 @@
     "region": "PL"
   },
   {
-    "id": "134",
+    "id": "264",
     "artist": "Mrozu",
     "title": "Nic do stracenia",
     "year": 2014,
@@ -1072,7 +2112,7 @@
     "region": "PL"
   },
   {
-    "id": "135",
+    "id": "265",
     "artist": "Natalia Przybysz",
     "title": "Miód",
     "year": 2014,
@@ -1080,7 +2120,7 @@
     "region": "PL"
   },
   {
-    "id": "136",
+    "id": "266",
     "artist": "Sarsa",
     "title": "Naucz mnie",
     "year": 2015,
@@ -1088,7 +2128,7 @@
     "region": "PL"
   },
   {
-    "id": "137",
+    "id": "267",
     "artist": "Zbigniew Wodecki & Mitch & Mitch",
     "title": "Rzuć to wszystko co złe",
     "year": 2015,
@@ -1096,7 +2136,7 @@
     "region": "PL"
   },
   {
-    "id": "138",
+    "id": "268",
     "artist": "Natalia Nykiel",
     "title": "Bądź duży",
     "year": 2015,
@@ -1104,7 +2144,7 @@
     "region": "PL"
   },
   {
-    "id": "139",
+    "id": "269",
     "artist": "Dawid Podsiadło",
     "title": "W dobrą stronę",
     "year": 2016,
@@ -1112,7 +2152,7 @@
     "region": "PL"
   },
   {
-    "id": "140",
+    "id": "270",
     "artist": "Sylwia Grzeszczak",
     "title": "Tamta dziewczyna",
     "year": 2016,
@@ -1120,7 +2160,7 @@
     "region": "PL"
   },
   {
-    "id": "141",
+    "id": "271",
     "artist": "Organek",
     "title": "Mississippi w ogniu",
     "year": 2016,
@@ -1128,7 +2168,15 @@
     "region": "PL"
   },
   {
-    "id": "142",
+    "id": "272",
+    "artist": "Agnieszka Chylińska",
+    "title": "Królowa łez",
+    "year": 2016,
+    "youtubeId": "IrH_7r53EKY",
+    "region": "PL"
+  },
+  {
+    "id": "273",
     "artist": "Kortez",
     "title": "Dobry moment",
     "year": 2017,
@@ -1136,7 +2184,7 @@
     "region": "PL"
   },
   {
-    "id": "143",
+    "id": "274",
     "artist": "Ania Dąbrowska",
     "title": "Z Tobą nie umiem wygrać",
     "year": 2017,
@@ -1144,7 +2192,7 @@
     "region": "PL"
   },
   {
-    "id": "144",
+    "id": "275",
     "artist": "Quebonafide ft. ReTo",
     "title": "Half Dead",
     "year": 2017,
@@ -1152,7 +2200,7 @@
     "region": "PL"
   },
   {
-    "id": "145",
+    "id": "276",
     "artist": "Paweł Domagała",
     "title": "Weź nie pytaj",
     "year": 2018,
@@ -1160,7 +2208,7 @@
     "region": "PL"
   },
   {
-    "id": "146",
+    "id": "277",
     "artist": "Dawid Podsiadło",
     "title": "Małomiasteczkowy",
     "year": 2018,
@@ -1168,7 +2216,7 @@
     "region": "PL"
   },
   {
-    "id": "147",
+    "id": "278",
     "artist": "Męskie Granie Orkiestra",
     "title": "Początek",
     "year": 2018,
@@ -1176,7 +2224,15 @@
     "region": "PL"
   },
   {
-    "id": "148",
+    "id": "279",
+    "artist": "Taconafide",
+    "title": "Tamagotchi",
+    "year": 2018,
+    "youtubeId": "odWxQ5eEnfE",
+    "region": "PL"
+  },
+  {
+    "id": "280",
     "artist": "Dawid Podsiadło",
     "title": "Trofea",
     "year": 2019,
@@ -1184,7 +2240,7 @@
     "region": "PL"
   },
   {
-    "id": "149",
+    "id": "281",
     "artist": "Viki Gabor",
     "title": "Superhero",
     "year": 2019,
@@ -1192,7 +2248,7 @@
     "region": "PL"
   },
   {
-    "id": "150",
+    "id": "282",
     "artist": "Król",
     "title": "Te smaki i zapachy",
     "year": 2019,
@@ -1200,7 +2256,7 @@
     "region": "PL"
   },
   {
-    "id": "151",
+    "id": "283",
     "artist": "Sanah",
     "title": "Szampan",
     "year": 2020,
@@ -1208,7 +2264,7 @@
     "region": "PL"
   },
   {
-    "id": "152",
+    "id": "284",
     "artist": "Mata",
     "title": "100 dni do matury",
     "year": 2020,
@@ -1216,7 +2272,7 @@
     "region": "PL"
   },
   {
-    "id": "153",
+    "id": "285",
     "artist": "Krzysztof Zalewski",
     "title": "Annuszka",
     "year": 2020,
@@ -1224,7 +2280,7 @@
     "region": "PL"
   },
   {
-    "id": "154",
+    "id": "286",
     "artist": "Sanah & Vito Bambino",
     "title": "Ale jazz!",
     "year": 2021,
@@ -1232,7 +2288,7 @@
     "region": "PL"
   },
   {
-    "id": "155",
+    "id": "287",
     "artist": "Męskie Granie Orkiestra",
     "title": "I Ciebie też, bardzo",
     "year": 2021,
@@ -1240,7 +2296,7 @@
     "region": "PL"
   },
   {
-    "id": "156",
+    "id": "288",
     "artist": "Sobel",
     "title": "Fiołkowe pole",
     "year": 2021,
@@ -1248,7 +2304,23 @@
     "region": "PL"
   },
   {
-    "id": "157",
+    "id": "289",
+    "artist": "Dawid Kwiatkowski",
+    "title": "Bez ciebie",
+    "year": 2021,
+    "youtubeId": "r6ajqhkRSqc",
+    "region": "PL"
+  },
+  {
+    "id": "290",
+    "artist": "Daria Zawiałow & Dawid Podsiadło",
+    "title": "Za krótki sen",
+    "year": 2021,
+    "youtubeId": "xagIRaOFfS0",
+    "region": "PL"
+  },
+  {
+    "id": "291",
     "artist": "Sanah",
     "title": "Nic dwa razy",
     "year": 2022,
@@ -1256,7 +2328,7 @@
     "region": "PL"
   },
   {
-    "id": "158",
+    "id": "292",
     "artist": "Dawid Podsiadło",
     "title": "To co masz Ty",
     "year": 2022,
@@ -1264,7 +2336,7 @@
     "region": "PL"
   },
   {
-    "id": "159",
+    "id": "293",
     "artist": "SB Maffija",
     "title": "Lawenda",
     "year": 2022,
@@ -1272,7 +2344,23 @@
     "region": "PL"
   },
   {
-    "id": "160",
+    "id": "294",
+    "artist": "Agnieszka Chylińska",
+    "title": "Kiedyś do ciebie wrócę",
+    "year": 2022,
+    "youtubeId": "7csU7tLYm5s",
+    "region": "PL"
+  },
+  {
+    "id": "295",
+    "artist": "Sanah & Dawid Podsiadło",
+    "title": "Ostatnia nadzieja",
+    "year": 2022,
+    "youtubeId": "5Iwy_xeJi7c",
+    "region": "PL"
+  },
+  {
+    "id": "296",
     "artist": "Doda",
     "title": "Nim zajdzie słońce",
     "year": 2023,
@@ -1280,7 +2368,7 @@
     "region": "PL"
   },
   {
-    "id": "161",
+    "id": "297",
     "artist": "Mrozu",
     "title": "Złoto",
     "year": 2023,
@@ -1288,7 +2376,7 @@
     "region": "PL"
   },
   {
-    "id": "162",
+    "id": "298",
     "artist": "Kwiat Jabłoni",
     "title": "Od niechcenia",
     "year": 2023,
@@ -1296,7 +2384,7 @@
     "region": "PL"
   },
   {
-    "id": "163",
+    "id": "299",
     "artist": "Bambi & Young Leosia",
     "title": "BFF",
     "year": 2024,
@@ -1304,7 +2392,7 @@
     "region": "PL"
   },
   {
-    "id": "164",
+    "id": "300",
     "artist": "Męskie Granie Orkiestra",
     "title": "Wolne Duchy",
     "year": 2024,
@@ -1312,11 +2400,27 @@
     "region": "PL"
   },
   {
-    "id": "165",
+    "id": "301",
     "artist": "Sanah",
     "title": "Było, nie było",
     "year": 2024,
     "youtubeId": "fil7T3YMaqs",
+    "region": "PL"
+  },
+  {
+    "id": "302",
+    "artist": "Kubi Producent & Bambi",
+    "title": "Woda Księżycowa",
+    "year": 2024,
+    "youtubeId": "syLU0zUREf4",
+    "region": "PL"
+  },
+  {
+    "id": "303",
+    "artist": "Gibbs",
+    "title": "Drive",
+    "year": 2024,
+    "youtubeId": "y7FBy4eIxig",
     "region": "PL"
   }
 ]

@@ -24,6 +24,9 @@
   "game": {
     "yourTimeline": "Twoja oś czasu",
     "drawCard": "Losuj piosenkę!",
+    "newCard": "NOWA KARTA",
+    "drawnCard": "Wylosowałeś kartę!",
+    "listenAndGuess": "Posłuchaj i zgadnij rok wydania",
     "confirmSelection": "Kliknij \"Zatwierdź\" aby potwierdzić wybór",
     "wherePlaceSong": "Gdzie umieścisz tę piosenkę?",
     "listenFirst": "Najpierw posłuchaj piosenki ☝️",
@@ -74,7 +77,13 @@
   "player": {
     "listen": "Posłuchaj i zgadnij rok wydania!",
     "playSong": "Odtwórz piosenkę",
+    "revealSong": "Odsłoń i słuchaj",
     "listenCarefully": "Słuchaj uważnie! Potem wybierz miejsce na osi czasu.",
     "playing": "Odtwarzanie..."
+  },
+  "settings": {
+    "title": "Ustawienia",
+    "autoPlay": "Auto-play piosenki",
+    "autoPlayDescription": "Automatycznie odtwarzaj po wylosowaniu"
   }
 }

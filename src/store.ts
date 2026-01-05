@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { GameState, GameActions, Player, Song } from './types';
+import type { GameState, GameActions, Player, Song, GameSettings, SettingsActions } from './types';
 import { getSongs, shuffleSongs } from './songs';
 
 type GameStore = GameState & GameActions;
@@ -181,3 +181,20 @@ function isPlacementCorrect(
 
   return true;
 }
+
+type SettingsStore = GameSettings & SettingsActions;
+
+export const useSettingsStore = create<SettingsStore>()(
+  persist(
+    (set) => ({
+      autoPlayOnDraw: false,
+
+      setAutoPlayOnDraw: (value: boolean) => {
+        set({ autoPlayOnDraw: value });
+      },
+    }),
+    {
+      name: 'timetune-settings',
+    }
+  )
+);

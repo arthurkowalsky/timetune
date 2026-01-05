@@ -1,9 +1,37 @@
+// Origin types - can be extended in the future
+export type Origin = 'PL' | 'INT';
+
+// Genre tags for filtering
+export type Genre =
+  | 'pop'
+  | 'rock'
+  | 'hip-hop'
+  | 'disco-polo'
+  | 'folk'
+  | 'jazz'
+  | 'electronic'
+  | 'metal'
+  | 'r&b'
+  | 'alternative';
+
 export interface Song {
   id: string;
   title: string;
   artist: string;
   year: number;
   youtubeId: string;
+  origin: Origin;
+  genres: Genre[];
+}
+
+// Filter configuration for game modes
+export interface GameFilter {
+  origins?: Origin[];
+  genres?: Genre[];
+  yearRange?: {
+    min?: number;
+    max?: number;
+  };
 }
 
 export interface Player {

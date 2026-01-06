@@ -43,10 +43,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const pathname = window.location.pathname;
-    const match = pathname.match(/\/timetune\/join\/([A-Z0-9]{6})$/i);
-    if (match) {
-      const roomCode = match[1].toUpperCase();
+    const params = new URLSearchParams(window.location.search);
+    const joinCode = params.get('join');
+    if (joinCode && /^[A-Z0-9]{6}$/i.test(joinCode)) {
+      const roomCode = joinCode.toUpperCase();
       startTransition(() => {
         setMode('online');
         setOnlineStep('join');

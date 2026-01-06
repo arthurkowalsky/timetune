@@ -1,0 +1,73 @@
+import { useEffect, useRef, useState, startTransition, type ReactNode } from 'react';
+import { useGameStore, useSettingsStore } from '../store';
+import { useTranslations } from '../i18n';
+import { GameContext } from './GameContext';
+import type { UnifiedGameContext, UnifiedPlayer } from '../types/unified';
+
+interface LocalGameProviderProps {
+  children: ReactNode;
+  onExit: () => void;
+}
+
+export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) {
+  const gameStore = useGameStore();
+  const { turnTimeout, autoPlayOnDraw } = useSettingsStore();
+  const { t } = useTranslations();
+  const [turnStartedAt, setTurnStartedAt] = useState(() => Date.now());
+  const turnStartedAtRef = useRef<number>(turnStartedAt);
+
+  useEffect(() => {
+    const now = Date.now();
+    turnStartedAtRef.current = now;
+    startTransition(() => {
+      setTurnStartedAt(now);
+    });
+  }, [gameStore.currentPlayerIndex]);
+
+  const players: UnifiedPlayer[] = gameStore.players.map((p) => ({
+    id: p.id,
+    name: p.name,
+    timeline: p.timeline,
+    bonusPoints: p.bonusPoints,
+  }));
+
+  const currentPlayer = players[gameStore.currentPlayerIndex] || null;
+
+  const value: UnifiedGameContext = {
+    phase: gameStore.phase,
+    currentSong: gameStore.currentSong,
+    players,
+    currentPlayerIndex: gameStore.currentPlayerIndex,
+    targetScore: gameStore.targetScore,
+    lastGuessCorrect: gameStore.lastGuessCorrect,
+    isMyTurn: true,
+    myPlayerId: null,
+    previewPosition: null,
+    turnStartedAt,
+    turnTimeout,
+    autoPlayOnDraw,
+    isOnline: false,
+    currentPlayer,
+    myPlayer: currentPlayer,
+    drawCard: gameStore.drawCard,
+    placeSong: gameStore.placeSong,
+    claimBonus: gameStore.awardBonusPoint,
+    nextTurn: gameStore.nextTurn,
+    skipTurn: gameStore.skipTurn,
+    sendPositionPreview: () => {},
+    notifyMusicStarted: () => {
+      const now = Date.now();
+      turnStartedAtRef.current = now;
+      setTurnStartedAt(now);
+    },
+    onExit,
+    exitConfirmConfig: {
+      title: t('game.exitConfirmTitle'),
+      message: t('game.exitConfirmMessage'),
+      confirmLabel: t('game.exit'),
+      confirmVariant: 'danger',
+    },
+  };
+
+  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
+}

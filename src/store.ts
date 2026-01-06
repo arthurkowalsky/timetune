@@ -139,6 +139,17 @@ export const useGameStore = create<GameStore>()(
         });
       },
 
+      skipTurn: () => {
+        const { players, currentPlayerIndex } = get();
+        const nextPlayerIndex = (currentPlayerIndex + 1) % players.length;
+        set({
+          currentPlayerIndex: nextPlayerIndex,
+          currentSong: null,
+          phase: 'playing',
+          lastGuessCorrect: null,
+        });
+      },
+
       resetGame: () => {
         set({
           players: [],
@@ -188,9 +199,14 @@ export const useSettingsStore = create<SettingsStore>()(
   persist(
     (set) => ({
       autoPlayOnDraw: false,
+      turnTimeout: 300,
 
       setAutoPlayOnDraw: (value: boolean) => {
         set({ autoPlayOnDraw: value });
+      },
+
+      setTurnTimeout: (value: number | null) => {
+        set({ turnTimeout: value });
       },
     }),
     {

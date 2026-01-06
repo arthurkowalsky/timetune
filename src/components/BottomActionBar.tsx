@@ -10,6 +10,7 @@ interface BottomActionBarProps {
   onDrawCard: () => void;
   onConfirmPlacement: () => void;
   onMusicStarted: () => void;
+  isSpectator?: boolean;
 }
 
 export function BottomActionBar({
@@ -20,6 +21,7 @@ export function BottomActionBar({
   onDrawCard,
   onConfirmPlacement,
   onMusicStarted,
+  isSpectator = false,
 }: BottomActionBarProps) {
   const { t } = useTranslations();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -40,10 +42,13 @@ export function BottomActionBar({
 
   useEffect(() => {
     if (phase === 'placing' && autoPlayEnabled && currentSong && !isPlaying) {
-      handlePlay();
+      const timer = setTimeout(() => {
+        handlePlay();
+      }, 150);
+      return () => clearTimeout(timer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, autoPlayEnabled, currentSong]);
+  }, [phase, autoPlayEnabled, currentSong, isPlaying]);
 
   const embedUrl = currentSong
     ? `https://www.youtube.com/embed/${currentSong.youtubeId}?autoplay=1&controls=1&modestbranding=1&rel=0`
@@ -57,6 +62,28 @@ export function BottomActionBar({
           className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] animate-pulse min-h-[56px]"
         >
           🎵 {t('game.drawCard')}
+        </button>
+      );
+    }
+
+    if (isSpectator) {
+      if (isPlaying) {
+        return (
+          <div className="flex items-center justify-center gap-3 py-3 min-h-[56px]">
+            <MiniVisualizer />
+            <span className="text-white font-medium">{t('player.playing')}</span>
+          </div>
+        );
+      }
+      return (
+        <button
+          onClick={handlePlay}
+          className="w-full bg-surface-light hover:bg-surface text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] flex items-center justify-center gap-3 min-h-[56px]"
+        >
+          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          {t('player.listenToo')}
         </button>
       );
     }

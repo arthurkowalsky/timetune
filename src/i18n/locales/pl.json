@@ -5,6 +5,69 @@
     "loading": "Ładowanie piosenek...",
     "loadError": "Nie udało się załadować piosenek"
   },
+  "mode": {
+    "local": "Gra lokalna",
+    "localDescription": "Graj ze znajomymi na jednym urządzeniu",
+    "online": "Gra online",
+    "onlineDescription": "Graj ze znajomymi przez internet"
+  },
+  "lobby": {
+    "roomCode": "Kod pokoju",
+    "tapToCopy": "Kliknij aby skopiować link",
+    "copied": "Link skopiowany!",
+    "players": "Gracze",
+    "host": "Host",
+    "you": "Ty",
+    "ready": "Gotowy",
+    "kick": "Wyrzuć",
+    "cardsToWin": "kart do wygranej",
+    "setReady": "Jestem gotowy",
+    "readyActive": "Gotowy!",
+    "startGame": "Rozpocznij grę!",
+    "starting": "Startowanie...",
+    "waitingForReady": "Czekam aż wszyscy będą gotowi",
+    "leave": "Opuść pokój"
+  },
+  "connection": {
+    "connecting": "Łączenie...",
+    "connected": "Połączono",
+    "disconnected": "Rozłączono",
+    "reconnecting": "Łączenie z pokojem..."
+  },
+  "error": {
+    "disconnected": "Połączenie utracone",
+    "disconnectedDescription": "Próbuję ponownie połączyć...",
+    "tryReconnect": "Połącz ponownie",
+    "refresh": "Odśwież stronę",
+    "gameAlreadyStarted": "Gra już trwa. Nie możesz dołączyć.",
+    "roomNotFound": "Nie znaleziono pokoju o podanym kodzie.",
+    "roomFull": "Pokój jest pełny.",
+    "nameTaken": "Ta nazwa jest już zajęta.",
+    "reconnectFailed": "Nie udało się połączyć z pokojem",
+    "roomMayNotExist": "Pokój mógł zostać zamknięty lub nie istnieje."
+  },
+  "common": {
+    "back": "Wróć"
+  },
+  "online": {
+    "title": "Gra online",
+    "subtitle": "Wybierz opcję",
+    "createRoom": "Stwórz pokój",
+    "createRoomDescription": "Zaproś znajomych kodem",
+    "createRoomSubtitle": "Podaj swoje imię aby zacząć",
+    "joinRoom": "Dołącz do pokoju",
+    "joinRoomDescription": "Wpisz kod od znajomego",
+    "joinRoomSubtitle": "Wpisz kod pokoju i swoje imię",
+    "yourName": "Twoje imię",
+    "namePlaceholder": "Wpisz swoje imię...",
+    "roomCode": "Kod pokoju",
+    "creating": "Tworzenie pokoju...",
+    "joining": "Dołączanie...",
+    "createButton": "Stwórz pokój",
+    "joinButton": "Dołącz",
+    "isPlacing": "wybiera miejsce dla piosenki...",
+    "waitingFor": "Czekamy na"
+  },
   "start": {
     "playerPlaceholder": "Nazwa gracza / drużyny...",
     "addButton": "Dodaj",
@@ -34,13 +97,12 @@
     "turn": "Tura:",
     "otherTeams": "Pozostałe drużyny",
     "cards": "kart",
-    "resetGame": "Resetuj grę",
     "fullscreen": "Tryb pełnoekranowy",
     "exitFullscreen": "Wyjdź z pełnego ekranu",
-    "resetConfirmTitle": "Resetować grę?",
-    "resetConfirmMessage": "Cały postęp zostanie utracony.",
+    "exitConfirmTitle": "Wyjść z gry?",
+    "exitConfirmMessage": "Postęp zostanie utracony.",
+    "exit": "Wyjdź",
     "cancel": "Anuluj",
-    "reset": "Resetuj",
     "timelineOf": "Oś czasu:",
     "noCards": "Brak kart",
     "close": "Zamknij"
@@ -72,18 +134,27 @@
     "empty": "Twoja oś czasu jest pusta",
     "selected": "Wybrano!",
     "placeHereOldest": "Tutaj (najstarsza)",
-    "placeHere": "Umieść tutaj"
+    "placeHere": "Umieść tutaj",
+    "considering": "Rozważa..."
   },
   "player": {
     "listen": "Posłuchaj i zgadnij rok wydania!",
     "playSong": "Odtwórz piosenkę",
     "revealSong": "Odsłoń i słuchaj",
     "listenCarefully": "Słuchaj uważnie! Potem wybierz miejsce na osi czasu.",
-    "playing": "Odtwarzanie..."
+    "playing": "Odtwarzanie...",
+    "listenToo": "Posłuchaj też"
   },
   "settings": {
     "title": "Ustawienia",
     "autoPlay": "Auto-play piosenki",
-    "autoPlayDescription": "Automatycznie odtwarzaj po wylosowaniu"
+    "autoPlayDescription": "Automatycznie odtwarzaj po wylosowaniu",
+    "turnTimeout": "Limit czasu na turę",
+    "turnTimeoutDescription": "Czas na wykonanie ruchu",
+    "timeoutOff": "Wyłączony",
+    "timeout1min": "1 minuta",
+    "timeout2min": "2 minuty",
+    "timeout5min": "5 minut",
+    "timeout10min": "10 minut"
   }
 }

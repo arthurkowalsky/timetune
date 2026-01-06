@@ -1,336 +1,206 @@
-import { useState, useEffect } from 'react';
-import { useGameStore, useSettingsStore } from '../store';
+import { useState, useEffect, startTransition } from 'react';
+import { useGame } from '../contexts';
 import { Timeline } from './Timeline';
 import { BottomActionBar } from './BottomActionBar';
 import { MysteryCard } from './MysteryCard';
+import { TurnTimer } from './TurnTimer';
+import { TimelineViewerModal } from './shared/TimelineViewerModal';
+import { GameHeader } from './shared/GameHeader';
+import { OtherPlayers } from './shared/OtherPlayers';
+import { ConfirmModal } from './shared/ConfirmModal';
 import { useTranslations } from '../i18n';
-import type { Player } from '../types';
+import { useFullscreen } from '../hooks/useFullscreen';
+import type { UnifiedPlayer } from '../types/unified';
 
 export function GameScreen() {
-  const {
-    players,
-    currentPlayerIndex,
-    currentSong,
-    phase,
-    drawCard,
-    placeSong,
-    targetScore,
-    resetGame
-  } = useGameStore();
-  const { autoPlayOnDraw } = useSettingsStore();
+  const game = useGame();
   const { t } = useTranslations();
 
-  const [viewingPlayerIndex, setViewingPlayerIndex] = useState<number | null>(null);
-  const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [viewingPlayer, setViewingPlayer] = useState<UnifiedPlayer | null>(null);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-  const [lastPhase, setLastPhase] = useState(phase);
-
-  const currentPlayer = players[currentPlayerIndex];
-  const viewingPlayer = viewingPlayerIndex !== null ? players[viewingPlayerIndex] : null;
-
-  if (phase !== lastPhase) {
-    setLastPhase(phase);
-    if (phase !== 'placing') {
-      setSelectedPosition(null);
-      setIsMusicPlaying(false);
-    }
-  }
+  const { isFullscreen, toggleFullscreen } = useFullscreen();
 
   useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
-  }, []);
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
-    } else {
-      document.exitFullscreen().catch(() => {});
+    if (game.phase !== 'placing') {
+      startTransition(() => {
+        setSelectedPosition(null);
+        setIsMusicPlaying(false);
+      });
     }
-  };
+  }, [game.phase]);
+
+  useEffect(() => {
+    if (game.isOnline || !game.turnTimeout || game.phase === 'reveal' || game.phase === 'finished' || game.phase === 'setup') return;
+    if (game.phase === 'placing' && !isMusicPlaying) return;
+
+    const checkTimeout = () => {
+      const elapsed = Math.floor((Date.now() - (game.turnStartedAt || Date.now())) / 1000);
+      if (elapsed >= game.turnTimeout!) {
+        game.skipTurn();
+      }
+    };
+
+    const interval = setInterval(checkTimeout, 1000);
+    return () => clearInterval(interval);
+  }, [game, isMusicPlaying]);
 
   const handleSelectPosition = (position: number) => {
-    if (selectedPosition === position) {
-      setSelectedPosition(null);
-    } else {
-      setSelectedPosition(position);
-    }
+    if (!game.isMyTurn) return;
+    const newPosition = selectedPosition === position ? null : position;
+    setSelectedPosition(newPosition);
+    game.sendPositionPreview(newPosition);
   };
 
   const handleConfirmPlacement = () => {
-    if (selectedPosition !== null) {
-      placeSong(selectedPosition);
+    if (selectedPosition !== null && game.isMyTurn) {
+      game.placeSong(selectedPosition);
     }
   };
 
   const handleMusicStarted = () => {
     setIsMusicPlaying(true);
+    game.notifyMusicStarted();
   };
 
-  const isPlacing = phase === 'placing' && currentSong;
-  const showInteractiveTimeline = !!(isPlacing && isMusicPlaying);
+  const handleViewTimeline = (player: UnifiedPlayer) => {
+    setViewingPlayer(player);
+  };
+
+  if (!game.currentPlayer) return null;
+
+  const displayedPlayer = game.isMyTurn ? game.currentPlayer : game.myPlayer;
+  const isPlacing = game.phase === 'placing' && game.currentSong;
+  const showInteractiveTimeline = !!(isPlacing && isMusicPlaying && game.isMyTurn);
 
   return (
     <div className="min-h-screen bg-bg">
+      <TurnTimer
+        turnStartedAt={game.turnStartedAt}
+        timeoutSeconds={game.turnTimeout}
+        isActive={game.isMyTurn && game.phase === 'placing' && isMusicPlaying}
+      />
       <div className="sticky top-0 z-10 bg-bg pt-4 px-4 pb-2">
         <div className="max-w-2xl mx-auto">
-          <Header
-            currentPlayer={currentPlayer}
-            players={players}
-            targetScore={targetScore}
-            onReset={() => setShowResetConfirm(true)}
+          <GameHeader
+            currentPlayer={game.currentPlayer}
+            players={game.players}
+            targetScore={game.targetScore}
+            myPlayerId={game.myPlayerId}
             isFullscreen={isFullscreen}
             onToggleFullscreen={toggleFullscreen}
+            onReset={game.isOnline ? undefined : () => setShowExitConfirm(true)}
+            onLeave={game.isOnline ? () => setShowExitConfirm(true) : undefined}
           />
         </div>
       </div>
 
       <div className="px-4 pb-24">
         <div className="max-w-2xl mx-auto">
-          {isPlacing && !isMusicPlaying && <MysteryCard />}
+          {isPlacing && game.isMyTurn && !isMusicPlaying && <MysteryCard />}
+
+          {!game.isMyTurn && isPlacing && game.isOnline && (
+            <div className="bg-amber-900/30 border-2 border-amber-500 rounded-xl p-4 mb-4 text-center">
+              <p className="text-amber-300">
+                {game.currentPlayer.name} {t('online.isPlacing')}
+              </p>
+            </div>
+          )}
 
           <div className="bg-surface rounded-xl p-4 mb-4">
             <h3 className="text-lg font-bold text-white mb-4">
-              {isPlacing
-                ? (!isMusicPlaying
-                    ? t('game.listenFirst')
-                    : selectedPosition !== null
-                      ? t('game.confirmSelection')
-                      : `${t('game.wherePlaceSong')} 🤔`)
-                : `${t('game.yourTimeline')} (${currentPlayer.timeline.length} / ${targetScore})`
-              }
+              {game.isMyTurn ? (
+                isPlacing
+                  ? (!isMusicPlaying
+                      ? t('game.listenFirst')
+                      : selectedPosition !== null
+                        ? t('game.confirmSelection')
+                        : `${t('game.wherePlaceSong')} 🤔`)
+                  : `${t('game.yourTimeline')} (${displayedPlayer?.timeline.length || 0} / ${game.targetScore})`
+              ) : game.isOnline ? (
+                `${t('game.timelineOf')} ${game.currentPlayer.name}`
+              ) : (
+                `${t('game.yourTimeline')} (${game.currentPlayer.timeline.length} / ${game.targetScore})`
+              )}
             </h3>
             <Timeline
-              songs={currentPlayer.timeline}
+              songs={game.isMyTurn ? (displayedPlayer?.timeline || []) : game.currentPlayer.timeline}
               onSelectPosition={showInteractiveTimeline ? handleSelectPosition : undefined}
               selectedPosition={selectedPosition}
               isInteractive={showInteractiveTimeline}
+              previewPosition={!game.isMyTurn && isPlacing && game.isOnline ? game.previewPosition : null}
             />
           </div>
 
-          {phase === 'playing' && (
+          {game.phase === 'playing' && (
             <OtherPlayers
-              players={players}
-              currentPlayerIndex={currentPlayerIndex}
-              onViewTimeline={setViewingPlayerIndex}
+              players={game.players}
+              currentPlayerId={game.currentPlayer.id}
+              myPlayerId={game.myPlayerId}
+              onViewTimeline={handleViewTimeline}
             />
           )}
         </div>
       </div>
 
-      <BottomActionBar
-        phase={isPlacing ? 'placing' : 'playing'}
-        currentSong={currentSong}
-        selectedPosition={selectedPosition}
-        autoPlayEnabled={autoPlayOnDraw}
-        onDrawCard={drawCard}
-        onConfirmPlacement={handleConfirmPlacement}
-        onMusicStarted={handleMusicStarted}
-      />
-
-      {showResetConfirm && (
-        <ResetConfirmModal
-          onConfirm={() => {
-            resetGame();
-            setShowResetConfirm(false);
-          }}
-          onCancel={() => setShowResetConfirm(false)}
+      {game.isMyTurn && (
+        <BottomActionBar
+          phase={isPlacing ? 'placing' : 'playing'}
+          currentSong={game.currentSong}
+          selectedPosition={selectedPosition}
+          autoPlayEnabled={game.autoPlayOnDraw}
+          onDrawCard={game.drawCard}
+          onConfirmPlacement={handleConfirmPlacement}
+          onMusicStarted={handleMusicStarted}
         />
       )}
+
+      {!game.isMyTurn && isPlacing && game.isOnline && (
+        <BottomActionBar
+          phase="placing"
+          currentSong={game.currentSong}
+          selectedPosition={null}
+          autoPlayEnabled={false}
+          onDrawCard={() => {}}
+          onConfirmPlacement={() => {}}
+          onMusicStarted={() => {}}
+          isSpectator
+        />
+      )}
+
+      {!game.isMyTurn && game.phase === 'playing' && game.isOnline && (
+        <div className="fixed bottom-0 left-0 right-0 bg-surface border-t border-surface-light p-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-gray-400">
+              {t('online.waitingFor')} <span className="text-primary font-bold">{game.currentPlayer.name}</span>
+            </p>
+          </div>
+        </div>
+      )}
+
       {viewingPlayer && (
         <TimelineViewerModal
-          player={viewingPlayer}
-          onClose={() => setViewingPlayerIndex(null)}
+          playerName={viewingPlayer.name}
+          timeline={viewingPlayer.timeline}
+          onClose={() => setViewingPlayer(null)}
         />
       )}
-    </div>
-  );
-}
 
-interface HeaderProps {
-  currentPlayer: { name: string; timeline: { id: string }[]; bonusPoints: number };
-  players: { id: string; name: string; timeline: { id: string }[]; bonusPoints: number }[];
-  targetScore: number;
-  onReset: () => void;
-  isFullscreen: boolean;
-  onToggleFullscreen: () => void;
-}
-
-function Header({ currentPlayer, players, targetScore, onReset, isFullscreen, onToggleFullscreen }: HeaderProps) {
-  const { t } = useTranslations();
-
-  return (
-    <div className="text-center">
-      <div className="flex items-center justify-between mb-2">
-        <button
-          onClick={onToggleFullscreen}
-          className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-primary transition-colors"
-          title={isFullscreen ? t('game.exitFullscreen') : t('game.fullscreen')}
-        >
-          {isFullscreen ? (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 9L4 4m0 0v5m0-5h5m6 6l5 5m0 0v-5m0 5h-5M9 15l-5 5m0 0v-5m0 5h5m6-6l5-5m0 0v5m0-5h-5" />
-            </svg>
-          ) : (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5h-4m4 0v-4m0 4l-5-5" />
-            </svg>
-          )}
-        </button>
-        <h1 className="text-2xl sm:text-3xl font-black text-white">
-          🎵 {t('app.name').toUpperCase()}
-        </h1>
-        <button
-          onClick={onReset}
-          className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-red-400 transition-colors"
-          title={t('game.resetGame')}
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-        </button>
-      </div>
-      <div className="flex items-center justify-center gap-4">
-        <span className="text-gray-400">{t('game.turn')}</span>
-        <span className="text-xl font-bold text-primary">{currentPlayer.name}</span>
-      </div>
-      <div className="mt-3 flex gap-2 justify-center flex-wrap">
-        {players.map((player) => (
-          <div
-            key={player.id}
-            className={`px-3 py-1 rounded-full text-sm flex items-center gap-1 ${
-              player.name === currentPlayer.name
-                ? 'bg-primary text-white'
-                : 'bg-surface-light text-gray-400'
-            }`}
-          >
-            <span>{player.name}: {player.timeline.length}/{targetScore}</span>
-            {player.bonusPoints > 0 && (
-              <span className="text-amber-400 ml-1">+{player.bonusPoints}</span>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-interface OtherPlayersProps {
-  players: { id: string; name: string; timeline: { id: string }[] }[];
-  currentPlayerIndex: number;
-  onViewTimeline: (index: number) => void;
-}
-
-function OtherPlayers({ players, currentPlayerIndex, onViewTimeline }: OtherPlayersProps) {
-  const { t } = useTranslations();
-
-  if (players.length <= 1) return null;
-
-  return (
-    <div className="mt-4">
-      <h3 className="text-lg font-bold text-white mb-3">{t('game.otherTeams')}</h3>
-      <div className="grid gap-3">
-        {players.map((player, index) => (
-          index !== currentPlayerIndex && (
-            <button
-              key={player.id}
-              onClick={() => onViewTimeline(index)}
-              className="bg-surface rounded-lg p-3 flex justify-between items-center hover:bg-surface-light transition-colors text-left w-full group"
-            >
-              <span className="text-white">{player.name}</span>
-              <div className="flex items-center gap-2">
-                <span className="text-gray-400">
-                  {player.timeline.length} {t('game.cards')}
-                </span>
-                <span className="text-gray-500 group-hover:text-primary transition-colors">
-                  👁
-                </span>
-              </div>
-            </button>
-          )
-        ))}
-      </div>
-    </div>
-  );
-}
-
-interface ResetConfirmModalProps {
-  onConfirm: () => void;
-  onCancel: () => void;
-}
-
-function ResetConfirmModal({ onConfirm, onCancel }: ResetConfirmModalProps) {
-  const { t } = useTranslations();
-
-  return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-      <div className="bg-surface rounded-2xl p-6 max-w-sm w-full">
-        <h3 className="text-xl font-bold text-white mb-4 text-center">
-          {t('game.resetConfirmTitle')}
-        </h3>
-        <p className="text-gray-400 text-center mb-6">
-          {t('game.resetConfirmMessage')}
-        </p>
-        <div className="flex gap-3">
-          <button
-            onClick={onCancel}
-            className="flex-1 bg-surface-light hover:bg-gray-600 text-white py-3 rounded-xl font-bold transition-colors"
-          >
-            {t('game.cancel')}
-          </button>
-          <button
-            onClick={onConfirm}
-            className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-bold transition-colors"
-          >
-            {t('game.reset')}
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-interface TimelineViewerModalProps {
-  player: Player;
-  onClose: () => void;
-}
-
-function TimelineViewerModal({ player, onClose }: TimelineViewerModalProps) {
-  const { t } = useTranslations();
-
-  return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-      <div className="bg-surface rounded-2xl p-6 max-w-lg w-full max-h-[80vh] flex flex-col">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold text-white">
-            {t('game.timelineOf')} {player.name}
-          </h3>
-          <button
-            onClick={onClose}
-            className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
-          >
-            ✕
-          </button>
-        </div>
-        <div className="overflow-y-auto flex-1">
-          {player.timeline.length === 0 ? (
-            <p className="text-gray-500 text-center py-8">{t('game.noCards')}</p>
-          ) : (
-            <Timeline songs={player.timeline} />
-          )}
-        </div>
-        <button
-          onClick={onClose}
-          className="mt-4 w-full bg-surface-light hover:bg-gray-600 text-white py-3 rounded-xl font-bold transition-colors"
-        >
-          {t('game.close')}
-        </button>
-      </div>
+      {showExitConfirm && (
+        <ConfirmModal
+          title={game.exitConfirmConfig.title}
+          message={game.exitConfirmConfig.message}
+          confirmLabel={game.exitConfirmConfig.confirmLabel}
+          cancelLabel={t('game.cancel')}
+          onConfirm={() => {
+            game.onExit();
+            setShowExitConfirm(false);
+          }}
+          onCancel={() => setShowExitConfirm(false)}
+          confirmVariant={game.exitConfirmConfig.confirmVariant}
+        />
+      )}
     </div>
   );
 }

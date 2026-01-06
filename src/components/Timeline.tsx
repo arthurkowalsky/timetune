@@ -7,6 +7,7 @@ interface TimelineProps {
   isInteractive?: boolean;
   selectedPosition?: number | null;
   highlightPosition?: number | null;
+  previewPosition?: number | null;
 }
 
 export function Timeline({
@@ -14,7 +15,8 @@ export function Timeline({
   onSelectPosition,
   isInteractive = false,
   selectedPosition = null,
-  highlightPosition = null
+  highlightPosition = null,
+  previewPosition = null,
 }: TimelineProps) {
   const { t } = useTranslations();
 
@@ -27,6 +29,8 @@ export function Timeline({
       </div>
     );
   }
+
+  const showPreview = !isInteractive && previewPosition !== null;
 
   return (
     <div className="relative">
@@ -42,6 +46,7 @@ export function Timeline({
             isFirst
           />
         )}
+        {showPreview && previewPosition === 0 && <PreviewMarker />}
 
         {sortedSongs.map((song, index) => (
           <div key={song.id}>
@@ -65,6 +70,7 @@ export function Timeline({
                 isHighlighted={highlightPosition === index + 1}
               />
             )}
+            {showPreview && previewPosition === index + 1 && <PreviewMarker />}
           </div>
         ))}
       </div>
@@ -141,5 +147,23 @@ function PlacementSlot({ position, onSelect, isSelected, isHighlighted, isFirst 
         </div>
       </div>
     </button>
+  );
+}
+
+function PreviewMarker() {
+  const { t } = useTranslations();
+
+  return (
+    <div className="w-full flex items-center gap-3 sm:gap-4 py-2 animate-pulse">
+      <div className="w-16 sm:w-20 shrink-0" />
+      <div className="w-12 h-12 rounded-full border-2 border-dashed border-amber-500 bg-amber-500/20 z-10 shrink-0 flex items-center justify-center">
+        <div className="w-3 h-3 rounded-full bg-amber-500" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <div className="h-14 sm:h-16 border-2 border-dashed border-amber-500 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-400 text-sm sm:text-base px-2">
+          {t('timeline.considering')}
+        </div>
+      </div>
+    </div>
   );
 }

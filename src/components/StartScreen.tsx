@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { useGameStore, useSettingsStore } from '../store';
 import { useTranslations } from '../i18n';
+import { GameConfigSection } from './shared/GameConfigSection';
 
-export function StartScreen() {
+interface StartScreenProps {
+  onBack: () => void;
+}
+
+export function StartScreen({ onBack }: StartScreenProps) {
   const [teamName, setTeamName] = useState('');
   const { players, addPlayer, removePlayer, startGame, targetScore, setTargetScore } = useGameStore();
-  const { autoPlayOnDraw, setAutoPlayOnDraw } = useSettingsStore();
+  const { autoPlayOnDraw, setAutoPlayOnDraw, turnTimeout, setTurnTimeout } = useSettingsStore();
   const { t } = useTranslations();
 
   const handleAddTeam = (e: React.FormEvent) => {
@@ -81,45 +86,16 @@ export function StartScreen() {
             </ul>
           )}
         </div>
-        <div className="bg-surface rounded-xl p-4 mb-6">
-          <h2 className="text-lg font-bold text-white mb-3">{t('start.goalTitle')}</h2>
-          <div className="flex items-center gap-4">
-            <span className="text-gray-400">{t('start.goalDescription')}</span>
-            <select
-              value={targetScore}
-              onChange={(e) => setTargetScore(Number(e.target.value))}
-              className="bg-surface-light border border-surface-light rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary"
-            >
-              <option value={5}>{t('start.cards5')}</option>
-              <option value={7}>{t('start.cards7')}</option>
-              <option value={10}>{t('start.cards10')}</option>
-              <option value={15}>{t('start.cards15')}</option>
-            </select>
-          </div>
-        </div>
-        <div className="bg-surface rounded-xl p-4 mb-6">
-          <h2 className="text-lg font-bold text-white mb-3">{t('settings.title')}</h2>
-          <label className="flex items-center justify-between cursor-pointer">
-            <div>
-              <span className="text-white">{t('settings.autoPlay')}</span>
-              <p className="text-gray-500 text-sm">{t('settings.autoPlayDescription')}</p>
-            </div>
-            <button
-              type="button"
-              role="switch"
-              aria-checked={autoPlayOnDraw}
-              onClick={() => setAutoPlayOnDraw(!autoPlayOnDraw)}
-              className={`relative inline-flex h-7 w-12 shrink-0 items-center rounded-full transition-colors ${
-                autoPlayOnDraw ? 'bg-primary' : 'bg-surface-light'
-              }`}
-            >
-              <span
-                className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
-                  autoPlayOnDraw ? 'translate-x-6' : 'translate-x-1'
-                }`}
-              />
-            </button>
-          </label>
+        <div className="mb-6">
+          <GameConfigSection
+            targetScore={targetScore}
+            turnTimeout={turnTimeout}
+            autoPlayOnDraw={autoPlayOnDraw}
+            onTargetScoreChange={setTargetScore}
+            onTurnTimeoutChange={setTurnTimeout}
+            onAutoPlayChange={setAutoPlayOnDraw}
+            isEditable
+          />
         </div>
         <button
           onClick={startGame}
@@ -128,7 +104,15 @@ export function StartScreen() {
         >
           {canStart ? `🎮 ${t('start.startGame')}` : t('start.startGameDisabled')}
         </button>
-        <div className="mt-8 text-center text-gray-500 text-sm">
+
+        <button
+          onClick={onBack}
+          className="w-full mt-4 bg-surface-light hover:bg-surface text-gray-400 hover:text-white py-3 rounded-xl font-bold transition-colors"
+        >
+          ← {t('common.back')}
+        </button>
+
+        <div className="mt-6 text-center text-gray-500 text-sm">
           <p className="mb-2">📋 {t('start.rulesTitle')}</p>
           <p>{t('start.rulesDescription')}</p>
         </div>

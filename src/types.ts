@@ -34,13 +34,16 @@ export interface GameActions {
   placeSong: (position: number) => void;
   awardBonusPoint: () => void;
   nextTurn: () => void;
+  skipTurn: () => void;
   resetGame: () => void;
 }
 
 export interface GameSettings {
   autoPlayOnDraw: boolean;
+  turnTimeout: number | null;
 }
 
 export interface SettingsActions {
   setAutoPlayOnDraw: (value: boolean) => void;
+  setTurnTimeout: (value: number | null) => void;
 }

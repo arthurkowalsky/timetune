@@ -3,7 +3,7 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { execSync } from "node:child_process";
 
-const RATE_LIMIT_MS = 1500;
+const RATE_LIMIT_MS = 1000;
 const MAX_RETRIES = 2;
 
 interface SongRecord {

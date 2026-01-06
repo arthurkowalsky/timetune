@@ -11,7 +11,7 @@ export function RoomCodeDisplay({ code }: RoomCodeDisplayProps) {
 
   const handleCopy = async () => {
     try {
-      const shareUrl = `${window.location.origin}/timetune/join/${code}`;
+      const shareUrl = `${window.location.origin}/timetune/?join=${code}`;
       await navigator.clipboard.writeText(shareUrl);
       setCopied(true);
       if (navigator.vibrate) {

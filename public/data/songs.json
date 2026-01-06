@@ -2584,15 +2584,6 @@
   },
   {
     "id": "288",
-    "artist": "Brainstorm",
-    "title": "Maybe (Polish Version)",
-    "year": 2001,
-    "youtubeId": "rOC5d58BuUk",
-    "origin": "PL",
-    "genres": []
-  },
-  {
-    "id": "289",
     "artist": "Sylwia Wiśniewska",
     "title": "12 łez",
     "year": 2001,
@@ -2601,7 +2592,7 @@
     "genres": []
   },
   {
-    "id": "290",
+    "id": "289",
     "artist": "Wilki",
     "title": "Baśka",
     "year": 2002,
@@ -2610,7 +2601,7 @@
     "genres": []
   },
   {
-    "id": "291",
+    "id": "290",
     "artist": "Łzy",
     "title": "Agnieszka już dawno...",
     "year": 2002,
@@ -2619,7 +2610,7 @@
     "genres": []
   },
   {
-    "id": "292",
+    "id": "291",
     "artist": "Myslovitz",
     "title": "Acidland",
     "year": 2002,
@@ -2628,7 +2619,7 @@
     "genres": []
   },
   {
-    "id": "293",
+    "id": "292",
     "artist": "Wilki",
     "title": "Urke",
     "year": 2002,
@@ -2637,7 +2628,7 @@
     "genres": []
   },
   {
-    "id": "294",
+    "id": "293",
     "artist": "Pezet",
     "title": "Seniorita",
     "year": 2002,
@@ -2646,7 +2637,7 @@
     "genres": []
   },
   {
-    "id": "295",
+    "id": "294",
     "artist": "Sumptuastic",
     "title": "Kołysanka",
     "year": 2002,
@@ -2655,7 +2646,7 @@
     "genres": []
   },
   {
-    "id": "296",
+    "id": "295",
     "artist": "Blue Café",
     "title": "You May Be In Love",
     "year": 2002,
@@ -2664,7 +2655,7 @@
     "genres": []
   },
   {
-    "id": "297",
+    "id": "296",
     "artist": "WWO",
     "title": "W wyjątkowych okolicznościach",
     "year": 2002,
@@ -2673,7 +2664,7 @@
     "genres": []
   },
   {
-    "id": "298",
+    "id": "297",
     "artist": "Cool Kids of Death",
     "title": "Uważaj",
     "year": 2002,
@@ -2682,7 +2673,7 @@
     "genres": []
   },
   {
-    "id": "299",
+    "id": "298",
     "artist": "Kult",
     "title": "Brooklyńska Rada Żydów",
     "year": 2002,
@@ -2691,7 +2682,7 @@
     "genres": []
   },
   {
-    "id": "300",
+    "id": "299",
     "artist": "Virgin",
     "title": "To Ty",
     "year": 2002,
@@ -2700,7 +2691,7 @@
     "genres": []
   },
   {
-    "id": "301",
+    "id": "300",
     "artist": "O.S.T.R.",
     "title": "Kochana Polsko",
     "year": 2002,
@@ -2709,7 +2700,7 @@
     "genres": []
   },
   {
-    "id": "302",
+    "id": "301",
     "artist": "Anna Maria Jopek",
     "title": "Szepty i łzy",
     "year": 2002,
@@ -2718,7 +2709,7 @@
     "genres": []
   },
   {
-    "id": "303",
+    "id": "302",
     "artist": "Jeden Osiem L",
     "title": "Jak zapomnieć",
     "year": 2003,
@@ -2727,7 +2718,7 @@
     "genres": []
   },
   {
-    "id": "304",
+    "id": "303",
     "artist": "Ewelina Flinta",
     "title": "Żałuję",
     "year": 2003,
@@ -2736,7 +2727,7 @@
     "genres": []
   },
   {
-    "id": "305",
+    "id": "304",
     "artist": "Sistars",
     "title": "Synu",
     "year": 2003,
@@ -2745,7 +2736,7 @@
     "genres": []
   },
   {
-    "id": "306",
+    "id": "305",
     "artist": "Sistars",
     "title": "Sutra",
     "year": 2003,
@@ -2754,7 +2745,7 @@
     "genres": []
   },
   {
-    "id": "307",
+    "id": "306",
     "artist": "Lipnicka & Porter",
     "title": "Bones of Love",
     "year": 2003,
@@ -2763,7 +2754,7 @@
     "genres": []
   },
   {
-    "id": "308",
+    "id": "307",
     "artist": "Ich Troje",
     "title": "Keine Grenzen / Żadnych granic",
     "year": 2003,
@@ -2772,7 +2763,7 @@
     "genres": []
   },
   {
-    "id": "309",
+    "id": "308",
     "artist": "Reni Jusis",
     "title": "Kiedyś cię znajdę",
     "year": 2003,
@@ -2781,7 +2772,7 @@
     "genres": []
   },
   {
-    "id": "310",
+    "id": "309",
     "artist": "Raz Dwa Trzy",
     "title": "Trudno nie wierzyć w nic",
     "year": 2003,
@@ -2790,7 +2781,7 @@
     "genres": []
   },
   {
-    "id": "311",
+    "id": "310",
     "artist": "Tede",
     "title": "Zeszyt rymów",
     "year": 2003,
@@ -2799,7 +2790,7 @@
     "genres": []
   },
   {
-    "id": "312",
+    "id": "311",
     "artist": "Blue Café",
     "title": "Do nieba, do piekła",
     "year": 2003,
@@ -2808,7 +2799,7 @@
     "genres": []
   },
   {
-    "id": "313",
+    "id": "312",
     "artist": "Kayah",
     "title": "Testosteron",
     "year": 2003,
@@ -2817,7 +2808,7 @@
     "genres": []
   },
   {
-    "id": "314",
+    "id": "313",
     "artist": "Krzysztof Krawczyk & Edyta Bartosiewicz",
     "title": "Trudno tak",
     "year": 2004,
@@ -2826,7 +2817,7 @@
     "genres": []
   },
   {
-    "id": "315",
+    "id": "314",
     "artist": "Monika Brodka",
     "title": "Ten",
     "year": 2004,
@@ -2835,7 +2826,7 @@
     "genres": []
   },
   {
-    "id": "316",
+    "id": "315",
     "artist": "Coma",
     "title": "Spadam",
     "year": 2004,
@@ -2844,7 +2835,7 @@
     "genres": []
   },
   {
-    "id": "317",
+    "id": "316",
     "artist": "Sidney Polak",
     "title": "Otwieram wino",
     "year": 2004,
@@ -2853,7 +2844,7 @@
     "genres": []
   },
   {
-    "id": "318",
+    "id": "317",
     "artist": "Happysad",
     "title": "Zanim pójdę",
     "year": 2004,
@@ -2862,7 +2853,7 @@
     "genres": []
   },
   {
-    "id": "319",
+    "id": "318",
     "artist": "Virgin",
     "title": "Dżaga",
     "year": 2004,
@@ -2871,7 +2862,7 @@
     "genres": []
   },
   {
-    "id": "320",
+    "id": "319",
     "artist": "Wilki",
     "title": "Bohema",
     "year": 2004,
@@ -2880,7 +2871,7 @@
     "genres": []
   },
   {
-    "id": "321",
+    "id": "320",
     "artist": "Lady Pank",
     "title": "Stacja Warszawa",
     "year": 2004,
@@ -2889,7 +2880,7 @@
     "genres": []
   },
   {
-    "id": "322",
+    "id": "321",
     "artist": "Kombii",
     "title": "Sen się spełni",
     "year": 2004,
@@ -2898,7 +2889,7 @@
     "genres": []
   },
   {
-    "id": "323",
+    "id": "322",
     "artist": "Ania Dąbrowska",
     "title": "Tego chciałam",
     "year": 2004,
@@ -2907,7 +2898,7 @@
     "genres": []
   },
   {
-    "id": "324",
+    "id": "323",
     "artist": "Brodka",
     "title": "Dziewczyna mojego chłopaka",
     "year": 2004,
@@ -2916,7 +2907,7 @@
     "genres": []
   },
   {
-    "id": "325",
+    "id": "324",
     "artist": "Virgin",
     "title": "Znak pokoju",
     "year": 2005,
@@ -2925,7 +2916,7 @@
     "genres": []
   },
   {
-    "id": "326",
+    "id": "325",
     "artist": "Mezo & Kasia Wilk",
     "title": "Ważne",
     "year": 2005,
@@ -2934,7 +2925,7 @@
     "genres": []
   },
   {
-    "id": "327",
+    "id": "326",
     "artist": "Szymon Wydra & Carpe Diem",
     "title": "Życie jak poemat",
     "year": 2005,
@@ -2943,7 +2934,7 @@
     "genres": []
   },
   {
-    "id": "328",
+    "id": "327",
     "artist": "Krzysztof Kiljański",
     "title": "Prócz ciebie nic",
     "year": 2005,
@@ -2952,7 +2943,7 @@
     "genres": []
   },
   {
-    "id": "329",
+    "id": "328",
     "artist": "Lech Janerka",
     "title": "Rower",
     "year": 2005,
@@ -2961,7 +2952,7 @@
     "genres": []
   },
   {
-    "id": "330",
+    "id": "329",
     "artist": "Beata Kozidrak",
     "title": "Teraz płynę",
     "year": 2005,
@@ -2970,7 +2961,7 @@
     "genres": []
   },
   {
-    "id": "331",
+    "id": "330",
     "artist": "Maria Peszek",
     "title": "Moje miasto",
     "year": 2005,
@@ -2979,7 +2970,7 @@
     "genres": []
   },
   {
-    "id": "332",
+    "id": "331",
     "artist": "Hey",
     "title": "Mimo wszystko",
     "year": 2005,
@@ -2988,7 +2979,7 @@
     "genres": []
   },
   {
-    "id": "333",
+    "id": "332",
     "artist": "Coma",
     "title": "Leszek Żukowski",
     "year": 2005,
@@ -2997,7 +2988,7 @@
     "genres": []
   },
   {
-    "id": "334",
+    "id": "333",
     "artist": "WWO",
     "title": "Mogę wszystko",
     "year": 2005,
@@ -3006,7 +2997,7 @@
     "genres": []
   },
   {
-    "id": "335",
+    "id": "334",
     "artist": "Hurt",
     "title": "Załoga G",
     "year": 2005,
@@ -3015,7 +3006,7 @@
     "genres": []
   },
   {
-    "id": "336",
+    "id": "335",
     "artist": "Gosia Andrzejewicz",
     "title": "Pozwól żyć",
     "year": 2006,
@@ -3024,7 +3015,7 @@
     "genres": []
   },
   {
-    "id": "337",
+    "id": "336",
     "artist": "Blog 27",
     "title": "Uh La La La",
     "year": 2006,
@@ -3033,7 +3024,7 @@
     "genres": []
   },
   {
-    "id": "338",
+    "id": "337",
     "artist": "Maria Peszek",
     "title": "Miasto mania",
     "year": 2006,
@@ -3042,7 +3033,7 @@
     "genres": []
   },
   {
-    "id": "339",
+    "id": "338",
     "artist": "Stępniak-Wilk & Turnau",
     "title": "Bombonierka",
     "year": 2006,
@@ -3051,7 +3042,7 @@
     "genres": []
   },
   {
-    "id": "340",
+    "id": "339",
     "artist": "Brodka",
     "title": "Miał być ślub",
     "year": 2006,
@@ -3060,7 +3051,7 @@
     "genres": []
   },
   {
-    "id": "341",
+    "id": "340",
     "artist": "Piotr Rubik",
     "title": "Psalm dla Ciebie",
     "year": 2006,
@@ -3069,7 +3060,7 @@
     "genres": []
   },
   {
-    "id": "342",
+    "id": "341",
     "artist": "Mezo feat. Kasia Wilk",
     "title": "Sacrum",
     "year": 2006,
@@ -3078,7 +3069,7 @@
     "genres": []
   },
   {
-    "id": "343",
+    "id": "342",
     "artist": "Andrzej Piaseczny",
     "title": "...i jeszcze",
     "year": 2006,
@@ -3087,7 +3078,7 @@
     "genres": []
   },
   {
-    "id": "344",
+    "id": "343",
     "artist": "Myslovitz",
     "title": "W deszczu maleńkich żółtych kwiatów",
     "year": 2006,
@@ -3096,7 +3087,7 @@
     "genres": []
   },
   {
-    "id": "345",
+    "id": "344",
     "artist": "Sistars",
     "title": "Skąd Ty to masz",
     "year": 2006,
@@ -3105,7 +3096,7 @@
     "genres": []
   },
   {
-    "id": "346",
+    "id": "345",
     "artist": "The Car Is On Fire",
     "title": "Can't Cook (Who Cares?)",
     "year": 2006,
@@ -3114,7 +3105,7 @@
     "genres": []
   },
   {
-    "id": "347",
+    "id": "346",
     "artist": "Feel",
     "title": "A gdy jest już ciemno",
     "year": 2007,
@@ -3123,7 +3114,7 @@
     "genres": []
   },
   {
-    "id": "348",
+    "id": "347",
     "artist": "Ewa Farna",
     "title": "Cicho",
     "year": 2007,
@@ -3132,7 +3123,7 @@
     "genres": []
   },
   {
-    "id": "349",
+    "id": "348",
     "artist": "Ania Dąbrowska",
     "title": "Trudno mi się przyznać",
     "year": 2007,
@@ -3141,7 +3132,7 @@
     "genres": []
   },
   {
-    "id": "350",
+    "id": "349",
     "artist": "Strachy na Lachy",
     "title": "Piła tango",
     "year": 2007,
@@ -3150,7 +3141,7 @@
     "genres": []
   },
   {
-    "id": "351",
+    "id": "350",
     "artist": "Goya",
     "title": "Tylko mnie kochaj",
     "year": 2007,
@@ -3159,7 +3150,7 @@
     "genres": []
   },
   {
-    "id": "352",
+    "id": "351",
     "artist": "Feel",
     "title": "No pokaż na co cię stać",
     "year": 2007,
@@ -3168,7 +3159,7 @@
     "genres": []
   },
   {
-    "id": "353",
+    "id": "352",
     "artist": "Feel",
     "title": "W odpowiedzi na twój list",
     "year": 2007,
@@ -3177,7 +3168,7 @@
     "genres": []
   },
   {
-    "id": "354",
+    "id": "353",
     "artist": "Ewa Farna",
     "title": "Lalalaj",
     "year": 2007,
@@ -3186,7 +3177,7 @@
     "genres": []
   },
   {
-    "id": "355",
+    "id": "354",
     "artist": "IRA",
     "title": "Londyn 08:15",
     "year": 2007,
@@ -3195,7 +3186,7 @@
     "genres": []
   },
   {
-    "id": "356",
+    "id": "355",
     "artist": "Ewa Farna",
     "title": "Tam gdzie nie ma dróg",
     "year": 2007,
@@ -3204,7 +3195,7 @@
     "genres": []
   },
   {
-    "id": "357",
+    "id": "356",
     "artist": "Natalia Kukulska",
     "title": "Sexi Flexi",
     "year": 2007,
@@ -3213,7 +3204,7 @@
     "genres": []
   },
   {
-    "id": "358",
+    "id": "357",
     "artist": "Patrycja Markowska",
     "title": "Świat się pomylił",
     "year": 2007,
@@ -3222,7 +3213,7 @@
     "genres": []
   },
   {
-    "id": "359",
+    "id": "358",
     "artist": "Muchy",
     "title": "Miasto doznań",
     "year": 2007,
@@ -3231,7 +3222,7 @@
     "genres": []
   },
   {
-    "id": "360",
+    "id": "359",
     "artist": "Kasia Cerekwicka",
     "title": "Siano",
     "year": 2007,
@@ -3240,7 +3231,7 @@
     "genres": []
   },
   {
-    "id": "361",
+    "id": "360",
     "artist": "Afromental",
     "title": "I've Got What You Need",
     "year": 2007,
@@ -3249,7 +3240,7 @@
     "genres": []
   },
   {
-    "id": "362",
+    "id": "361",
     "artist": "Feel",
     "title": "Jak anioła głos",
     "year": 2008,
@@ -3258,7 +3249,7 @@
     "genres": []
   },
   {
-    "id": "363",
+    "id": "362",
     "artist": "Sylwia Grzeszczak & Liber",
     "title": "Nowe szanse",
     "year": 2008,
@@ -3267,7 +3258,7 @@
     "genres": []
   },
   {
-    "id": "364",
+    "id": "363",
     "artist": "Czesław Śpiewa",
     "title": "Maszynka do świerkania",
     "year": 2008,
@@ -3276,7 +3267,7 @@
     "genres": []
   },
   {
-    "id": "365",
+    "id": "364",
     "artist": "Flinta & Zagrobelny",
     "title": "Nie kłam że kochasz mnie",
     "year": 2008,
@@ -3285,7 +3276,7 @@
     "genres": []
   },
   {
-    "id": "366",
+    "id": "365",
     "artist": "Ania Dąbrowska",
     "title": "Nigdy więcej nie tańcz ze mną",
     "year": 2008,
@@ -3294,7 +3285,7 @@
     "genres": []
   },
   {
-    "id": "367",
+    "id": "366",
     "artist": "Doda",
     "title": "Nie Daj Sie",
     "year": 2008,
@@ -3303,7 +3294,7 @@
     "genres": []
   },
   {
-    "id": "368",
+    "id": "367",
     "artist": "Edyta Górniak",
     "title": "To nie tak jak myślisz",
     "year": 2008,
@@ -3312,7 +3303,7 @@
     "genres": []
   },
   {
-    "id": "369",
+    "id": "368",
     "artist": "Pectus",
     "title": "To, co chciałbym Ci dać",
     "year": 2008,
@@ -3321,7 +3312,7 @@
     "genres": []
   },
   {
-    "id": "370",
+    "id": "369",
     "artist": "Lao Che",
     "title": "Hydropiekłowstąpienie",
     "year": 2008,
@@ -3330,7 +3321,7 @@
     "genres": []
   },
   {
-    "id": "371",
+    "id": "370",
     "artist": "Coma",
     "title": "Zero osiem wojna",
     "year": 2008,
@@ -3339,7 +3330,7 @@
     "genres": []
   },
   {
-    "id": "372",
+    "id": "371",
     "artist": "Maria Peszek",
     "title": "Rosół",
     "year": 2008,
@@ -3348,7 +3339,7 @@
     "genres": []
   },
   {
-    "id": "373",
+    "id": "372",
     "artist": "Video feat. Ania Wyszkoni",
     "title": "Soft",
     "year": 2008,
@@ -3357,7 +3348,7 @@
     "genres": []
   },
   {
-    "id": "374",
+    "id": "373",
     "artist": "Sokół feat. Pono",
     "title": "W aucie",
     "year": 2008,
@@ -3366,7 +3357,7 @@
     "genres": []
   },
   {
-    "id": "375",
+    "id": "374",
     "artist": "Agnieszka Chylińska",
     "title": "Nie mogę Cię zapomnieć",
     "year": 2009,
@@ -3375,7 +3366,7 @@
     "genres": []
   },
   {
-    "id": "376",
+    "id": "375",
     "artist": "Mrozu",
     "title": "Miliony monet",
     "year": 2009,
@@ -3384,7 +3375,7 @@
     "genres": []
   },
   {
-    "id": "377",
+    "id": "376",
     "artist": "Afromental",
     "title": "Radio Song",
     "year": 2009,
@@ -3393,7 +3384,7 @@
     "genres": []
   },
   {
-    "id": "378",
+    "id": "377",
     "artist": "Hey",
     "title": "Faza delta",
     "year": 2009,
@@ -3402,7 +3393,7 @@
     "genres": []
   },
   {
-    "id": "379",
+    "id": "378",
     "artist": "T.Love",
     "title": "Gnijący świat",
     "year": 2009,
@@ -3411,7 +3402,7 @@
     "genres": []
   },
   {
-    "id": "380",
+    "id": "379",
     "artist": "Andrzej Piaseczny",
     "title": "Chodź, przytul, przebacz",
     "year": 2009,
@@ -3420,7 +3411,7 @@
     "genres": []
   },
   {
-    "id": "381",
+    "id": "380",
     "artist": "Muniek Staszczyk",
     "title": "Tina",
     "year": 2009,
@@ -3429,7 +3420,7 @@
     "genres": []
   },
   {
-    "id": "382",
+    "id": "381",
     "artist": "Pectus",
     "title": "Życie na dystans",
     "year": 2009,
@@ -3438,7 +3429,7 @@
     "genres": []
   },
   {
-    "id": "383",
+    "id": "382",
     "artist": "Kasia Kowalska",
     "title": "Maskarada",
     "year": 2009,
@@ -3447,7 +3438,7 @@
     "genres": []
   },
   {
-    "id": "384",
+    "id": "383",
     "artist": "IRA",
     "title": "To co na zawsze",
     "year": 2009,
@@ -3456,7 +3447,7 @@
     "genres": []
   },
   {
-    "id": "385",
+    "id": "384",
     "artist": "Volver",
     "title": "Chcę",
     "year": 2009,
@@ -3465,7 +3456,7 @@
     "genres": []
   },
   {
-    "id": "386",
+    "id": "385",
     "artist": "Łukasz Zagrobelny",
     "title": "Jeszcze o nas",
     "year": 2009,
@@ -3474,7 +3465,7 @@
     "genres": []
   },
   {
-    "id": "387",
+    "id": "386",
     "artist": "Afro Kolektyw",
     "title": "Przepraszam",
     "year": 2009,
@@ -3483,7 +3474,7 @@
     "genres": []
   },
   {
-    "id": "388",
+    "id": "387",
     "artist": "Brodka",
     "title": "Granda",
     "year": 2010,
@@ -3492,7 +3483,7 @@
     "genres": []
   },
   {
-    "id": "389",
+    "id": "388",
     "artist": "Acid Drinkers",
     "title": "Love Shack",
     "year": 2010,
@@ -3501,7 +3492,7 @@
     "genres": []
   },
   {
-    "id": "390",
+    "id": "389",
     "artist": "Ewa Farna",
     "title": "Ewakuacja",
     "year": 2010,
@@ -3510,7 +3501,7 @@
     "genres": []
   },
   {
-    "id": "391",
+    "id": "390",
     "artist": "Afromental",
     "title": "Rock&Rollin' Love",
     "year": 2010,
@@ -3519,7 +3510,7 @@
     "genres": []
   },
   {
-    "id": "392",
+    "id": "391",
     "artist": "GrubSon",
     "title": "Na szczycie",
     "year": 2010,
@@ -3528,7 +3519,7 @@
     "genres": []
   },
   {
-    "id": "393",
+    "id": "392",
     "artist": "Andrzej Piaseczny",
     "title": "Śniadanie do łóżka",
     "year": 2010,
@@ -3537,7 +3528,7 @@
     "genres": []
   },
   {
-    "id": "394",
+    "id": "393",
     "artist": "Prosto Mixtape",
     "title": "I żeby było normalnie",
     "year": 2010,
@@ -3546,7 +3537,7 @@
     "genres": []
   },
   {
-    "id": "395",
+    "id": "394",
     "artist": "Zakopower",
     "title": "Boso",
     "year": 2011,
@@ -3555,7 +3546,7 @@
     "genres": []
   },
   {
-    "id": "396",
+    "id": "395",
     "artist": "Sylwia Grzeszczak",
     "title": "Małe rzeczy",
     "year": 2011,
@@ -3564,7 +3555,7 @@
     "genres": []
   },
   {
-    "id": "397",
+    "id": "396",
     "artist": "Luxtorpeda",
     "title": "Autystyczny",
     "year": 2011,
@@ -3573,7 +3564,7 @@
     "genres": []
   },
   {
-    "id": "398",
+    "id": "397",
     "artist": "Enej",
     "title": "Radio Hello",
     "year": 2011,
@@ -3582,7 +3573,7 @@
     "genres": []
   },
   {
-    "id": "399",
+    "id": "398",
     "artist": "Sylwia Grzeszczak",
     "title": "Sen o przyszłości",
     "year": 2011,
@@ -3591,7 +3582,7 @@
     "genres": []
   },
   {
-    "id": "400",
+    "id": "399",
     "artist": "Ten Typ Mes",
     "title": "Głupia, spięta dresiara",
     "year": 2011,
@@ -3600,7 +3591,7 @@
     "genres": []
   },
   {
-    "id": "401",
+    "id": "400",
     "artist": "Enej",
     "title": "Skrzydlate ręce",
     "year": 2012,
@@ -3609,7 +3600,7 @@
     "genres": []
   },
   {
-    "id": "402",
+    "id": "401",
     "artist": "Donatan & Borixon",
     "title": "Nie lubimy robić",
     "year": 2012,
@@ -3618,7 +3609,7 @@
     "genres": []
   },
   {
-    "id": "403",
+    "id": "402",
     "artist": "Bednarek",
     "title": "Cisza",
     "year": 2012,
@@ -3627,7 +3618,7 @@
     "genres": []
   },
   {
-    "id": "404",
+    "id": "403",
     "artist": "Brodka",
     "title": "Varsovie",
     "year": 2012,
@@ -3636,7 +3627,7 @@
     "genres": []
   },
   {
-    "id": "405",
+    "id": "404",
     "artist": "LemOn",
     "title": "Napraw",
     "year": 2012,
@@ -3645,7 +3636,7 @@
     "genres": []
   },
   {
-    "id": "406",
+    "id": "405",
     "artist": "Jula",
     "title": "Za każdym razem",
     "year": 2012,
@@ -3654,7 +3645,7 @@
     "genres": []
   },
   {
-    "id": "407",
+    "id": "406",
     "artist": "Ewelina Lisowska",
     "title": "W stronę słońca",
     "year": 2012,
@@ -3663,7 +3654,7 @@
     "genres": []
   },
   {
-    "id": "408",
+    "id": "407",
     "artist": "Enej",
     "title": "Tak smakuje życie",
     "year": 2012,
@@ -3672,7 +3663,7 @@
     "genres": []
   },
   {
-    "id": "409",
+    "id": "408",
     "artist": "Pezet",
     "title": "Ostatni track",
     "year": 2012,
@@ -3681,7 +3672,7 @@
     "genres": []
   },
   {
-    "id": "410",
+    "id": "409",
     "artist": "Sobota",
     "title": "Przepraszam",
     "year": 2012,
@@ -3690,7 +3681,7 @@
     "genres": []
   },
   {
-    "id": "411",
+    "id": "410",
     "artist": "Gruby Mielzky",
     "title": "Silny jak nigdy, wkurwiony jak zwykle",
     "year": 2012,
@@ -3699,7 +3690,7 @@
     "genres": []
   },
   {
-    "id": "412",
+    "id": "411",
     "artist": "Brodka",
     "title": "Dancing Shoes",
     "year": 2012,
@@ -3708,7 +3699,7 @@
     "genres": []
   },
   {
-    "id": "413",
+    "id": "412",
     "artist": "Dawid Podsiadło",
     "title": "Trójkąty i kwadraty",
     "year": 2013,
@@ -3717,7 +3708,7 @@
     "genres": []
   },
   {
-    "id": "414",
+    "id": "413",
     "artist": "Piersi",
     "title": "Bałkanica",
     "year": 2013,
@@ -3726,7 +3717,7 @@
     "genres": []
   },
   {
-    "id": "415",
+    "id": "414",
     "artist": "Donatan & Cleo",
     "title": "My Słowianie",
     "year": 2013,
@@ -3735,7 +3726,7 @@
     "genres": []
   },
   {
-    "id": "416",
+    "id": "415",
     "artist": "Mrozu",
     "title": "Jak nie my to kto",
     "year": 2013,
@@ -3744,7 +3735,7 @@
     "genres": []
   },
   {
-    "id": "417",
+    "id": "416",
     "artist": "Margaret",
     "title": "Thank You Very Much",
     "year": 2013,
@@ -3753,7 +3744,7 @@
     "genres": []
   },
   {
-    "id": "418",
+    "id": "417",
     "artist": "Sylwia Grzeszczak",
     "title": "Księżniczka",
     "year": 2013,
@@ -3762,7 +3753,7 @@
     "genres": []
   },
   {
-    "id": "419",
+    "id": "418",
     "artist": "Dawid Podsiadło",
     "title": "Nieznajomy",
     "year": 2013,
@@ -3771,7 +3762,7 @@
     "genres": []
   },
   {
-    "id": "420",
+    "id": "419",
     "artist": "Honorata Skarbek",
     "title": "Nie powiem jak",
     "year": 2013,
@@ -3780,7 +3771,7 @@
     "genres": []
   },
   {
-    "id": "421",
+    "id": "420",
     "artist": "LemOn",
     "title": "Nice",
     "year": 2013,
@@ -3789,7 +3780,7 @@
     "genres": []
   },
   {
-    "id": "422",
+    "id": "421",
     "artist": "Paluch",
     "title": "Bez strachu",
     "year": 2013,
@@ -3798,7 +3789,7 @@
     "genres": []
   },
   {
-    "id": "423",
+    "id": "422",
     "artist": "donGURALesko",
     "title": "Mogliśmy wszystko",
     "year": 2013,
@@ -3807,7 +3798,7 @@
     "genres": []
   },
   {
-    "id": "424",
+    "id": "423",
     "artist": "Artur Rojek",
     "title": "Syreny",
     "year": 2014,
@@ -3816,7 +3807,7 @@
     "genres": []
   },
   {
-    "id": "425",
+    "id": "424",
     "artist": "Mrozu",
     "title": "Nic do stracenia",
     "year": 2014,
@@ -3825,7 +3816,7 @@
     "genres": []
   },
   {
-    "id": "426",
+    "id": "425",
     "artist": "Natalia Przybysz",
     "title": "Miód",
     "year": 2014,
@@ -3834,7 +3825,7 @@
     "genres": []
   },
   {
-    "id": "427",
+    "id": "426",
     "artist": "Grzegorz Hyży & Tabb",
     "title": "Na chwilę",
     "year": 2014,
@@ -3843,7 +3834,7 @@
     "genres": []
   },
   {
-    "id": "428",
+    "id": "427",
     "artist": "Bednarek",
     "title": "Chwile jak te",
     "year": 2014,
@@ -3852,7 +3843,7 @@
     "genres": []
   },
   {
-    "id": "429",
+    "id": "428",
     "artist": "Ten Typ Mes",
     "title": "My",
     "year": 2014,
@@ -3861,7 +3852,7 @@
     "genres": []
   },
   {
-    "id": "430",
+    "id": "429",
     "artist": "Sarsa",
     "title": "Naucz mnie",
     "year": 2015,
@@ -3870,7 +3861,7 @@
     "genres": []
   },
   {
-    "id": "431",
+    "id": "430",
     "artist": "Zbigniew Wodecki & Mitch & Mitch",
     "title": "Rzuć to wszystko co złe",
     "year": 2015,
@@ -3879,7 +3870,7 @@
     "genres": []
   },
   {
-    "id": "432",
+    "id": "431",
     "artist": "Natalia Nykiel",
     "title": "Bądź duży",
     "year": 2015,
@@ -3888,7 +3879,7 @@
     "genres": []
   },
   {
-    "id": "433",
+    "id": "432",
     "artist": "Taco Hemingway",
     "title": "6 zer",
     "year": 2015,
@@ -3897,7 +3888,7 @@
     "genres": []
   },
   {
-    "id": "434",
+    "id": "433",
     "artist": "Kamil Bednarek",
     "title": "Euforia",
     "year": 2015,
@@ -3906,7 +3897,7 @@
     "genres": []
   },
   {
-    "id": "435",
+    "id": "434",
     "artist": "Enej",
     "title": "Kamień z napisem Love",
     "year": 2015,
@@ -3915,7 +3906,7 @@
     "genres": []
   },
   {
-    "id": "436",
+    "id": "435",
     "artist": "Sarsa",
     "title": "Zapomnij mi",
     "year": 2015,
@@ -3924,7 +3915,7 @@
     "genres": []
   },
   {
-    "id": "437",
+    "id": "436",
     "artist": "KęKę",
     "title": "Wyjebane",
     "year": 2015,
@@ -3933,7 +3924,7 @@
     "genres": []
   },
   {
-    "id": "438",
+    "id": "437",
     "artist": "Quebonafide",
     "title": "Voodoo",
     "year": 2015,
@@ -3942,7 +3933,7 @@
     "genres": []
   },
   {
-    "id": "439",
+    "id": "438",
     "artist": "Gang Albanii",
     "title": "Albański raj",
     "year": 2015,
@@ -3951,7 +3942,7 @@
     "genres": []
   },
   {
-    "id": "440",
+    "id": "439",
     "artist": "Dwa Sławy",
     "title": "A może by tak?",
     "year": 2015,
@@ -3960,7 +3951,7 @@
     "genres": []
   },
   {
-    "id": "441",
+    "id": "440",
     "artist": "Dawid Podsiadło",
     "title": "W dobrą stronę",
     "year": 2016,
@@ -3969,7 +3960,7 @@
     "genres": []
   },
   {
-    "id": "442",
+    "id": "441",
     "artist": "Sylwia Grzeszczak",
     "title": "Tamta dziewczyna",
     "year": 2016,
@@ -3978,7 +3969,7 @@
     "genres": []
   },
   {
-    "id": "443",
+    "id": "442",
     "artist": "Organek",
     "title": "Mississippi w ogniu",
     "year": 2016,
@@ -3987,7 +3978,7 @@
     "genres": []
   },
   {
-    "id": "444",
+    "id": "443",
     "artist": "Agnieszka Chylińska",
     "title": "Królowa łez",
     "year": 2016,
@@ -3996,7 +3987,7 @@
     "genres": []
   },
   {
-    "id": "445",
+    "id": "444",
     "artist": "Taco Hemingway",
     "title": "Deszcz na betonie",
     "year": 2016,
@@ -4005,7 +3996,7 @@
     "genres": []
   },
   {
-    "id": "446",
+    "id": "445",
     "artist": "Sitek",
     "title": "Chcemy być wyżej",
     "year": 2016,
@@ -4014,7 +4005,7 @@
     "genres": []
   },
   {
-    "id": "447",
+    "id": "446",
     "artist": "Krzysztof Zalewski",
     "title": "Miłość miłość",
     "year": 2016,
@@ -4023,7 +4014,7 @@
     "genres": []
   },
   {
-    "id": "448",
+    "id": "447",
     "artist": "PRO8L3M",
     "title": "Ritz-Carlton",
     "year": 2016,
@@ -4032,7 +4023,7 @@
     "genres": []
   },
   {
-    "id": "449",
+    "id": "448",
     "artist": "Bednarek",
     "title": "List",
     "year": 2016,
@@ -4041,7 +4032,7 @@
     "genres": []
   },
   {
-    "id": "450",
+    "id": "449",
     "artist": "O.S.T.R.",
     "title": "Spowiedź",
     "year": 2016,
@@ -4050,7 +4041,7 @@
     "genres": []
   },
   {
-    "id": "451",
+    "id": "450",
     "artist": "Paluch",
     "title": "Szaman",
     "year": 2016,
@@ -4059,7 +4050,7 @@
     "genres": []
   },
   {
-    "id": "452",
+    "id": "451",
     "artist": "Natalia Nykiel",
     "title": "Error",
     "year": 2016,
@@ -4068,7 +4059,7 @@
     "genres": []
   },
   {
-    "id": "453",
+    "id": "452",
     "artist": "Monika Lewczuk",
     "title": "Ty i Ja",
     "year": 2016,
@@ -4077,7 +4068,7 @@
     "genres": []
   },
   {
-    "id": "454",
+    "id": "453",
     "artist": "KęKę",
     "title": "Nigdy dość",
     "year": 2016,
@@ -4086,7 +4077,7 @@
     "genres": []
   },
   {
-    "id": "455",
+    "id": "454",
     "artist": "Belmondo",
     "title": "Scrooge Ebenezer",
     "year": 2016,
@@ -4095,7 +4086,7 @@
     "genres": []
   },
   {
-    "id": "456",
+    "id": "455",
     "artist": "Rasmentalism feat. Taco Hemingway",
     "title": "Stu",
     "year": 2016,
@@ -4104,7 +4095,7 @@
     "genres": []
   },
   {
-    "id": "457",
+    "id": "456",
     "artist": "Popek x Matheo",
     "title": "Wodospady",
     "year": 2016,
@@ -4113,7 +4104,7 @@
     "genres": []
   },
   {
-    "id": "458",
+    "id": "457",
     "artist": "Kortez",
     "title": "Dobry moment",
     "year": 2017,
@@ -4122,7 +4113,7 @@
     "genres": []
   },
   {
-    "id": "459",
+    "id": "458",
     "artist": "Ania Dąbrowska",
     "title": "Z Tobą nie umiem wygrać",
     "year": 2017,
@@ -4131,7 +4122,7 @@
     "genres": []
   },
   {
-    "id": "460",
+    "id": "459",
     "artist": "Quebonafide ft. ReTo",
     "title": "Half Dead",
     "year": 2017,
@@ -4140,7 +4131,7 @@
     "genres": []
   },
   {
-    "id": "461",
+    "id": "460",
     "artist": "Quebonafide feat. Klaudia Szafrańska",
     "title": "Candy",
     "year": 2017,
@@ -4149,7 +4140,7 @@
     "genres": []
   },
   {
-    "id": "462",
+    "id": "461",
     "artist": "Grzegorz Hyży",
     "title": "O pani!",
     "year": 2017,
@@ -4158,7 +4149,7 @@
     "genres": []
   },
   {
-    "id": "463",
+    "id": "462",
     "artist": "Lanberry",
     "title": "Gotowi na wszystko",
     "year": 2017,
@@ -4167,7 +4158,7 @@
     "genres": []
   },
   {
-    "id": "464",
+    "id": "463",
     "artist": "Kayah & Idan Raichel",
     "title": "Po co",
     "year": 2017,
@@ -4176,7 +4167,7 @@
     "genres": []
   },
   {
-    "id": "465",
+    "id": "464",
     "artist": "Otsochodzi feat. Taco Hemingway",
     "title": "Nowy Kolor",
     "year": 2017,
@@ -4185,7 +4176,7 @@
     "genres": []
   },
   {
-    "id": "466",
+    "id": "465",
     "artist": "Mrozu",
     "title": "Duch",
     "year": 2017,
@@ -4194,7 +4185,7 @@
     "genres": []
   },
   {
-    "id": "467",
+    "id": "466",
     "artist": "Paweł Domagała",
     "title": "Weź nie pytaj",
     "year": 2018,
@@ -4203,7 +4194,7 @@
     "genres": []
   },
   {
-    "id": "468",
+    "id": "467",
     "artist": "Dawid Podsiadło",
     "title": "Małomiasteczkowy",
     "year": 2018,
@@ -4212,7 +4203,7 @@
     "genres": []
   },
   {
-    "id": "469",
+    "id": "468",
     "artist": "Męskie Granie Orkiestra",
     "title": "Początek",
     "year": 2018,
@@ -4221,7 +4212,7 @@
     "genres": []
   },
   {
-    "id": "470",
+    "id": "469",
     "artist": "Taconafide",
     "title": "Tamagotchi",
     "year": 2018,
@@ -4230,7 +4221,7 @@
     "genres": []
   },
   {
-    "id": "471",
+    "id": "470",
     "artist": "Tymek feat. Big Scythe",
     "title": "Język ciała",
     "year": 2018,
@@ -4239,7 +4230,7 @@
     "genres": []
   },
   {
-    "id": "472",
+    "id": "471",
     "artist": "White 2115",
     "title": "California",
     "year": 2018,
@@ -4248,7 +4239,7 @@
     "genres": []
   },
   {
-    "id": "473",
+    "id": "472",
     "artist": "Kortez",
     "title": "Hej wy",
     "year": 2018,
@@ -4257,7 +4248,7 @@
     "genres": []
   },
   {
-    "id": "474",
+    "id": "473",
     "artist": "Margaret",
     "title": "Byle jak",
     "year": 2018,
@@ -4266,7 +4257,7 @@
     "genres": []
   },
   {
-    "id": "475",
+    "id": "474",
     "artist": "C-Bool",
     "title": "Wonderland",
     "year": 2018,
@@ -4275,7 +4266,7 @@
     "genres": []
   },
   {
-    "id": "476",
+    "id": "475",
     "artist": "Cleo",
     "title": "Łowcy gwiazd",
     "year": 2018,
@@ -4284,7 +4275,7 @@
     "genres": []
   },
   {
-    "id": "477",
+    "id": "476",
     "artist": "Szpaku",
     "title": "UFO",
     "year": 2018,
@@ -4293,7 +4284,7 @@
     "genres": []
   },
   {
-    "id": "478",
+    "id": "477",
     "artist": "Roksana Węgiel",
     "title": "Anyone I Want To Be",
     "year": 2018,
@@ -4302,7 +4293,7 @@
     "genres": []
   },
   {
-    "id": "479",
+    "id": "478",
     "artist": "Bedoes & Kubi Producent",
     "title": "Eldorado",
     "year": 2018,
@@ -4311,7 +4302,7 @@
     "genres": []
   },
   {
-    "id": "480",
+    "id": "479",
     "artist": "Taco Hemingway",
     "title": "Fiji",
     "year": 2018,
@@ -4320,7 +4311,7 @@
     "genres": []
   },
   {
-    "id": "481",
+    "id": "480",
     "artist": "Gromee feat. Lukas Meijer",
     "title": "Light Me Up",
     "year": 2018,
@@ -4329,7 +4320,7 @@
     "genres": []
   },
   {
-    "id": "482",
+    "id": "481",
     "artist": "Filip Lato",
     "title": "Halo Ziemia",
     "year": 2018,
@@ -4338,7 +4329,7 @@
     "genres": []
   },
   {
-    "id": "483",
+    "id": "482",
     "artist": "Rogal DDL",
     "title": "Turborower",
     "year": 2018,
@@ -4347,7 +4338,7 @@
     "genres": []
   },
   {
-    "id": "484",
+    "id": "483",
     "artist": "Dawid Podsiadło",
     "title": "Trofea",
     "year": 2019,
@@ -4356,7 +4347,7 @@
     "genres": []
   },
   {
-    "id": "485",
+    "id": "484",
     "artist": "Viki Gabor",
     "title": "Superhero",
     "year": 2019,
@@ -4365,7 +4356,7 @@
     "genres": []
   },
   {
-    "id": "486",
+    "id": "485",
     "artist": "Król",
     "title": "Te smaki i zapachy",
     "year": 2019,
@@ -4374,7 +4365,7 @@
     "genres": []
   },
   {
-    "id": "487",
+    "id": "486",
     "artist": "Taco Hemingway",
     "title": "Pocztówka z WWA, Lato '19",
     "year": 2019,
@@ -4383,7 +4374,7 @@
     "genres": []
   },
   {
-    "id": "488",
+    "id": "487",
     "artist": "The Dumplings",
     "title": "Bez Słów",
     "year": 2019,
@@ -4392,7 +4383,7 @@
     "genres": []
   },
   {
-    "id": "489",
+    "id": "488",
     "artist": "Męskie Granie Orkiestra",
     "title": "Sobie i Wam",
     "year": 2019,
@@ -4401,7 +4392,7 @@
     "genres": []
   },
   {
-    "id": "490",
+    "id": "489",
     "artist": "Organek",
     "title": "Niemiłość",
     "year": 2019,
@@ -4410,7 +4401,7 @@
     "genres": []
   },
   {
-    "id": "491",
+    "id": "490",
     "artist": "Ronnie Ferrari",
     "title": "Ona By Tak Chciała",
     "year": 2019,
@@ -4419,7 +4410,7 @@
     "genres": []
   },
   {
-    "id": "492",
+    "id": "491",
     "artist": "Cleo",
     "title": "Za krokiem krok",
     "year": 2019,
@@ -4428,7 +4419,7 @@
     "genres": []
   },
   {
-    "id": "493",
+    "id": "492",
     "artist": "Daria Zawiałow",
     "title": "Hej hej!",
     "year": 2019,
@@ -4437,7 +4428,7 @@
     "genres": []
   },
   {
-    "id": "494",
+    "id": "493",
     "artist": "Golec uOrkiestra & Gromee feat. Bedoes",
     "title": "Górą ty",
     "year": 2019,
@@ -4446,7 +4437,7 @@
     "genres": []
   },
   {
-    "id": "495",
+    "id": "494",
     "artist": "Bedoes & Kubi Producent",
     "title": "Chłopaki nie płaczą",
     "year": 2019,
@@ -4455,7 +4446,7 @@
     "genres": []
   },
   {
-    "id": "496",
+    "id": "495",
     "artist": "Tymek feat. Tede & Trill Pem",
     "title": "Rainman",
     "year": 2019,
@@ -4464,7 +4455,7 @@
     "genres": []
   },
   {
-    "id": "497",
+    "id": "496",
     "artist": "Daj To Głośniej",
     "title": "Mama ostrzegała",
     "year": 2019,
@@ -4473,7 +4464,7 @@
     "genres": []
   },
   {
-    "id": "498",
+    "id": "497",
     "artist": "Malik Montana feat. K Koke",
     "title": "Robię Yeah",
     "year": 2019,
@@ -4482,7 +4473,7 @@
     "genres": []
   },
   {
-    "id": "499",
+    "id": "498",
     "artist": "schafter",
     "title": "hot coffee",
     "year": 2019,
@@ -4491,7 +4482,7 @@
     "genres": []
   },
   {
-    "id": "500",
+    "id": "499",
     "artist": "Kali",
     "title": "Chudy chłopak",
     "year": 2019,
@@ -4500,7 +4491,7 @@
     "genres": []
   },
   {
-    "id": "501",
+    "id": "500",
     "artist": "Marcin Sójka",
     "title": "Zaskakuj mnie",
     "year": 2019,
@@ -4509,7 +4500,7 @@
     "genres": []
   },
   {
-    "id": "502",
+    "id": "501",
     "artist": "chillwagon",
     "title": "chillwagon",
     "year": 2019,
@@ -4518,7 +4509,7 @@
     "genres": []
   },
   {
-    "id": "503",
+    "id": "502",
     "artist": "Jan-rapowanie",
     "title": "Wszystko OK",
     "year": 2019,
@@ -4527,7 +4518,7 @@
     "genres": []
   },
   {
-    "id": "504",
+    "id": "503",
     "artist": "Sanah",
     "title": "Szampan",
     "year": 2020,
@@ -4536,7 +4527,7 @@
     "genres": []
   },
   {
-    "id": "505",
+    "id": "504",
     "artist": "Mata",
     "title": "100 dni do matury",
     "year": 2020,
@@ -4545,7 +4536,7 @@
     "genres": []
   },
   {
-    "id": "506",
+    "id": "505",
     "artist": "Krzysztof Zalewski",
     "title": "Annuszka",
     "year": 2020,
@@ -4554,7 +4545,7 @@
     "genres": []
   },
   {
-    "id": "507",
+    "id": "506",
     "artist": "Sanah & Vito Bambino",
     "title": "Ale jazz!",
     "year": 2021,
@@ -4563,7 +4554,7 @@
     "genres": []
   },
   {
-    "id": "508",
+    "id": "507",
     "artist": "Męskie Granie Orkiestra",
     "title": "I Ciebie też, bardzo",
     "year": 2021,
@@ -4572,7 +4563,7 @@
     "genres": []
   },
   {
-    "id": "509",
+    "id": "508",
     "artist": "Sobel",
     "title": "Fiołkowe pole",
     "year": 2021,
@@ -4581,7 +4572,7 @@
     "genres": []
   },
   {
-    "id": "510",
+    "id": "509",
     "artist": "Dawid Kwiatkowski",
     "title": "Bez ciebie",
     "year": 2021,
@@ -4590,7 +4581,7 @@
     "genres": []
   },
   {
-    "id": "511",
+    "id": "510",
     "artist": "Daria Zawiałow & Dawid Podsiadło",
     "title": "Za krótki sen",
     "year": 2021,
@@ -4599,7 +4590,7 @@
     "genres": []
   },
   {
-    "id": "512",
+    "id": "511",
     "artist": "Sanah",
     "title": "Nic dwa razy",
     "year": 2022,
@@ -4608,7 +4599,7 @@
     "genres": []
   },
   {
-    "id": "513",
+    "id": "512",
     "artist": "Dawid Podsiadło",
     "title": "To co masz Ty",
     "year": 2022,
@@ -4617,7 +4608,7 @@
     "genres": []
   },
   {
-    "id": "514",
+    "id": "513",
     "artist": "SB Maffija",
     "title": "Lawenda",
     "year": 2022,
@@ -4626,7 +4617,7 @@
     "genres": []
   },
   {
-    "id": "515",
+    "id": "514",
     "artist": "Agnieszka Chylińska",
     "title": "Kiedyś do ciebie wrócę",
     "year": 2022,
@@ -4635,7 +4626,7 @@
     "genres": []
   },
   {
-    "id": "516",
+    "id": "515",
     "artist": "Sanah & Dawid Podsiadło",
     "title": "Ostatnia nadzieja",
     "year": 2022,
@@ -4644,7 +4635,7 @@
     "genres": []
   },
   {
-    "id": "517",
+    "id": "516",
     "artist": "Pezet",
     "title": "Dom Nad Wodą",
     "year": 2022,
@@ -4653,7 +4644,7 @@
     "genres": []
   },
   {
-    "id": "518",
+    "id": "517",
     "artist": "Doda",
     "title": "Nim zajdzie słońce",
     "year": 2023,
@@ -4662,7 +4653,7 @@
     "genres": []
   },
   {
-    "id": "519",
+    "id": "518",
     "artist": "Mrozu",
     "title": "Złoto",
     "year": 2023,
@@ -4671,7 +4662,7 @@
     "genres": []
   },
   {
-    "id": "520",
+    "id": "519",
     "artist": "Kwiat Jabłoni",
     "title": "Od niechcenia",
     "year": 2023,
@@ -4680,7 +4671,7 @@
     "genres": []
   },
   {
-    "id": "521",
+    "id": "520",
     "artist": "Bambi & Young Leosia",
     "title": "BFF",
     "year": 2024,
@@ -4689,7 +4680,7 @@
     "genres": []
   },
   {
-    "id": "522",
+    "id": "521",
     "artist": "Męskie Granie Orkiestra",
     "title": "Wolne Duchy",
     "year": 2024,
@@ -4698,7 +4689,7 @@
     "genres": []
   },
   {
-    "id": "523",
+    "id": "522",
     "artist": "Sanah",
     "title": "Było, nie było",
     "year": 2024,
@@ -4707,7 +4698,7 @@
     "genres": []
   },
   {
-    "id": "524",
+    "id": "523",
     "artist": "Kubi Producent & Bambi",
     "title": "Woda Księżycowa",
     "year": 2024,
@@ -4716,7 +4707,7 @@
     "genres": []
   },
   {
-    "id": "525",
+    "id": "524",
     "artist": "Gibbs",
     "title": "Drive",
     "year": 2024,
@@ -4725,7 +4716,7 @@
     "genres": []
   },
   {
-    "id": "526",
+    "id": "525",
     "artist": "Mata",
     "title": "Lloret de Mar",
     "year": 2024,
@@ -4734,7 +4725,7 @@
     "genres": []
   },
   {
-    "id": "527",
+    "id": "526",
     "artist": "Kleks & Sobel & sanah",
     "title": "Wynalazek Filipa Golarza",
     "year": 2024,
@@ -4743,7 +4734,7 @@
     "genres": []
   },
   {
-    "id": "528",
+    "id": "527",
     "artist": "Dawid Podsiadło",
     "title": "Pięknie płyniesz",
     "year": 2024,
@@ -4752,7 +4743,7 @@
     "genres": []
   },
   {
-    "id": "529",
+    "id": "528",
     "artist": "MIÜ ft. Zalia",
     "title": "dopóki się nie znüdzisz",
     "year": 2025,
@@ -4761,7 +4752,7 @@
     "genres": []
   },
   {
-    "id": "530",
+    "id": "529",
     "artist": "Mata ft. Skolim & Khaid",
     "title": "KAMIKAZE",
     "year": 2025,
@@ -4770,7 +4761,7 @@
     "genres": []
   },
   {
-    "id": "531",
+    "id": "530",
     "artist": "Kuqe 2115 & francis",
     "title": "taki mały ja",
     "year": 2025,

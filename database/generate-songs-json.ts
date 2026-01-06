@@ -13,8 +13,12 @@ interface CSVRecord {
   title: string;
   year: string;
   youtubeId: string;
-  region: string;
+  origin: string;
+  genres: string;
 }
+
+type Origin = 'PL' | 'INT';
+type Genre = 'pop' | 'rock' | 'hip-hop' | 'disco-polo' | 'folk' | 'jazz' | 'electronic' | 'metal' | 'r&b' | 'alternative';
 
 interface Song {
   id: string;
@@ -22,7 +26,8 @@ interface Song {
   title: string;
   year: number;
   youtubeId: string;
-  region: string;
+  origin: Origin;
+  genres: Genre[];
 }
 
 function parseArgs(): string[] {
@@ -76,10 +81,14 @@ function parseCSVFile(filePath: string): CSVRecord[] {
   const lines = csvContent.split("\n").filter((line) => line.trim());
 
   const headerFields = parseCSVLine(lines[0]);
-  const hasRegionColumn = headerFields.includes("Region");
+  const hasOriginColumn = headerFields.includes("Origin");
+  const hasGenresColumn = headerFields.includes("Genres");
 
-  if (!hasRegionColumn) {
-    console.warn(`  Warning: ${filePath} has no Region column`);
+  if (!hasOriginColumn) {
+    console.warn(`  Warning: ${filePath} has no Origin column`);
+  }
+  if (!hasGenresColumn) {
+    console.warn(`  Warning: ${filePath} has no Genres column`);
   }
 
   return lines.slice(1).map((line) => {
@@ -89,7 +98,8 @@ function parseCSVFile(filePath: string): CSVRecord[] {
       title: fields[1] || "",
       year: fields[2] || "",
       youtubeId: fields[3] || "",
-      region: fields[4] || "",
+      origin: fields[4] || "",
+      genres: fields[5] || "",
     };
   });
 }
@@ -121,14 +131,23 @@ function generateSongsJson(): void {
 
       return hasValidId && hasValidYear;
     })
-    .map((record, index) => ({
-      id: String(index + 1),
-      artist: record.author,
-      title: record.title,
-      year: parseInt(record.year),
-      youtubeId: record.youtubeId,
-      region: record.region,
-    }));
+    .map((record, index) => {
+      const genres: Genre[] = record.genres
+        ? (record.genres.split("|").map(g => g.trim()).filter(Boolean) as Genre[])
+        : [];
+
+      const origin: Origin = (record.origin as Origin) || 'PL';
+
+      return {
+        id: String(index + 1),
+        artist: record.author,
+        title: record.title,
+        year: parseInt(record.year),
+        youtubeId: record.youtubeId,
+        origin,
+        genres,
+      };
+    });
 
   songs.sort((a, b) => a.year - b.year);
 
@@ -154,18 +173,35 @@ function generateSongsJson(): void {
       console.log(`  ${decade}s: ${count} songs`);
     });
 
-  console.log("\n=== Summary by Region ===");
-  const regions = new Map<string, number>();
+  console.log("\n=== Summary by Origin ===");
+  const origins = new Map<string, number>();
   songs.forEach((song) => {
-    const region = song.region || "UNKNOWN";
-    regions.set(region, (regions.get(region) || 0) + 1);
+    origins.set(song.origin, (origins.get(song.origin) || 0) + 1);
   });
 
-  Array.from(regions.entries())
+  Array.from(origins.entries())
     .sort(([a], [b]) => a.localeCompare(b))
-    .forEach(([region, count]) => {
-      console.log(`  ${region}: ${count} songs`);
+    .forEach(([origin, count]) => {
+      console.log(`  ${origin}: ${count} songs`);
     });
+
+  console.log("\n=== Summary by Genres ===");
+  const genreCounts = new Map<string, number>();
+  songs.forEach((song) => {
+    song.genres.forEach((genre) => {
+      genreCounts.set(genre, (genreCounts.get(genre) || 0) + 1);
+    });
+  });
+
+  if (genreCounts.size === 0) {
+    console.log("  (no genres tagged yet)");
+  } else {
+    Array.from(genreCounts.entries())
+      .sort(([, a], [, b]) => b - a)
+      .forEach(([genre, count]) => {
+        console.log(`  ${genre}: ${count} songs`);
+      });
+  }
 
   console.log(`\nTotal: ${songs.length} songs`);
   console.log(`Year range: ${songs[0]?.year || "N/A"} - ${songs[songs.length - 1]?.year || "N/A"}`);

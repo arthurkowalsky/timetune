@@ -1,4 +1,4 @@
-Author,Title,Year,YoutubeId,Region
+Author,Title,Year,YoutubeId,Origin,Genres,Region
 Chór Czejanda,"Na prawo most, na lewo most",1950,iov99B98bcI,PL
 Marta Mirska,Pierwszy siwy włos,1950,0b7FzxuqYjA,PL
 Andrzej Bogucki i Chór Czejanda,"Jak przygoda, to tylko w Warszawie",1950,S9K0xj9DFuc,PL
@@ -157,130 +157,350 @@ Lady Pank,Zawsze tam gdzie ty,1990,fyoCXePXQF0,PL
 Elektryczne Gitary,Włosy,1990,2_fxoL0DjyE,PL
 T.Love,Warszawa,1990,59JGY-K0BeQ,PL
 Kazimiera Utrata,Piosenka o okularnikach,1990,o4FW6OvgYc4,PL
+Maanam,Się ściemnia,1990,_M350-1-I1M,PL
+Kult,45-89,1990,9lKGyDpGZtw,PL
+Lombard,Nasz ostatni taniec,1990,yEHtWG2UZaY,PL
 Dżem,List do M.,1991,KkhHF0qUsKE,PL
 Bajm,Miłość i ja,1991,fdM4bmEynr0,PL
 Wilki,Eroll,1991,MLVoulWIkSY,PL
 Stanisław Soyka,Tolerancja (na miły Bóg),1991,FWZNF4F1r7Y,PL
+Kult,Generał Ferreira (Rząd oficjalny),1991,aJA6PYQ1qyw,PL
+IRA,Mój dom,1991,lHSdL520Ywo,PL
+Kazik,Spalam się,1991,ErxGIj0I_c8,PL
+Lady Pank,Jak igła,1991,xwTRWJBAHmg,PL
+Formacja Nieżywych Schabuff,Hej kochanie,1991,cLUMTrNnTC4,PL
+Ziyo,I Was Born to Be Free,1991,Bn1yfUSZAHg,PL
 Wilki,Son of the Blue Sky,1992,bix1tb6rVeU,PL
 Róże Europy,Jedwab,1992,G_Lsdk88AYM,PL
 IRA,Nadzieja,1992,RglHb09IZVM,PL
 Maanam,Wyjątkowo zimny maj,1992,3Skn4vxU9cA,PL
 Budka Suflera,Twoje radio,1992,vhgVHIw1h_4,PL
+Wilki,Eli lama sabachtani,1992,gOAaBEeUy_I,PL
+T.Love,King,1992,0Fnp5tnZkJg,PL
+Elektryczne Gitary,Jestem z miasta,1992,a_I94dWg0p0,PL
+Elektryczne Gitary,Człowiek z liściem,1992,pt3g8HPwDSc,PL
+Atrakcyjny Kazimierz,Prawdziwa miłość,1992,IyeobhFEnos,PL
+De Mono,Ostatni pocałunek,1992,2o6hfmW1cII,PL
 Hey,Teksański,1993,MISK-DCbNKk,PL
 Bajm,Ta sama chwila,1993,RgunsXL9Lo0,PL
 Edyta Bartosiewicz,Sen,1993,sVAZjaAJufE,PL
 Grzegorz Turnau,Pamięć,1993,sXRcQvqaKHc,PL
 Edyta Bartosiewicz,Koziorożec,1993,PNNRdZBYLpQ,PL
+Hey,Moja i twoja nadzieja,1993,f5hooj3qKM4,PL
+IRA,Wiara,1993,9RJvtwlg5ms,PL
+Kult,Baranek,1993,DqBuIaa2-_s,PL
+Piersi,"O, Hela",1993,TJJr68FbFXM,PL
+De Mono,Znów jesteś ze mną,1993,NBQcZ2DCtWI,PL
+Human,Polski,1993,ViLjJ7LV-AI,PL
+Kazik,Na mojej ulicy,1993,46tcoHWSXZs,PL
 Edyta Górniak,To nie ja,1994,vxMY3sdkGQc,PL
 Varius Manx,Zanim zrozumiesz,1994,DxWKCvpoPYI,PL
 Kasia Kowalska,Jak rzecz,1994,BgoVxG0PDEA,PL
 Justyna Steczkowska,Dziewczyna Szamana,1994,eVapbhUdI34,PL
+Kasia Kowalska,Wyznanie,1994,K5_hrdnzRkI,PL
+Hey,Ja sowa,1994,hs4rh2LqRmI,PL
+Edyta Bartosiewicz,Tatuaż,1994,6jd-azcJh3w,PL
+Varius Manx,Piosenka księżycowa,1994,guJ25FxCwmY,PL
 Formacja Nieżywych Schabuff,Lato,1995,eaHbjnXItXc,PL
 Robert Chojnacki & Piasek,Prawie do nieba,1995,OtEK498hmsg,PL
 Myslovitz,Z twarzą Marilyn Monroe,1995,E3fqn1aBZ5Q,PL
 Robert Chojnacki & Piasek,Budzikom śmierć,1995,4ggVYsZoZiA,PL
 O.N.A.,Drzwi,1995,DurZn_NcPIA,PL
+Varius Manx,Pocałuj noc,1995,Xby1imQDs3E,PL
+Robert Gawliński,O sobie samym,1995,kpTak7flT4A,PL
+Liroy,Scyzoryk,1995,VB3GzmC_9rI,PL
+Myslovitz,Myslovitz,1995,n9jfwp9w4zY,PL
+Kasia Kowalska,A to co mam,1995,aWFtbV4HBBo,PL
+Edyta Bartosiewicz,Szał,1995,UZwgnKfXMAs,PL
 O.N.A.,Kiedy powiem sobie dość,1996,ghh0ttnRdiQ,PL
 Varius Manx,Orła cień,1996,ZVF5x-YzUBY,PL
 Big Cyc,Makumba,1996,EAexp0w3H3c,PL
 Robert Chojnacki & Piasek,Niecierpliwi,1996,laUQy4DVxCA,PL
 Anita Lipnicka,I wszystko się może zdarzyć,1996,3YxOZQqNYY8,PL
+Urszula,Na sen,1996,lSO8lD3e2xU,PL
+Kaliber 44,Plus i minus,1996,7iiANZvz8Tg,PL
+Perfect,Kołysanka dla nieznajomej,1996,hHx7qyFufYc,PL
+Urszula,Konik na biegunach,1996,8sPAIYQiEb4,PL
+Firebirds,Harry,1996,rK3FfvcSGpM,PL
+deSu,Życie cudem jest,1996,3LHBg5rgiI4,PL
 Kayah,Supermenka,1997,JTpos657Am0,PL
 Budka Suflera,Takie tango,1997,_4_p3FM88jA,PL
 Elektryczne Gitary,Kiler,1997,OtA2dxJNHV4,PL
 Górniak & Szcześniak,Dumka na dwa serca,1997,wcXAKhwsl6o,PL
+T.Love,Chłopaki nie płaczą,1997,X0lkrxFuGr8,PL
+Kayah,Na językach,1997,dJbaMhTQx9k,PL
+Natalia Kukulska,"Im więcej ciebie, tym mniej",1997,tO54FnRTm3w,PL
+Kazik,12 groszy,1997,UAaW1BUSPP8,PL
+Anna Maria Jopek,Ale jestem,1997,KpBMYjnCLRU,PL
+Elektryczne Gitary,Co ty tutaj robisz,1997,ZkdvU7nPM5Q,PL
+Edyta Bartosiewicz,Jenny,1997,-jaSOrMCbu4,PL
+Robert Janson & Kuba Badach,Małe szczęścia,1997,seNmmkB3PYI,PL
+Norbi,Kobiety są gorące,1997,siBvdJlKn5U,PL
+Maryla Rodowicz,Łatwopalni,1997,_Fu2NySfFlE,PL
 Kult,Gdy nie ma dzieci,1998,I8NcELiIMHg,PL
 Beata Kozidrak,Siedzę i myślę,1998,aHdePA4SUAE,PL
 Urszula,Anioł wie...,1998,WRgIh_owHtE,PL
 Republika,Mamona,1998,-R7qqsT6-T8,PL
 Maanam,Miłość od pierwszego spojrzenia,1998,Sp_U6oDdsNk,PL
+Reni Jusis,Zakręcona,1998,2NNs3pOf22E,PL
+Kult,Komu bije dzwon,1998,lxKwFWJrkvE,PL
+Lady Pank,Znowu pada deszcz,1998,qyoFl1ux2z8,PL
+Artur Gadowski,Ona jest ze snu,1998,qOP8QiRmPsA,PL
+T.Love,Stokrotka,1998,amKWPGHxfgo,PL
+Sixteen,To takie proste,1998,CaRY2ewoOUc,PL
+K.A.S.A.,Każdy lubi boogie,1998,oGdHcUBxPBA,PL
+Anita Lipnicka,Historia jednej miłości,1998,GDweEiG4S5M,PL
+Edyta Górniak,Anything,1998,TUwe75txZpU,PL
 Kayah & Bregović,"Śpij kochanie, śpij",1999,8-02C_4VA44,PL
 Myslovitz,Długość dźwięku samotności,1999,A30Fx3wnfwE,PL
 Golec uOrkiestra,Lornetka,1999,8FH0RgEIZ1E,PL
 Czarno-Czarni,Nogi,1999,gruPiZJHdVg,PL
 Paweł Kukiz & Piersi,Całuj mnie,1999,bfPZn2FUuG0,PL
+Kayah & Goran Bregović,Prawy do lewego,1999,cKF2GjRAUtE,PL
+Ich Troje,A wszystko to... (bo ciebie kocham),1999,869mcrMEysE,PL
+Gabriel Fleszar,Kroplą deszczu,1999,G4FluV0hFgc,PL
+Kasia Kowalska,Chcę zatrzymać ten czas,1999,dAY9wboJa4Y,PL
+Hey,4 pory,1999,al95pgKhubU,PL
+Stachursky,Typ niepokorny,1999,CWMsGYOTnuU,PL
+Justyna Steczkowska,Na koniec świata,1999,Rgr84BASi04,PL
+Renata Przemyk,Nie spaceruję nago,1999,oK4Ve-gCgJY,PL
+Mietek Szcześniak,Przytul mnie mocno,1999,1iuCzYbN0ng,PL
 Brathanki,Czerwone korale,2000,SG8B4DT6ud8,PL
 Golec uOrkiestra,Ściernisko,2000,yrJ_lzYGJdg,PL
 Kayah,Jaka ja Kayah,2000,oquEGEO89dM,PL
 Budka Suflera,Bal wszystkich świętych,2000,kE87oI5rdew,PL
 Yugoton & Kazik,Malcziki,2000,iNxDj-i-yi8,PL
+Myslovitz,Chłopcy,2000,hZg2fm-3vDI,PL
+Golec uOrkiestra,Słodycze,2000,FWgDQILC91c,PL
+Bajm,Szklanka wody,2000,Qa_0cuyy_A0,PL
+Kasia Kowalska,Bezpowrotnie,2000,RYYHPg6Hvpo,PL
+Kazik Staszewski,Cztery pokoje,2000,nNhrzGLdEVE,PL
+Grammatik,Nie ma czasu pomyśleć,2000,8aBbVJrPQ90,PL
 Ich Troje,Powiedz,2001,j0U4lrfzv6U,PL
 Ryszard Rynkowski,Dziewczyny lubią brąz,2001,zoxlS08IKXQ,PL
 Kasia Kowalska,Starczy słów,2001,tAw2vGpvs-w,PL
 T.Love,Nie nie nie,2001,6_oPjyy6pMg,PL
 Peja/Slums Attack,Na legalu,2001,GkIUC90mQbE,PL
+Paktofonika,Jestem Bogiem,2001,u3HeJFr01T0,PL
+Peja/Slums Attack,Głucha noc,2001,FqHVgPQh9oU,PL
+Smolik,50 tysięcy 881,2001,RXrIPCyV8x0,PL
+Hey,"Cisza, ja i czas",2001,n6HNquM4ZpM,PL
+Lenny Valentino,Uwaga! Jedzie tramwaj,2001,egXxDSyRfTs,PL
+Sylwia Wiśniewska,12 łez,2001,1QNP-joIvG0,PL
 Wilki,Baśka,2002,SCIvOsw0O-M,PL
 Łzy,Agnieszka już dawno...,2002,nK4zxU8XDtE,PL
 Myslovitz,Acidland,2002,M7gjKUeb-lE,PL
 Wilki,Urke,2002,8YKAHgwLEMg,PL
 Pezet,Seniorita,2002,CG56BG4-Kao,PL
+Sumptuastic,Kołysanka,2002,IphuXppT-5Y,PL
+Blue Café,You May Be In Love,2002,cIzdLQxs7OE,PL
+WWO,W wyjątkowych okolicznościach,2002,7ox2Dn4MEl0,PL
+Cool Kids of Death,Uważaj,2002,XUdbXgfBM5E,PL
+Kult,Brooklyńska Rada Żydów,2002,F8laMm-YyLY,PL
+Virgin,To Ty,2002,hBOA0jJIgL0,PL
+O.S.T.R.,Kochana Polsko,2002,lpRlEFZ85fY,PL
+Anna Maria Jopek,Szepty i łzy,2002,WALPS8cY8Gg,PL
 Jeden Osiem L,Jak zapomnieć,2003,qvv7t8Y0iWk,PL
 Ewelina Flinta,Żałuję,2003,otSGO77yLv8,PL
 Sistars,Synu,2003,xFfUsywOzvQ,PL
 Sistars,Sutra,2003,kQ9ORnAWqfw,PL
 Lipnicka & Porter,Bones of Love,2003,IfmrAqV0n5Q,PL
+Ich Troje,Keine Grenzen / Żadnych granic,2003,tYGt9xT7mng,PL
+Reni Jusis,Kiedyś cię znajdę,2003,CM07dzkhwxI,PL
+Raz Dwa Trzy,Trudno nie wierzyć w nic,2003,QkDJ9u4GOhU,PL
+Tede,Zeszyt rymów,2003,fjwHezturt0,PL
+Blue Café,"Do nieba, do piekła",2003,wQvUOCbjsiY,PL
+Kayah,Testosteron,2003,x9QKRpALphM,PL
 Krzysztof Krawczyk & Edyta Bartosiewicz,Trudno tak,2004,kpUWMl0gLEQ,PL
 Monika Brodka,Ten,2004,EGa7CMTtLbY,PL
 Coma,Spadam,2004,JmKLT59cTIc,PL
 Sidney Polak,Otwieram wino,2004,b16vSZMJ13k,PL
 Happysad,Zanim pójdę,2004,W1jIuwYGIrU,PL
+Virgin,Dżaga,2004,_7TtBGE9MiE,PL
+Wilki,Bohema,2004,2NzeEQCJ4aM,PL
+Lady Pank,Stacja Warszawa,2004,4DZGoeCJB_Y,PL
+Kombii,Sen się spełni,2004,J07NbbY1li4,PL
+Ania Dąbrowska,Tego chciałam,2004,2nprtClCpWY,PL
+Brodka,Dziewczyna mojego chłopaka,2004,pd_pBQrobcY,PL
 Virgin,Znak pokoju,2005,Ie2YHBKFXI4,PL
 Mezo & Kasia Wilk,Ważne,2005,N2yRRgFUhxA,PL
 Szymon Wydra & Carpe Diem,Życie jak poemat,2005,4uYFY7jdQGs,PL
 Krzysztof Kiljański,Prócz ciebie nic,2005,xEGrNHGXPdY,PL
 Lech Janerka,Rower,2005,R0jpIzJy2VY,PL
+Beata Kozidrak,Teraz płynę,2005,Sq-udBd9iy0,PL
+Maria Peszek,Moje miasto,2005,OXf86aqtRHs,PL
+Hey,Mimo wszystko,2005,VpXQ9JCHzY0,PL
+Coma,Leszek Żukowski,2005,B8yz5la6PG4,PL
+WWO,Mogę wszystko,2005,BAPTKwucpwk,PL
+Hurt,Załoga G,2005,8tpY2X2wWyQ,PL
 Gosia Andrzejewicz,Pozwól żyć,2006,vZjAam9UOqE,PL
 Blog 27,Uh La La La,2006,4R0uAhqmPyA,PL
 Maria Peszek,Miasto mania,2006,OXf86aqtRHs,PL
 Stępniak-Wilk & Turnau,Bombonierka,2006,0uuYicF9eUg,PL
 Brodka,Miał być ślub,2006,ty3n87vbVe4,PL
+Piotr Rubik,Psalm dla Ciebie,2006,9-zQr3ATnM8,PL
+Mezo feat. Kasia Wilk,Sacrum,2006,iLafKDM-E9U,PL
+Andrzej Piaseczny,...i jeszcze,2006,QTR9IBkdFDk,PL
+Myslovitz,W deszczu maleńkich żółtych kwiatów,2006,3-kApwni9jo,PL
+Sistars,Skąd Ty to masz,2006,kQ9ORnAWqfw,PL
+The Car Is On Fire,Can't Cook (Who Cares?),2006,8RdLHbqb3D4,PL
 Feel,A gdy jest już ciemno,2007,7vKpv-z1ut4,PL
 Ewa Farna,Cicho,2007,IvsqIr0_cCQ,PL
 Ania Dąbrowska,Trudno mi się przyznać,2007,TeXNBKzBISg,PL
 Strachy na Lachy,Piła tango,2007,nFBBD1Eim1E,PL
 Goya,Tylko mnie kochaj,2007,oBQiZMoBlhI,PL
+Feel,No pokaż na co cię stać,2007,C4IP98NDyO0,PL
+Feel,W odpowiedzi na twój list,2007,v6BYuccEvZ0,PL
+Ewa Farna,Lalalaj,2007,IntnqhlU3KU,PL
+IRA,Londyn 08:15,2007,ZJLJylGgFBY,PL
+Ewa Farna,Tam gdzie nie ma dróg,2007,JVuYG-qz0k0,PL
+Natalia Kukulska,Sexi Flexi,2007,JNd3qk9-HkE,PL
+Patrycja Markowska,Świat się pomylił,2007,S06eUO2eiGM,PL
+Muchy,Miasto doznań,2007,YWgup2Ktnuw,PL
+Kasia Cerekwicka,Siano,2007,LuLGTvpARmY,PL
+Afromental,I've Got What You Need,2007,36LkPUS3VGs,PL
 Feel,Jak anioła głos,2008,_d-bEM88LlM,PL
 Sylwia Grzeszczak & Liber,Nowe szanse,2008,lQLqDiGBomY,PL
 Czesław Śpiewa,Maszynka do świerkania,2008,qHqTTSjWBvg,PL
 Flinta & Zagrobelny,Nie kłam że kochasz mnie,2008,rvAwap4asps,PL
 Ania Dąbrowska,Nigdy więcej nie tańcz ze mną,2008,7IfKnSVPbS8,PL
+Doda,Nie Daj Sie,2008,r6y1INYz7HE,PL
+Edyta Górniak,To nie tak jak myślisz,2008,zN8T6E2XJhk,PL
+Pectus,"To, co chciałbym Ci dać",2008,c3V2jo6TRGA,PL
+Lao Che,Hydropiekłowstąpienie,2008,GbvjscxglfU,PL
+Coma,Zero osiem wojna,2008,n07YSW3i74A,PL
+Maria Peszek,Rosół,2008,fqhhBSXMUzE,PL
+Video feat. Ania Wyszkoni,Soft,2008,gzaFiX7R_Fw,PL
+Sokół feat. Pono,W aucie,2008,b6Gdg9hhOas,PL
 Agnieszka Chylińska,Nie mogę Cię zapomnieć,2009,yOZ7Q_ixifY,PL
 Mrozu,Miliony monet,2009,NHTTdk58z7g,PL
 Afromental,Radio Song,2009,BzUet_Ge3DI,PL
 Hey,Faza delta,2009,3YtjooV-9OQ,PL
 T.Love,Gnijący świat,2009,4VeIWEN18P0,PL
+Andrzej Piaseczny,"Chodź, przytul, przebacz",2009,kbkJq3NTWp4,PL
+Muniek Staszczyk,Tina,2009,4lBivJifdx4,PL
+Pectus,Życie na dystans,2009,O9xfHpjsSuY,PL
+Kasia Kowalska,Maskarada,2009,3BChwYV64b8,PL
+IRA,To co na zawsze,2009,nVoyzz9p_DY,PL
+Volver,Chcę,2009,Z462uCetAHA,PL
+Łukasz Zagrobelny,Jeszcze o nas,2009,n-qnpAj7sKQ,PL
+Afro Kolektyw,Przepraszam,2009,SbNTM6op1NE,PL
 Brodka,Granda,2010,D1CjdBPmIzg,PL
 Acid Drinkers,Love Shack,2010,-6s9OQIvD80,PL
 Ewa Farna,Ewakuacja,2010,crDL5Gcn0Rs,PL
+Afromental,Rock&Rollin' Love,2010,WYQb77VIZ0Q,PL
+GrubSon,Na szczycie,2010,6BnT_wkuMBA,PL
+Andrzej Piaseczny,Śniadanie do łóżka,2010,gVUN-D09jls,PL
+Prosto Mixtape,I żeby było normalnie,2010,jSzX6_wiXkI,PL
 Zakopower,Boso,2011,csSefjNCXn0,PL
 Sylwia Grzeszczak,Małe rzeczy,2011,87Q5PEjmrCU,PL
 Luxtorpeda,Autystyczny,2011,-hqbkY1-iLQ,PL
+Enej,Radio Hello,2011,4KoBxFSUseg,PL
+Sylwia Grzeszczak,Sen o przyszłości,2011,2ZQS7INPDP4,PL
+Ten Typ Mes,"Głupia, spięta dresiara",2011,--p4DGIrj8w,PL
 Enej,Skrzydlate ręce,2012,n3Hv-1MWz2Y,PL
 Donatan & Borixon,Nie lubimy robić,2012,WvKzyuL7ubQ,PL
 Bednarek,Cisza,2012,_VJuiF9Kvx4,PL
+Brodka,Varsovie,2012,m5CE1yPDxAs,PL
+LemOn,Napraw,2012,9GQqF8Q7wQY,PL
+Jula,Za każdym razem,2012,uxo4D3K4988,PL
+Ewelina Lisowska,W stronę słońca,2012,UmUoiCUIT8E,PL
+Enej,Tak smakuje życie,2012,QUaJF5faWBU,PL
+Pezet,Ostatni track,2012,zLOkImXNrXQ,PL
+Sobota,Przepraszam,2012,mLSyOuT4SGc,PL
+Gruby Mielzky,"Silny jak nigdy, wkurwiony jak zwykle",2012,R5_PFWs5h8o,PL
+Brodka,Dancing Shoes,2012,TrxmhbNKCXM,PL
 Dawid Podsiadło,Trójkąty i kwadraty,2013,Wg4A_d9F7xk,PL
 Piersi,Bałkanica,2013,Pqaxe5o2Apo,PL
 Donatan & Cleo,My Słowianie,2013,rr1DSgjhRqE,PL
+Mrozu,Jak nie my to kto,2013,FG1c7NeofXU,PL
+Margaret,Thank You Very Much,2013,9mJUaOE6_ew,PL
+Sylwia Grzeszczak,Księżniczka,2013,r_ADtyQqTSc,PL
+Dawid Podsiadło,Nieznajomy,2013,g4UDeQTjMYk,PL
+Honorata Skarbek,Nie powiem jak,2013,M93nWdvlSrc,PL
+LemOn,Nice,2013,WderG_DxTvo,PL
+Paluch,Bez strachu,2013,4pu-lKgm-dg,PL
+donGURALesko,Mogliśmy wszystko,2013,SIJKTcrAMQc,PL
 Artur Rojek,Syreny,2014,Zcf9Wu3sy3s,PL
 Mrozu,Nic do stracenia,2014,ZuHakRzq5yE,PL
 Natalia Przybysz,Miód,2014,9Nyff9wfd3U,PL
+Grzegorz Hyży & Tabb,Na chwilę,2014,SCEaOF_I8oE,PL
+Bednarek,Chwile jak te,2014,QSS_PZw_iek,PL
+Ten Typ Mes,My,2014,W3Poz3ezIt0,PL
 Sarsa,Naucz mnie,2015,05Qdu0jkihU,PL
 Zbigniew Wodecki & Mitch & Mitch,Rzuć to wszystko co złe,2015,3qukBkM9kos,PL
 Natalia Nykiel,Bądź duży,2015,H0h_EhCnDpI,PL
+Taco Hemingway,6 zer,2015,TKO8zmF98nI,PL
+Kamil Bednarek,Euforia,2015,djw7lCZMif0,PL
+Enej,Kamień z napisem Love,2015,vBj5P71Mci4,PL
+Sarsa,Zapomnij mi,2015,BDQszUTEcZU,PL
+KęKę,Wyjebane,2015,zwS9DxTn5Hs,PL
+Quebonafide,Voodoo,2015,zBvv4o0ctn0,PL
+Gang Albanii,Albański raj,2015,fWs8HwDtddQ,PL
+Dwa Sławy,A może by tak?,2015,1GJyEvvLobQ,PL
 Dawid Podsiadło,W dobrą stronę,2016,5iB2C8D5ezE,PL
 Sylwia Grzeszczak,Tamta dziewczyna,2016,M5UqFj-uk78,PL
 Organek,Mississippi w ogniu,2016,brCzJ7ygLY8,PL
 Agnieszka Chylińska,Królowa łez,2016,IrH_7r53EKY,PL
+Taco Hemingway,Deszcz na betonie,2016,PCQs3vSJ6xA,PL
+Sitek,Chcemy być wyżej,2016,Sh012WwYOKo,PL
+Krzysztof Zalewski,Miłość miłość,2016,IEiRPInizgQ,PL
+PRO8L3M,Ritz-Carlton,2016,bZ5Ncy7TqWA,PL
+Bednarek,List,2016,RonC11o3oM4,PL
+O.S.T.R.,Spowiedź,2016,kHJGrGc6TdI,PL
+Paluch,Szaman,2016,x7BtclKr5Jg,PL
+Natalia Nykiel,Error,2016,i4Y6-oB5DrQ,PL
+Monika Lewczuk,Ty i Ja,2016,LfRmQZXH0ZU,PL
+KęKę,Nigdy dość,2016,GyJrjh8vIFw,PL
+Belmondo,Scrooge Ebenezer,2016,mDDKana4G48,PL
+Rasmentalism feat. Taco Hemingway,Stu,2016,BdPXdgQ6lbY,PL
+Popek x Matheo,Wodospady,2016,rrKSc6lHeC4,PL
 Kortez,Dobry moment,2017,Ymkz0JE3AMY,PL
 Ania Dąbrowska,Z Tobą nie umiem wygrać,2017,BkQJ0YtVEzM,PL
 Quebonafide ft. ReTo,Half Dead,2017,NGr_496TmCg,PL
+Quebonafide feat. Klaudia Szafrańska,Candy,2017,TJNmpHn6Vvk,PL
+Grzegorz Hyży,O pani!,2017,3ssoWhPH2eI,PL
+Lanberry,Gotowi na wszystko,2017,rGZaFEyOy5s,PL
+Kayah & Idan Raichel,Po co,2017,IELSg25_6Rg,PL
+Otsochodzi feat. Taco Hemingway,Nowy Kolor,2017,ZSPdldxe8W0,PL
+Mrozu,Duch,2017,QHzql1QTCjU,PL
 Paweł Domagała,Weź nie pytaj,2018,iAc6Qr_sAXw,PL
 Dawid Podsiadło,Małomiasteczkowy,2018,X2XWBcd5jn0,PL
 Męskie Granie Orkiestra,Początek,2018,QRxH-II0OsA,PL
 Taconafide,Tamagotchi,2018,odWxQ5eEnfE,PL
+Tymek feat. Big Scythe,Język ciała,2018,pImrABc4s58,PL
+White 2115,California,2018,1WBFpkEBnN4,PL
+Kortez,Hej wy,2018,3BnfiJnHXvk,PL
+Margaret,Byle jak,2018,TRBCWWtysFU,PL
+C-Bool,Wonderland,2018,garZAbhqOWI,PL
+Cleo,Łowcy gwiazd,2018,xBB1GLK1xPc,PL
+Szpaku,UFO,2018,JI1_vCYQSJQ,PL
+Roksana Węgiel,Anyone I Want To Be,2018,y_SYZrqvKhE,PL
+Bedoes & Kubi Producent,Eldorado,2018,Od6Y--1jrKY,PL
+Taco Hemingway,Fiji,2018,lk70ee3UMAc,PL
+Gromee feat. Lukas Meijer,Light Me Up,2018,hQLmYaSCDYw,PL
+Filip Lato,Halo Ziemia,2018,hQomIymLDSQ,PL
+Rogal DDL,Turborower,2018,YgJmQC938ps,PL
 Dawid Podsiadło,Trofea,2019,MWzb9nXsx3s,PL
 Viki Gabor,Superhero,2019,okG6yNKaS1g,PL
 Król,Te smaki i zapachy,2019,eCbY5Rkrs4Y,PL
+Taco Hemingway,"Pocztówka z WWA, Lato '19",2019,G7tkvqB0eKA,PL
+The Dumplings,Bez Słów,2019,N-vYyTuzIOo,PL
+Męskie Granie Orkiestra,Sobie i Wam,2019,mzAb3m0a2Sk,PL
+Organek,Niemiłość,2019,rOgYWmi-Gco,PL
+Ronnie Ferrari,Ona By Tak Chciała,2019,LCcIx6bCcr8,PL
+Cleo,Za krokiem krok,2019,_FXw7mHINVw,PL
+Daria Zawiałow,Hej hej!,2019,_xR2BymJj6U,PL
+Golec uOrkiestra & Gromee feat. Bedoes,Górą ty,2019,fPFp97kyDoE,PL
+Bedoes & Kubi Producent,Chłopaki nie płaczą,2019,wakbJpklQtI,PL
+Tymek feat. Tede & Trill Pem,Rainman,2019,VFDAwVB6u54,PL
+Daj To Głośniej,Mama ostrzegała,2019,D0o6GsYoMak,PL
+Malik Montana feat. K Koke,Robię Yeah,2019,u9sz3_Avmlo,PL
+schafter,hot coffee,2019,T0NZsM6XA88,PL
+Kali,Chudy chłopak,2019,hWWCsKUqKCs,PL
+Marcin Sójka,Zaskakuj mnie,2019,xAbAAsyvfns,PL
+chillwagon,chillwagon,2019,zCO-P29ttj0,PL
+Jan-rapowanie,Wszystko OK,2019,GUYPbvQbRcU,PL
 Sanah,Szampan,2020,S7sN-cFhwuk,PL
 Mata,100 dni do matury,2020,Nujx2QXmYyU,PL
 Krzysztof Zalewski,Annuszka,2020,kH-b7BdfbYA,PL
@@ -294,6 +514,7 @@ Dawid Podsiadło,To co masz Ty,2022,zfL1I7WpEdk,PL
 SB Maffija,Lawenda,2022,Qsqp34TbskQ,PL
 Agnieszka Chylińska,Kiedyś do ciebie wrócę,2022,7csU7tLYm5s,PL
 Sanah & Dawid Podsiadło,Ostatnia nadzieja,2022,5Iwy_xeJi7c,PL
+Pezet,Dom Nad Wodą,2022,vAxJ6J-bk0U,PL
 Doda,Nim zajdzie słońce,2023,uNVBBXa6CB8,PL
 Mrozu,Złoto,2023,mr4_R3qrKEc,PL
 Kwiat Jabłoni,Od niechcenia,2023,HMIbm_l0nMg,PL
@@ -302,3 +523,9 @@ Męskie Granie Orkiestra,Wolne Duchy,2024,v587yNSTPTo,PL
 Sanah,"Było, nie było",2024,fil7T3YMaqs,PL
 Kubi Producent & Bambi,Woda Księżycowa,2024,syLU0zUREf4,PL
 Gibbs,Drive,2024,y7FBy4eIxig,PL
+Mata,Lloret de Mar,2024,6mB-EH98PiA,PL
+Kleks & Sobel & sanah,Wynalazek Filipa Golarza,2024,ekdeHlPuwJU,PL
+Dawid Podsiadło,Pięknie płyniesz,2024,RGSwRQejzVY,PL
+MIÜ ft. Zalia,dopóki się nie znüdzisz,2025,jn6ZnlgfnO4,PL
+Mata ft. Skolim & Khaid,KAMIKAZE,2025,gBtbTl8r18U,PL
+Kuqe 2115 & francis,taki mały ja,2025,4IwqHYcYEQA,PL

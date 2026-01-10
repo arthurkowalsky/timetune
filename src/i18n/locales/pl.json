@@ -120,7 +120,8 @@
     "bonusQuestion": "Zgadliście wykonawcę lub tytuł?",
     "bonusButton": "+1 BONUS",
     "bonusAwarded": "Bonus +1 przyznany!",
-    "nextTurn": "Następna tura →"
+    "nextTurn": "Następna tura →",
+    "reportIssue": "Zgłoś błąd"
   },
   "end": {
     "winner": "WYGRANA!",

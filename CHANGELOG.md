@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Voice voting - record title/artist guess, other players vote (online mode)
 
 ### Changed
+- Polish song database expanded to 639 songs (1950-2025)
 - Simplified player timeline viewing
 
 ## [0.5.1] - 2026-01-06

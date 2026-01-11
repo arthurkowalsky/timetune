@@ -83,10 +83,10 @@ Songs are stored in `public/data/songs.json`:
 
 ### Adding Songs
 
-1. Create/edit CSV in `database/` with columns: `Author,Title,Year,YoutubeId,Origin,Genres,Region`
+1. Create/edit CSV in `database/` with columns: `Author,Title,Year,YoutubeId,Origin,Genres`
 2. Fetch YouTube IDs:
    ```bash
-   npm run db:fetch-youtube -- --region=PL database/polish.csv
+   npm run db:fetch-youtube -- --origin=PL database/polish.csv
    ```
 3. Generate JSON:
    ```bash

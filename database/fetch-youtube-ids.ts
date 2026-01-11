@@ -11,7 +11,7 @@ interface SongRecord {
   title: string;
   year: string;
   youtubeId: string;
-  region: string;
+  origin: string;
 }
 
 interface ProcessingResult {
@@ -21,32 +21,32 @@ interface ProcessingResult {
 }
 
 interface CliArgs {
-  region: string;
+  origin: string;
   csvPath: string;
 }
 
 function parseArgs(): CliArgs {
   const args = process.argv.slice(2);
-  let region = "";
+  let origin = "";
   let csvPath = "";
 
   for (const arg of args) {
-    if (arg.startsWith("--region=")) {
-      region = arg.split("=")[1];
+    if (arg.startsWith("--origin=")) {
+      origin = arg.split("=")[1];
     } else if (!arg.startsWith("-")) {
       csvPath = arg;
     }
   }
 
-  if (!region) {
-    console.error("Error: --region=XX is required (e.g., --region=PL)");
-    console.error("Usage: npm run db:fetch-youtube -- --region=PL database/polish.csv");
+  if (!origin) {
+    console.error("Error: --origin=XX is required (e.g., --origin=PL)");
+    console.error("Usage: npm run db:fetch-youtube -- --origin=PL database/polish.csv");
     process.exit(1);
   }
 
   if (!csvPath) {
     console.error("Error: CSV file path is required");
-    console.error("Usage: npm run db:fetch-youtube -- --region=PL database/polish.csv");
+    console.error("Usage: npm run db:fetch-youtube -- --origin=PL database/polish.csv");
     process.exit(1);
   }
 
@@ -55,7 +55,7 @@ function parseArgs(): CliArgs {
     process.exit(1);
   }
 
-  return { region: region.toUpperCase(), csvPath };
+  return { origin: origin.toUpperCase(), csvPath };
 }
 
 function parseCSVLine(line: string): string[] {
@@ -97,7 +97,7 @@ function recordToCSVLine(record: SongRecord): string {
     escapeCSVField(record.title),
     record.year,
     record.youtubeId,
-    record.region,
+    record.origin,
   ].join(",");
 }
 
@@ -128,22 +128,22 @@ function sleep(ms: number): Promise<void> {
 }
 
 async function processSongs(): Promise<void> {
-  const { region, csvPath } = parseArgs();
+  const { origin, csvPath } = parseArgs();
 
   console.log(`Reading CSV file: ${csvPath}`);
-  console.log(`Region: ${region}`);
+  console.log(`Origin: ${origin}`);
 
   const csvContent = readFileSync(csvPath, "utf-8");
   const lines = csvContent.split("\n").filter((line) => line.trim());
 
   const headerFields = parseCSVLine(lines[0]);
-  const hasRegionColumn = headerFields.includes("Region");
+  const hasOriginColumn = headerFields.includes("Origin");
 
-  if (!hasRegionColumn) {
-    console.log("Adding Region column to CSV...");
+  if (!hasOriginColumn) {
+    console.log("Adding Origin column to CSV...");
   }
 
-  const header = hasRegionColumn ? lines[0] : lines[0] + ",Region";
+  const header = hasOriginColumn ? lines[0] : lines[0] + ",Origin";
 
   const records: SongRecord[] = lines.slice(1).map((line) => {
     const fields = parseCSVLine(line);
@@ -152,7 +152,7 @@ async function processSongs(): Promise<void> {
       title: fields[1] || "",
       year: fields[2] || "",
       youtubeId: fields[3] || "",
-      region: fields[4] || region,
+      origin: fields[4] || origin,
     };
   });
 
@@ -168,8 +168,8 @@ async function processSongs(): Promise<void> {
     const record = records[i];
     const progress = `[${i + 1}/${total}]`;
 
-    if (!record.region) {
-      record.region = region;
+    if (!record.origin) {
+      record.origin = origin;
     }
 
     if (record.youtubeId) {

@@ -7,21 +7,21 @@ export function getPlayerScore(player: { timeline: unknown[]; bonusPoints: numbe
 
 export function generateGitHubIssueUrl(song: { id: string; title: string; artist: string; year: number; youtubeId: string }): string {
   const repo = 'arthurkowalsky/timetune';
-  const title = `Błędny YouTube ID: ${song.title} - ${song.artist}`;
+  const title = `Wrong YouTube video: ${song.title} - ${song.artist}`;
 
   const youtubeUrl = `https://www.youtube.com/watch?v=${song.youtubeId}`;
 
   const body = `**Song ID:** ${song.id}
-**Tytuł:** ${song.title}
-**Wykonawca:** ${song.artist}
-**Rok:** ${song.year}
-**Obecny YouTube ID:** ${song.youtubeId}
-**Link do wideo:** ${youtubeUrl}
+**Title:** ${song.title}
+**Artist:** ${song.artist}
+**Year:** ${song.year}
+**Current YouTube ID:** ${song.youtubeId}
+**Video link:** ${youtubeUrl}
 
 ---
 
-**Opis problemu:**
-<!-- Opisz co jest nie tak z tym utworem (np. błędny utwór, błędny wykonawca, wideo niedostępne) -->
+**Problem description:**
+<!-- Describe what's wrong with this track (e.g., wrong song, wrong artist, video unavailable) -->
 `;
 
   const params = new URLSearchParams({

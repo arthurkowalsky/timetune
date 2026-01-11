@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { YouTubePlayer } from '../YouTubePlayer';
 import { useTranslations, pluralize } from '../../i18n';
+import { generateGitHubIssueUrl } from '../../utils/gameUtils';
 import { VotePanel } from './VotePanel';
 import type { Song } from '../../types';
 import type { VotingState } from '../../multiplayer/types';
@@ -108,6 +109,18 @@ export function RevealContent({
         </div>
 
         <YouTubePlayer song={currentSong} showYear={true} />
+
+        <div className="mt-3 text-center">
+          <a
+            href={generateGitHubIssueUrl(currentSong)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-300 transition-colors"
+          >
+            <span>🚩</span>
+            <span>{t('reveal.reportIssue')}</span>
+          </a>
+        </div>
 
         <div className="mt-6 text-center">
           <p className="text-gray-400">

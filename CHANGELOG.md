@@ -8,11 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.6.0] - 2026-01-11
 ### Added
 - Voice voting - record title/artist guess, other players vote (online mode)
+- Track issue reporting - report wrong YouTube videos directly to GitHub
 
 ### Changed
 - Simplified player timeline viewing
 
-## [0.5.1] - 2026-01-06
+## [0.5.1] - 2026-01-06 
 ### Fixed
 - Invitation links now work on GitHub Pages (changed from path to query params)
 

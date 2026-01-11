@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Track issue reporting - report wrong YouTube videos directly to GitHub
 
 ### Changed
+- Polish song database expanded to 639 songs (1950-2025)
 - Simplified player timeline viewing
 
 ## [0.5.1] - 2026-01-06 

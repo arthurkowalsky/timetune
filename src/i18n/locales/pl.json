@@ -156,6 +156,36 @@
     "timeout1min": "1 minuta",
     "timeout2min": "2 minuty",
     "timeout5min": "5 minut",
-    "timeout10min": "10 minut"
+    "timeout10min": "10 minut",
+    "voiceVoting": "Bonus za tytuł",
+    "voiceVotingDescription": "Nagraj odpowiedź, inni oceniają"
+  },
+  "voting": {
+    "recordYourGuess": "Powiedz tytuł lub wykonawcę!",
+    "startRecording": "Nagrywaj",
+    "stopRecording": "Zatrzymaj",
+    "recording": "Nagrywanie...",
+    "processing": "Przetwarzanie...",
+    "skipRecording": "Pomiń",
+    "claimBonus": "Odbierz bonus",
+    "notSupported": "Nagrywanie głosu nie jest wspierane",
+    "microphoneDenied": "Brak dostępu do mikrofonu",
+    "waitingForVotes": "Czekamy na głosy...",
+    "waitingForRecording": "{{name}} nagrywa odpowiedź...",
+    "playerSaid": "{{name}} mówi:",
+    "didTheyGuess": "Czy zgadł?",
+    "correct": "Tak",
+    "incorrect": "Nie",
+    "voted": "Głos oddany!",
+    "yes": "tak",
+    "no": "nie",
+    "recordPrompt": "Nagraj wykonawcę lub tytuł piosenki",
+    "recordBeforeReveal": "Nagraj przed zobaczeniem odpowiedzi",
+    "wantBonus": "Chcesz bonus?",
+    "sayTitleOrArtist": "Powiedz tytuł lub wykonawcę",
+    "holdToRecord": "Przytrzymaj",
+    "releaseToSend": "Puść aby wysłać",
+    "dragToCancel": "Przeciągnij poza = anuluj",
+    "skipBonus": "Pomiń bonus"
   }
 }

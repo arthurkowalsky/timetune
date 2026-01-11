@@ -129,6 +129,7 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
                     targetScore: message.payload.targetScore,
                     turnTimeout: message.payload.turnTimeout,
                     autoPlayOnDraw: message.payload.autoPlayOnDraw,
+                    voiceVotingEnabled: message.payload.voiceVotingEnabled,
                   },
                 },
               });
@@ -152,11 +153,13 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
               set({
                 roomState: {
                   ...state.roomState,
+                  recordingDeadline: null,
                   gameState: {
                     ...state.roomState.gameState,
                     currentSong: message.payload.song,
                     phase: 'placing',
                     previewPosition: null,
+                    musicPlaying: false,
                   },
                 },
               });
@@ -209,6 +212,7 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
               set({
                 roomState: {
                   ...state.roomState,
+                  recordingDeadline: null,
                   gameState: {
                     ...state.roomState.gameState,
                     currentPlayerIndex: message.payload.currentPlayerIndex,
@@ -217,6 +221,7 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
                     lastGuessCorrect: null,
                     turnStartedAt: message.payload.turnStartedAt,
                     previewPosition: null,
+                    musicPlaying: false,
                   },
                 },
               });
@@ -348,6 +353,76 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
                   gameState: {
                     ...state.roomState.gameState,
                     turnStartedAt: message.payload.turnStartedAt,
+                    musicPlaying: true,
+                  },
+                },
+              });
+            }
+            break;
+
+          case 'RECORDING_PHASE_STARTED':
+            if (state.roomState) {
+              set({
+                roomState: {
+                  ...state.roomState,
+                  recordingDeadline: null,
+                  gameState: {
+                    ...state.roomState.gameState,
+                    phase: 'recording',
+                  },
+                },
+              });
+            }
+            break;
+
+          case 'GUESS_RECORDING':
+            if (state.roomState) {
+              set({
+                roomState: {
+                  ...state.roomState,
+                  gameState: {
+                    ...state.roomState.gameState,
+                    votingState: {
+                      audioData: message.payload.audioData,
+                      deadline: message.payload.votingDeadline,
+                      votes: { yes: 0, no: 0 },
+                      votedPlayerIds: [],
+                      recordingPlayerId: message.payload.playerId,
+                    },
+                  },
+                },
+              });
+            }
+            break;
+
+          case 'VOTE_UPDATE':
+            if (state.roomState?.gameState.votingState) {
+              set({
+                roomState: {
+                  ...state.roomState,
+                  gameState: {
+                    ...state.roomState.gameState,
+                    votingState: {
+                      ...state.roomState.gameState.votingState,
+                      votes: {
+                        yes: message.payload.yesCount,
+                        no: message.payload.noCount,
+                      },
+                    },
+                  },
+                },
+              });
+            }
+            break;
+
+          case 'VOTING_RESULT':
+            if (state.roomState) {
+              set({
+                roomState: {
+                  ...state.roomState,
+                  gameState: {
+                    ...state.roomState.gameState,
+                    votingState: null,
                   },
                 },
               });

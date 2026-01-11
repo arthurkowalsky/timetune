@@ -3,6 +3,7 @@ import { useGameStore } from './store';
 import { loadSongs } from './songs';
 import { StartScreen } from './components/StartScreen';
 import { GameScreen } from './components/GameScreen';
+import { RecordingScreen } from './components/RecordingScreen';
 import { RevealScreen } from './components/RevealScreen';
 import { EndScreen } from './components/EndScreen';
 import { useTranslations } from './i18n';
@@ -17,6 +18,8 @@ import {
   DisconnectOverlay,
 } from './components/multiplayer';
 import { LocalGameProvider, OnlineGameProvider } from './contexts';
+import { FloatingFullscreenButton } from './components/shared/FloatingFullscreenButton';
+import { useFullscreen } from './hooks/useFullscreen';
 
 type OnlineStep = 'menu' | 'create' | 'join' | 'lobby';
 type LocalStep = 'mode-select' | 'setup';
@@ -26,6 +29,7 @@ function App() {
   const { mode, setMode, roomState, roomCode, myPlayerId, reset: resetMultiplayer } = useMultiplayerStore();
   const { t } = useTranslations();
   const { reconnect } = usePartySocket();
+  const { isFullscreen, toggleFullscreen } = useFullscreen();
   const [isLoading, setIsLoading] = useState(true);
   const [songCount, setSongCount] = useState(0);
   const [onlineStep, setOnlineStep] = useState<OnlineStep>('menu');
@@ -95,27 +99,34 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-bg flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4 animate-pulse">🎵</div>
-          <p className="text-white text-xl">{t('app.loading')}</p>
+      <>
+        <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+        <div className="min-h-screen bg-bg flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-6xl mb-4 animate-pulse">🎵</div>
+            <p className="text-white text-xl">{t('app.loading')}</p>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (songCount === 0) {
     return (
-      <div className="min-h-screen bg-bg flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">❌</div>
-          <p className="text-white text-xl">{t('app.loadError')}</p>
+      <>
+        <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+        <div className="min-h-screen bg-bg flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-6xl mb-4">❌</div>
+            <p className="text-white text-xl">{t('app.loadError')}</p>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   const handleSelectLocal = () => {
+    resetGame();
     setMode('local');
     resetMultiplayer();
     setLocalStep('setup');
@@ -150,58 +161,72 @@ function App() {
   if (mode === 'local') {
     if (localStep === 'mode-select') {
       return (
-        <ModeSelector
-          onSelectLocal={handleSelectLocal}
-          onSelectOnline={handleSelectOnline}
-        />
+        <>
+          <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+          <ModeSelector
+            onSelectLocal={handleSelectLocal}
+            onSelectOnline={handleSelectOnline}
+          />
+        </>
       );
     }
 
     if (phase === 'setup') {
-      return <StartScreen onBack={handleBackToModeSelect} />;
+      return (
+        <>
+          <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+          <StartScreen onBack={handleBackToModeSelect} />
+        </>
+      );
     }
 
     return (
-      <LocalGameProvider onExit={handleBackToModeSelect}>
-        {(phase === 'playing' || phase === 'placing') && <GameScreen />}
-        {phase === 'reveal' && <RevealScreen />}
-        {phase === 'finished' && <EndScreen />}
-      </LocalGameProvider>
+      <>
+        <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+        <LocalGameProvider onExit={handleBackToModeSelect}>
+          {(phase === 'playing' || phase === 'placing') && <GameScreen />}
+          {phase === 'reveal' && <RevealScreen />}
+          {phase === 'finished' && <EndScreen />}
+        </LocalGameProvider>
+      </>
     );
   }
 
   if (mode === 'online') {
     if (isReconnecting || reconnectFailed) {
       return (
-        <div className="min-h-screen bg-bg flex items-center justify-center p-4">
-          <div className="text-center max-w-md">
-            {isReconnecting ? (
-              <>
-                <div className="text-6xl mb-4 animate-pulse">🔄</div>
-                <p className="text-white text-xl mb-2">{t('connection.reconnecting')}</p>
-                <p className="text-gray-400 text-sm">
-                  {t('online.roomCode')}: <span className="font-mono text-primary">{roomCode}</span>
-                </p>
-              </>
-            ) : (
-              <>
-                <div className="text-6xl mb-4">😔</div>
-                <p className="text-white text-xl mb-2">{t('error.reconnectFailed')}</p>
-                <p className="text-gray-400 text-sm mb-6">{t('error.roomMayNotExist')}</p>
-                <button
-                  onClick={() => {
-                    resetMultiplayer();
-                    reconnectAttemptedRef.current = false;
-                    setReconnectFailed(false);
-                  }}
-                  className="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-xl font-bold transition-colors"
-                >
-                  {t('common.back')}
-                </button>
-              </>
-            )}
+        <>
+          <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+          <div className="min-h-screen bg-bg flex items-center justify-center p-4">
+            <div className="text-center max-w-md">
+              {isReconnecting ? (
+                <>
+                  <div className="text-6xl mb-4 animate-pulse">🔄</div>
+                  <p className="text-white text-xl mb-2">{t('connection.reconnecting')}</p>
+                  <p className="text-gray-400 text-sm">
+                    {t('online.roomCode')}: <span className="font-mono text-primary">{roomCode}</span>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="text-6xl mb-4">😔</div>
+                  <p className="text-white text-xl mb-2">{t('error.reconnectFailed')}</p>
+                  <p className="text-gray-400 text-sm mb-6">{t('error.roomMayNotExist')}</p>
+                  <button
+                    onClick={() => {
+                      resetMultiplayer();
+                      reconnectAttemptedRef.current = false;
+                      setReconnectFailed(false);
+                    }}
+                    className="w-full bg-primary hover:bg-primary-dark text-white py-3 rounded-xl font-bold transition-colors"
+                  >
+                    {t('common.back')}
+                  </button>
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        </>
       );
     }
 
@@ -210,18 +235,23 @@ function App() {
 
     if (roomPhase === 'playing' || roomPhase === 'finished') {
       return (
-        <OnlineGameProvider onLeave={handleLeaveRoom}>
-          <DisconnectOverlay />
-          {(onlinePhase === 'playing' || onlinePhase === 'placing') && <GameScreen />}
-          {onlinePhase === 'reveal' && <RevealScreen />}
-          {onlinePhase === 'finished' && <EndScreen />}
-        </OnlineGameProvider>
+        <>
+          <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+          <OnlineGameProvider onLeave={handleLeaveRoom}>
+            <DisconnectOverlay />
+            {(onlinePhase === 'playing' || onlinePhase === 'placing') && <GameScreen />}
+            {onlinePhase === 'recording' && <RecordingScreen />}
+            {onlinePhase === 'reveal' && <RevealScreen />}
+            {onlinePhase === 'finished' && <EndScreen />}
+          </OnlineGameProvider>
+        </>
       );
     }
 
     if (roomState && roomPhase === 'waiting') {
       return (
         <>
+          <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
           <ConnectionStatus />
           <DisconnectOverlay />
           <Lobby onLeave={handleLeaveRoom} />
@@ -232,15 +262,19 @@ function App() {
     switch (onlineStep) {
       case 'menu':
         return (
-          <OnlineMenu
-            onCreateRoom={() => setOnlineStep('create')}
-            onJoinRoom={() => setOnlineStep('join')}
-            onBack={handleBackToModeSelect}
-          />
+          <>
+            <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+            <OnlineMenu
+              onCreateRoom={() => setOnlineStep('create')}
+              onJoinRoom={() => setOnlineStep('join')}
+              onBack={handleBackToModeSelect}
+            />
+          </>
         );
       case 'create':
         return (
           <>
+            <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
             <ConnectionStatus />
             <CreateRoomForm
               onBack={handleBackToOnlineMenu}
@@ -251,6 +285,7 @@ function App() {
       case 'join':
         return (
           <>
+            <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
             <ConnectionStatus />
             <JoinRoomForm
               onBack={handleBackToOnlineMenu}
@@ -262,6 +297,7 @@ function App() {
       case 'lobby':
         return (
           <>
+            <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
             <ConnectionStatus />
             <DisconnectOverlay />
             <Lobby onLeave={handleLeaveRoom} />
@@ -269,20 +305,26 @@ function App() {
         );
       default:
         return (
-          <OnlineMenu
-            onCreateRoom={() => setOnlineStep('create')}
-            onJoinRoom={() => setOnlineStep('join')}
-            onBack={handleBackToModeSelect}
-          />
+          <>
+            <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+            <OnlineMenu
+              onCreateRoom={() => setOnlineStep('create')}
+              onJoinRoom={() => setOnlineStep('join')}
+              onBack={handleBackToModeSelect}
+            />
+          </>
         );
     }
   }
 
   return (
-    <ModeSelector
-      onSelectLocal={handleSelectLocal}
-      onSelectOnline={handleSelectOnline}
-    />
+    <>
+      <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />
+      <ModeSelector
+        onSelectLocal={handleSelectLocal}
+        onSelectOnline={handleSelectOnline}
+      />
+    </>
   );
 }
 

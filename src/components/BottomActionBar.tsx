@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import type { Song } from '../types';
 import { useTranslations } from '../i18n';
 
@@ -11,6 +11,7 @@ interface BottomActionBarProps {
   onConfirmPlacement: () => void;
   onMusicStarted: () => void;
   isSpectator?: boolean;
+  musicStartedByGuesser?: boolean;
 }
 
 export function BottomActionBar({
@@ -22,23 +23,27 @@ export function BottomActionBar({
   onConfirmPlacement,
   onMusicStarted,
   isSpectator = false,
+  musicStartedByGuesser = false,
 }: BottomActionBarProps) {
   const { t } = useTranslations();
   const [isPlaying, setIsPlaying] = useState(false);
   const [showIframe, setShowIframe] = useState(false);
+  const prevPhaseRef = useRef(phase);
 
-  useEffect(() => {
-    if (phase === 'playing') {
-      setIsPlaying(false);
-      setShowIframe(false);
-    }
-  }, [phase]);
+  // Reset state when entering 'playing' phase
+  // eslint-disable-next-line react-hooks/rules-of-hooks -- intentional ref access for phase tracking
+  if (phase === 'playing' && prevPhaseRef.current !== 'playing') {
+    setIsPlaying(false);
+    setShowIframe(false);
+  }
+  // eslint-disable-next-line react-hooks/rules-of-hooks -- intentional ref update for phase tracking
+  prevPhaseRef.current = phase;
 
-  const handlePlay = () => {
+  const handlePlay = useCallback(() => {
     setIsPlaying(true);
     setShowIframe(true);
     onMusicStarted();
-  };
+  }, [onMusicStarted]);
 
   useEffect(() => {
     if (phase === 'placing' && autoPlayEnabled && currentSong && !isPlaying) {
@@ -47,8 +52,13 @@ export function BottomActionBar({
       }, 150);
       return () => clearTimeout(timer);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, autoPlayEnabled, currentSong, isPlaying]);
+  }, [phase, autoPlayEnabled, currentSong, isPlaying, handlePlay]);
+
+  useEffect(() => {
+    if (isSpectator && musicStartedByGuesser && currentSong && !isPlaying) {
+      handlePlay();
+    }
+  }, [isSpectator, musicStartedByGuesser, currentSong, isPlaying, handlePlay]);
 
   const embedUrl = currentSong
     ? `https://www.youtube.com/embed/${currentSong.youtubeId}?autoplay=1&controls=1&modestbranding=1&rel=0`

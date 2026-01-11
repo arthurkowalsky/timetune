@@ -1,4 +1,5 @@
 import type { Song, GamePhase } from '../types';
+import type { VotingState } from '../multiplayer/types';
 
 export interface UnifiedPlayer {
   id: string;
@@ -28,6 +29,10 @@ export interface UnifiedGameState {
   turnStartedAt: number | null;
   turnTimeout: number | null;
   autoPlayOnDraw: boolean;
+  voiceVotingEnabled: boolean;
+  votingState: VotingState | null;
+  musicPlaying: boolean;
+  recordingDeadline: number | null;
   isOnline: boolean;
 }
 
@@ -39,6 +44,9 @@ export interface UnifiedGameActions {
   skipTurn: () => void;
   sendPositionPreview: (position: number | null) => void;
   notifyMusicStarted: () => void;
+  submitRecording: (audioData: string) => void;
+  skipRecording: () => void;
+  submitVote: (correct: boolean) => void;
   onExit: () => void;
 }
 

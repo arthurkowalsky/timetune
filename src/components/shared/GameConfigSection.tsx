@@ -4,20 +4,26 @@ interface GameConfigSectionProps {
   targetScore: number;
   turnTimeout: number | null;
   autoPlayOnDraw: boolean;
+  voiceVotingEnabled?: boolean;
   onTargetScoreChange?: (value: number) => void;
   onTurnTimeoutChange?: (value: number | null) => void;
   onAutoPlayChange?: (value: boolean) => void;
+  onVoiceVotingChange?: (value: boolean) => void;
   isEditable?: boolean;
+  showVoiceVoting?: boolean;
 }
 
 export function GameConfigSection({
   targetScore,
   turnTimeout,
   autoPlayOnDraw,
+  voiceVotingEnabled = false,
   onTargetScoreChange,
   onTurnTimeoutChange,
   onAutoPlayChange,
+  onVoiceVotingChange,
   isEditable = true,
+  showVoiceVoting = false,
 }: GameConfigSectionProps) {
   const { t } = useTranslations();
 
@@ -46,6 +52,12 @@ export function GameConfigSection({
             <span className="text-gray-400">{t('settings.autoPlay')}</span>
             <span className="text-white">{autoPlayOnDraw ? '✓' : '✗'}</span>
           </div>
+          {showVoiceVoting && (
+            <div className="flex items-center justify-between">
+              <span className="text-gray-400">{t('settings.voiceVoting')}</span>
+              <span className="text-white">{voiceVotingEnabled ? '✓' : '✗'}</span>
+            </div>
+          )}
         </div>
       </div>
     );
@@ -108,6 +120,30 @@ export function GameConfigSection({
           />
         </button>
       </label>
+
+      {showVoiceVoting && (
+        <label className="flex items-center justify-between cursor-pointer mt-4">
+          <div>
+            <span className="text-white">{t('settings.voiceVoting')}</span>
+            <p className="text-gray-500 text-sm">{t('settings.voiceVotingDescription')}</p>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={voiceVotingEnabled}
+            onClick={() => onVoiceVotingChange?.(!voiceVotingEnabled)}
+            className={`relative inline-flex h-7 w-12 shrink-0 items-center rounded-full transition-colors ${
+              voiceVotingEnabled ? 'bg-primary' : 'bg-surface-light'
+            }`}
+          >
+            <span
+              className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                voiceVotingEnabled ? 'translate-x-6' : 'translate-x-1'
+              }`}
+            />
+          </button>
+        </label>
+      )}
     </div>
   );
 }

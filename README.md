@@ -20,6 +20,7 @@ A music timeline guessing game. Listen to songs, guess the release year, and bui
 - Song filtering by origin (Polish/International), genres, and year range
 - Configurable turn timer and target score
 - Auto-play mode — skip manual play button
+- Voice voting for bonus points (online multiplayer)
 
 **Experience**
 - PWA — install as mobile app from browser

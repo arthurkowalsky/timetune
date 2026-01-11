@@ -48,6 +48,10 @@ export function OnlineGameProvider({ children, onLeave }: OnlineGameProviderProp
     turnStartedAt: gameState?.turnStartedAt ?? null,
     turnTimeout: gameState?.turnTimeout ?? null,
     autoPlayOnDraw: gameState?.autoPlayOnDraw ?? false,
+    voiceVotingEnabled: gameState?.voiceVotingEnabled ?? false,
+    votingState: gameState?.votingState ?? null,
+    musicPlaying: gameState?.musicPlaying ?? false,
+    recordingDeadline: roomState?.recordingDeadline ?? null,
     isOnline: true,
     currentPlayer,
     myPlayer,
@@ -77,6 +81,19 @@ export function OnlineGameProvider({ children, onLeave }: OnlineGameProviderProp
       if (isMyTurn) {
         send({ type: 'MUSIC_STARTED' });
       }
+    },
+    submitRecording: (audioData: string) => {
+      if (isMyTurn) {
+        send({ type: 'SUBMIT_GUESS_RECORDING', payload: { audioData } });
+      }
+    },
+    skipRecording: () => {
+      if (isMyTurn) {
+        send({ type: 'SKIP_RECORDING' });
+      }
+    },
+    submitVote: (correct: boolean) => {
+      send({ type: 'SUBMIT_VOTE', payload: { correct } });
     },
     onExit: handleExit,
     exitConfirmConfig: {

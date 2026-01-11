@@ -27,6 +27,15 @@ export interface RoomState {
   gameState: OnlineGameState;
   version: number;
   lastUpdated: number;
+  recordingDeadline: number | null;
+}
+
+export interface VotingState {
+  audioData: string;
+  deadline: number;
+  votes: { yes: number; no: number };
+  votedPlayerIds: string[];
+  recordingPlayerId: string;
 }
 
 export interface OnlineGameState {
@@ -41,6 +50,9 @@ export interface OnlineGameState {
   turnTimeout: number | null;
   previewPosition: number | null;
   autoPlayOnDraw: boolean;
+  voiceVotingEnabled: boolean;
+  votingState: VotingState | null;
+  musicPlaying: boolean;
 }
 
 export interface CreateRoomMessage {
@@ -87,6 +99,7 @@ export interface UpdateSettingsMessage {
     deck?: Song[];
     turnTimeout?: number | null;
     autoPlayOnDraw?: boolean;
+    voiceVotingEnabled?: boolean;
   };
 }
 
@@ -138,6 +151,24 @@ export interface MusicStartedMessage {
   type: 'MUSIC_STARTED';
 }
 
+export interface SubmitGuessRecordingMessage {
+  type: 'SUBMIT_GUESS_RECORDING';
+  payload: {
+    audioData: string;
+  };
+}
+
+export interface SkipRecordingMessage {
+  type: 'SKIP_RECORDING';
+}
+
+export interface SubmitVoteMessage {
+  type: 'SUBMIT_VOTE';
+  payload: {
+    correct: boolean;
+  };
+}
+
 export type ClientMessage =
   | CreateRoomMessage
   | JoinRoomMessage
@@ -154,7 +185,10 @@ export type ClientMessage =
   | RequestSyncMessage
   | ReconnectMessage
   | PositionPreviewMessage
-  | MusicStartedMessage;
+  | MusicStartedMessage
+  | SubmitGuessRecordingMessage
+  | SkipRecordingMessage
+  | SubmitVoteMessage;
 
 export interface RoomCreatedEvent {
   type: 'ROOM_CREATED';
@@ -203,6 +237,7 @@ export interface SettingsUpdatedEvent {
     maxPlayers: number;
     turnTimeout: number | null;
     autoPlayOnDraw: boolean;
+    voiceVotingEnabled: boolean;
   };
 }
 
@@ -325,6 +360,44 @@ export interface PositionPreviewEvent {
   };
 }
 
+export interface RecordingPhaseStartedEvent {
+  type: 'RECORDING_PHASE_STARTED';
+  payload: {
+    playerId: string;
+    playerName: string;
+    deadline: number;
+  };
+}
+
+export interface GuessRecordingEvent {
+  type: 'GUESS_RECORDING';
+  payload: {
+    playerId: string;
+    playerName: string;
+    audioData: string;
+    votingDeadline: number;
+  };
+}
+
+export interface VoteUpdateEvent {
+  type: 'VOTE_UPDATE';
+  payload: {
+    yesCount: number;
+    noCount: number;
+    totalVoters: number;
+  };
+}
+
+export interface VotingResultEvent {
+  type: 'VOTING_RESULT';
+  payload: {
+    playerId: string;
+    bonusAwarded: boolean;
+    finalVotes: { yes: number; no: number };
+    reason: 'majority_yes' | 'majority_no' | 'tie_favor_player' | 'timeout' | 'skipped';
+  };
+}
+
 export type ServerMessage =
   | RoomCreatedEvent
   | RoomJoinedEvent
@@ -345,7 +418,11 @@ export type ServerMessage =
   | HostChangedEvent
   | TurnSkippedEvent
   | TurnTimerStartedEvent
-  | PositionPreviewEvent;
+  | PositionPreviewEvent
+  | RecordingPhaseStartedEvent
+  | GuessRecordingEvent
+  | VoteUpdateEvent
+  | VotingResultEvent;
 
 export type ErrorCode =
   | 'ROOM_NOT_FOUND'

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { YouTubePlayer } from '../YouTubePlayer';
 import { useTranslations, pluralize } from '../../i18n';
+import { VotePanel } from './VotePanel';
 import type { Song } from '../../types';
+import type { VotingState } from '../../multiplayer/types';
 
 interface RevealContentProps {
   currentSong: Song;
@@ -10,8 +12,13 @@ interface RevealContentProps {
   cardCount: number;
   bonusPoints: number;
   isMyTurn?: boolean;
+  isOnline?: boolean;
+  voiceVotingEnabled?: boolean;
+  votingState?: VotingState | null;
+  myPlayerId?: string | null;
   onClaimBonus: () => void;
   onNextTurn: () => void;
+  onVote?: (correct: boolean) => void;
 }
 
 export function RevealContent({
@@ -21,17 +28,27 @@ export function RevealContent({
   cardCount,
   bonusPoints,
   isMyTurn = true,
+  isOnline = false,
+  voiceVotingEnabled = false,
+  votingState = null,
+  myPlayerId = null,
   onClaimBonus,
   onNextTurn,
+  onVote,
 }: RevealContentProps) {
   const { t } = useTranslations();
   const [bonusClaimed, setBonusClaimed] = useState(false);
   const [lastSongId, setLastSongId] = useState(currentSong?.id);
+  const [hasVoted, setHasVoted] = useState(false);
 
   if (currentSong?.id !== lastSongId) {
     setLastSongId(currentSong?.id);
     setBonusClaimed(false);
+    setHasVoted(false);
   }
+
+  const showVotePanel = isOnline && votingState && !isMyTurn && votingState.recordingPlayerId !== myPlayerId;
+  const showStandardBonus = lastGuessCorrect && isMyTurn && !bonusClaimed && !(isOnline && voiceVotingEnabled);
 
   useEffect(() => {
     if ('vibrate' in navigator) {
@@ -50,6 +67,11 @@ export function RevealContent({
     if ('vibrate' in navigator) {
       navigator.vibrate([50, 30, 100]);
     }
+  };
+
+  const handleVote = (correct: boolean) => {
+    setHasVoted(true);
+    onVote?.(correct);
   };
 
   const cardWord = pluralize(
@@ -102,7 +124,7 @@ export function RevealContent({
           </p>
         </div>
 
-        {isMyTurn && lastGuessCorrect && !bonusClaimed && (
+        {showStandardBonus && (
           <div className="mt-6 bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-2 border-amber-500 rounded-xl p-4">
             <p className="text-amber-300 text-center mb-3 text-sm">
               {t('reveal.bonusQuestion')}
@@ -116,6 +138,19 @@ export function RevealContent({
             >
               {t('reveal.bonusButton')}
             </button>
+          </div>
+        )}
+
+        {showVotePanel && votingState && (
+          <div className="mt-6">
+            <VotePanel
+              audioData={votingState.audioData}
+              playerName={playerName}
+              votingDeadline={votingState.deadline}
+              currentVotes={votingState.votes}
+              hasVoted={hasVoted}
+              onVote={handleVote}
+            />
           </div>
         )}
 

@@ -29,6 +29,14 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
+interface PendingPlacement {
+  playerId: string;
+  position: number;
+  isCorrect: boolean;
+  song: Song;
+  updatedTimeline: Song[];
+}
+
 export default class TimeTuneRoom implements Party.Server {
   constructor(readonly room: Party.Room) {}
 
@@ -38,6 +46,8 @@ export default class TimeTuneRoom implements Party.Server {
   turnTimeoutId: ReturnType<typeof setTimeout> | null = null;
   disconnectTimeouts: Map<string, ReturnType<typeof setTimeout>> = new Map();
   pendingDeck: Song[] | null = null;
+  pendingPlacement: PendingPlacement | null = null;
+  recordingTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   async onStart() {
     const stored = await this.room.storage.get<RoomState>('state');
@@ -138,6 +148,15 @@ export default class TimeTuneRoom implements Party.Server {
       case 'MUSIC_STARTED':
         await this.handleMusicStarted(sender);
         break;
+      case 'SUBMIT_GUESS_RECORDING':
+        await this.handleSubmitRecording(sender, msg.payload);
+        break;
+      case 'SKIP_RECORDING':
+        await this.handleSkipRecording(sender);
+        break;
+      case 'SUBMIT_VOTE':
+        await this.handleSubmitVote(sender, msg.payload);
+        break;
     }
   }
 
@@ -169,9 +188,12 @@ export default class TimeTuneRoom implements Party.Server {
       lastGuessCorrect: null,
       targetScore: 10,
       turnStartedAt: null,
-      turnTimeout: 300,
+      turnTimeout: null,
       previewPosition: null,
       autoPlayOnDraw: false,
+      voiceVotingEnabled: true,
+      votingState: null,
+      musicPlaying: false,
     };
 
     this.roomState = {
@@ -185,6 +207,7 @@ export default class TimeTuneRoom implements Party.Server {
       gameState,
       version: 1,
       lastUpdated: Date.now(),
+      recordingDeadline: null,
     };
 
     this.connections.set(conn.id, { playerId, lastHeartbeat: Date.now() });
@@ -510,7 +533,7 @@ export default class TimeTuneRoom implements Party.Server {
 
   private async handleUpdateSettings(
     conn: Party.Connection,
-    payload: { targetScore?: number; maxPlayers?: number; deck?: Song[]; turnTimeout?: number | null; autoPlayOnDraw?: boolean }
+    payload: { targetScore?: number; maxPlayers?: number; deck?: Song[]; turnTimeout?: number | null; autoPlayOnDraw?: boolean; voiceVotingEnabled?: boolean }
   ) {
     if (!this.roomState) return;
 
@@ -534,11 +557,14 @@ export default class TimeTuneRoom implements Party.Server {
     if (payload.autoPlayOnDraw !== undefined) {
       this.roomState.gameState.autoPlayOnDraw = payload.autoPlayOnDraw;
     }
+    if (payload.voiceVotingEnabled !== undefined) {
+      this.roomState.gameState.voiceVotingEnabled = payload.voiceVotingEnabled;
+    }
 
     this.roomState.version++;
     this.roomState.lastUpdated = Date.now();
 
-    if (payload.targetScore !== undefined || payload.maxPlayers !== undefined || payload.turnTimeout !== undefined || payload.autoPlayOnDraw !== undefined) {
+    if (payload.targetScore !== undefined || payload.maxPlayers !== undefined || payload.turnTimeout !== undefined || payload.autoPlayOnDraw !== undefined || payload.voiceVotingEnabled !== undefined) {
       this.broadcast({
         type: 'SETTINGS_UPDATED',
         payload: {
@@ -546,6 +572,7 @@ export default class TimeTuneRoom implements Party.Server {
           maxPlayers: this.roomState.maxPlayers,
           turnTimeout: this.roomState.gameState.turnTimeout,
           autoPlayOnDraw: this.roomState.gameState.autoPlayOnDraw,
+          voiceVotingEnabled: this.roomState.gameState.voiceVotingEnabled,
         },
       });
     }
@@ -605,7 +632,7 @@ export default class TimeTuneRoom implements Party.Server {
     if (!this.roomState) return;
 
     const connectionInfo = this.connections.get(conn.id);
-    const { currentPlayerIndex, currentSong, players } =
+    const { currentPlayerIndex, currentSong, players, voiceVotingEnabled } =
       this.roomState.gameState;
     const currentPlayer = players[currentPlayerIndex];
 
@@ -638,25 +665,111 @@ export default class TimeTuneRoom implements Party.Server {
       };
     }
 
-    this.roomState.gameState.lastGuessCorrect = isCorrect;
-    this.roomState.gameState.phase = 'reveal';
-    this.roomState.gameState.previewPosition = null;
-    this.roomState.version++;
-    this.roomState.lastUpdated = Date.now();
-
     this.clearTurnTimeout();
 
-    this.broadcast({
-      type: 'SONG_PLACED',
-      payload: {
+    if (voiceVotingEnabled) {
+      this.pendingPlacement = {
         playerId: currentPlayer.id,
         position: payload.position,
         isCorrect,
         song: currentSong,
         updatedTimeline,
+      };
+
+      this.roomState.recordingDeadline = null;
+      this.roomState.gameState.phase = 'recording';
+      this.roomState.gameState.previewPosition = null;
+      this.roomState.version++;
+      this.roomState.lastUpdated = Date.now();
+
+      this.broadcast({
+        type: 'RECORDING_PHASE_STARTED',
+        payload: {
+          playerId: currentPlayer.id,
+          playerName: currentPlayer.name,
+        },
+      });
+    } else {
+      this.roomState.gameState.lastGuessCorrect = isCorrect;
+      this.roomState.gameState.phase = 'reveal';
+      this.roomState.gameState.previewPosition = null;
+      this.roomState.version++;
+      this.roomState.lastUpdated = Date.now();
+
+      this.broadcast({
+        type: 'SONG_PLACED',
+        payload: {
+          playerId: currentPlayer.id,
+          position: payload.position,
+          isCorrect,
+          song: currentSong,
+          updatedTimeline,
+        },
+      });
+    }
+
+    await this.persistState();
+  }
+
+  private async handleRecordingTimeout() {
+    if (!this.roomState || !this.pendingPlacement) return;
+
+    this.recordingTimeoutId = null;
+    await this.revealPlacement(null);
+  }
+
+  private async revealPlacement(audioData: string | null) {
+    if (!this.roomState || !this.pendingPlacement) return;
+
+    const { playerId, position, isCorrect, song, updatedTimeline } = this.pendingPlacement;
+    const currentPlayer = this.roomState.gameState.players.find(p => p.id === playerId);
+
+    if (!currentPlayer) return;
+
+    this.roomState.gameState.lastGuessCorrect = isCorrect;
+    this.roomState.gameState.phase = 'reveal';
+    this.roomState.recordingDeadline = null;
+    this.roomState.version++;
+    this.roomState.lastUpdated = Date.now();
+
+    this.broadcast({
+      type: 'SONG_PLACED',
+      payload: {
+        playerId,
+        position,
+        isCorrect,
+        song,
+        updatedTimeline,
       },
     });
 
+    if (audioData && isCorrect) {
+      const deadline = Date.now() + 10000;
+
+      this.roomState.gameState.votingState = {
+        audioData,
+        deadline,
+        votes: { yes: 0, no: 0 },
+        votedPlayerIds: [],
+        recordingPlayerId: playerId,
+      };
+
+      this.broadcast({
+        type: 'GUESS_RECORDING',
+        payload: {
+          playerId,
+          playerName: currentPlayer.name,
+          audioData,
+          votingDeadline: deadline,
+        },
+      });
+
+      this.votingTimeoutId = setTimeout(() => {
+        this.resolveVoting();
+      }, 10000);
+    }
+
+    this.pendingPlacement = null;
     await this.persistState();
   }
 
@@ -798,6 +911,7 @@ export default class TimeTuneRoom implements Party.Server {
     if (this.roomState.gameState.phase !== 'placing') return;
 
     this.roomState.gameState.turnStartedAt = Date.now();
+    this.roomState.gameState.musicPlaying = true;
 
     this.broadcast({
       type: 'TURN_TIMER_STARTED',
@@ -963,6 +1077,178 @@ export default class TimeTuneRoom implements Party.Server {
       clearTimeout(this.turnTimeoutId);
       this.turnTimeoutId = null;
     }
+  }
+
+  votingTimeoutId: ReturnType<typeof setTimeout> | null = null;
+
+  private async handleSubmitRecording(
+    conn: Party.Connection,
+    payload: { audioData: string }
+  ) {
+    if (!this.roomState) return;
+
+    const connectionInfo = this.connections.get(conn.id);
+    const currentPlayer = this.roomState.gameState.players[this.roomState.gameState.currentPlayerIndex];
+
+    if (connectionInfo?.playerId !== currentPlayer.id) {
+      this.sendError(conn, 'NOT_YOUR_TURN', 'Not your turn');
+      return;
+    }
+
+    if (this.roomState.gameState.phase !== 'recording' || !this.pendingPlacement) {
+      this.sendError(conn, 'INVALID_ACTION', 'Cannot submit recording now');
+      return;
+    }
+
+    if (this.recordingTimeoutId) {
+      clearTimeout(this.recordingTimeoutId);
+      this.recordingTimeoutId = null;
+    }
+
+    await this.revealPlacement(payload.audioData);
+  }
+
+  private async handleSkipRecording(conn: Party.Connection) {
+    if (!this.roomState) return;
+
+    const connectionInfo = this.connections.get(conn.id);
+    const currentPlayer = this.roomState.gameState.players[this.roomState.gameState.currentPlayerIndex];
+
+    if (connectionInfo?.playerId !== currentPlayer.id) {
+      this.sendError(conn, 'NOT_YOUR_TURN', 'Not your turn');
+      return;
+    }
+
+    if (this.roomState.gameState.phase !== 'recording' || !this.pendingPlacement) {
+      this.sendError(conn, 'INVALID_ACTION', 'Cannot skip recording now');
+      return;
+    }
+
+    if (this.recordingTimeoutId) {
+      clearTimeout(this.recordingTimeoutId);
+      this.recordingTimeoutId = null;
+    }
+
+    await this.revealPlacement(null);
+  }
+
+  private async handleSubmitVote(
+    conn: Party.Connection,
+    payload: { correct: boolean }
+  ) {
+    if (!this.roomState) return;
+
+    const votingState = this.roomState.gameState.votingState;
+    if (!votingState) {
+      this.sendError(conn, 'INVALID_ACTION', 'No active voting');
+      return;
+    }
+
+    const connectionInfo = this.connections.get(conn.id);
+    if (!connectionInfo?.playerId) return;
+
+    if (connectionInfo.playerId === votingState.recordingPlayerId) {
+      this.sendError(conn, 'INVALID_ACTION', 'Cannot vote on your own guess');
+      return;
+    }
+
+    if (votingState.votedPlayerIds.includes(connectionInfo.playerId)) {
+      return;
+    }
+
+    votingState.votedPlayerIds.push(connectionInfo.playerId);
+    if (payload.correct) {
+      votingState.votes.yes++;
+    } else {
+      votingState.votes.no++;
+    }
+
+    const eligibleVoters = this.roomState.gameState.players.filter(
+      p => p.id !== votingState.recordingPlayerId && p.isConnected
+    ).length;
+
+    this.broadcast({
+      type: 'VOTE_UPDATE',
+      payload: {
+        yesCount: votingState.votes.yes,
+        noCount: votingState.votes.no,
+        totalVoters: eligibleVoters,
+      },
+    });
+
+    if (payload.correct) {
+      await this.resolveVoting();
+    } else if (votingState.votedPlayerIds.length >= eligibleVoters) {
+      await this.resolveVoting();
+    }
+
+    await this.persistState();
+  }
+
+  private async resolveVoting() {
+    if (!this.roomState) return;
+
+    const votingState = this.roomState.gameState.votingState;
+    if (!votingState) return;
+
+    if (this.votingTimeoutId) {
+      clearTimeout(this.votingTimeoutId);
+      this.votingTimeoutId = null;
+    }
+
+    const { yes, no } = votingState.votes;
+    const currentPlayer = this.roomState.gameState.players.find(
+      p => p.id === votingState.recordingPlayerId
+    );
+
+    if (!currentPlayer) return;
+
+    let bonusAwarded = false;
+    let reason: 'majority_yes' | 'majority_no' | 'tie_favor_player' | 'timeout' = 'timeout';
+
+    if (yes + no === 0) {
+      reason = 'timeout';
+      bonusAwarded = false;
+    } else if (yes > no) {
+      reason = 'majority_yes';
+      bonusAwarded = true;
+    } else if (no > yes) {
+      reason = 'majority_no';
+      bonusAwarded = false;
+    } else {
+      reason = 'tie_favor_player';
+      bonusAwarded = true;
+    }
+
+    if (bonusAwarded) {
+      currentPlayer.bonusPoints++;
+    }
+
+    this.roomState.gameState.votingState = null;
+    this.roomState.version++;
+    this.roomState.lastUpdated = Date.now();
+
+    this.broadcast({
+      type: 'VOTING_RESULT',
+      payload: {
+        playerId: currentPlayer.id,
+        bonusAwarded,
+        finalVotes: { yes, no },
+        reason,
+      },
+    });
+
+    if (bonusAwarded) {
+      this.broadcast({
+        type: 'BONUS_CLAIMED',
+        payload: {
+          playerId: currentPlayer.id,
+          newBonusPoints: currentPlayer.bonusPoints,
+        },
+      });
+    }
+
+    await this.persistState();
   }
 
   private broadcast(message: ServerMessage) {

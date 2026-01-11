@@ -1,26 +1,23 @@
-import { useState, useEffect, startTransition } from 'react';
+import { useState, useEffect, startTransition, useRef } from 'react';
 import { useGame } from '../contexts';
 import { Timeline } from './Timeline';
 import { BottomActionBar } from './BottomActionBar';
 import { MysteryCard } from './MysteryCard';
 import { TurnTimer } from './TurnTimer';
-import { TimelineViewerModal } from './shared/TimelineViewerModal';
 import { GameHeader } from './shared/GameHeader';
-import { OtherPlayers } from './shared/OtherPlayers';
+import { PlayerTabs } from './shared/PlayerTabs';
 import { ConfirmModal } from './shared/ConfirmModal';
 import { useTranslations } from '../i18n';
-import { useFullscreen } from '../hooks/useFullscreen';
-import type { UnifiedPlayer } from '../types/unified';
 
 export function GameScreen() {
   const game = useGame();
   const { t } = useTranslations();
 
-  const [viewingPlayer, setViewingPlayer] = useState<UnifiedPlayer | null>(null);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-  const { isFullscreen, toggleFullscreen } = useFullscreen();
+  const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     if (game.phase !== 'placing') {
@@ -30,6 +27,12 @@ export function GameScreen() {
       });
     }
   }, [game.phase]);
+
+  useEffect(() => {
+    startTransition(() => {
+      setSelectedPlayerId(null);
+    });
+  }, [game.currentPlayer?.id]);
 
   useEffect(() => {
     if (game.isOnline || !game.turnTimeout || game.phase === 'reveal' || game.phase === 'finished' || game.phase === 'setup') return;
@@ -64,15 +67,63 @@ export function GameScreen() {
     game.notifyMusicStarted();
   };
 
-  const handleViewTimeline = (player: UnifiedPlayer) => {
-    setViewingPlayer(player);
+  const handleSelectPlayer = (playerId: string) => {
+    setSelectedPlayerId(playerId === game.currentPlayer?.id ? null : playerId);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || !game.currentPlayer) return;
+
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    const threshold = 50;
+
+    if (Math.abs(diff) > threshold) {
+      const currentSelectedId = selectedPlayerId ?? game.currentPlayer.id;
+      const currentIndex = game.players.findIndex((p) => p.id === currentSelectedId);
+      if (diff > 0 && currentIndex < game.players.length - 1) {
+        setSelectedPlayerId(game.players[currentIndex + 1].id);
+      } else if (diff < 0 && currentIndex > 0) {
+        setSelectedPlayerId(game.players[currentIndex - 1].id);
+      }
+    }
+
+    touchStartX.current = null;
   };
 
   if (!game.currentPlayer) return null;
 
-  const displayedPlayer = game.isMyTurn ? game.currentPlayer : game.myPlayer;
-  const isPlacing = game.phase === 'placing' && game.currentSong;
-  const showInteractiveTimeline = !!(isPlacing && isMusicPlaying && game.isMyTurn);
+  const effectiveSelectedId = selectedPlayerId ?? game.currentPlayer.id;
+  const selectedPlayer = game.players.find((p) => p.id === effectiveSelectedId);
+  const isPlacing = game.phase === 'placing' && !!game.currentSong;
+
+  const isViewingMyTimeline = game.myPlayerId ? effectiveSelectedId === game.myPlayerId : effectiveSelectedId === game.currentPlayer.id;
+  const isViewingCurrentTurn = effectiveSelectedId === game.currentPlayer.id;
+  const canInteract = isViewingMyTimeline && game.isMyTurn && isPlacing && isMusicPlaying;
+
+  const getTimelineLabel = () => {
+    if (!selectedPlayer) return '';
+
+    if (isViewingMyTimeline && game.isMyTurn) {
+      if (!isPlacing) return t('game.yourTimeline');
+      if (!isMusicPlaying) return t('game.listenFirst');
+      if (selectedPosition !== null) return t('game.confirmSelection');
+      return t('game.wherePlaceSong');
+    }
+
+    if (isViewingMyTimeline && !game.isMyTurn) {
+      return `${t('game.yourTimeline')} (${selectedPlayer.timeline.length}/${game.targetScore})`;
+    }
+
+    if (isViewingCurrentTurn && isPlacing) {
+      return `${t('game.timelineOf')} ${selectedPlayer.name} - ${t('online.isPlacing')}`;
+    }
+
+    return `${t('game.timelineOf')} ${selectedPlayer.name} (${selectedPlayer.timeline.length}/${game.targetScore})`;
+  };
 
   return (
     <div className="min-h-screen bg-bg">
@@ -84,12 +135,6 @@ export function GameScreen() {
       <div className="sticky top-0 z-10 bg-bg pt-4 px-4 pb-2">
         <div className="max-w-2xl mx-auto">
           <GameHeader
-            currentPlayer={game.currentPlayer}
-            players={game.players}
-            targetScore={game.targetScore}
-            myPlayerId={game.myPlayerId}
-            isFullscreen={isFullscreen}
-            onToggleFullscreen={toggleFullscreen}
             onReset={game.isOnline ? undefined : () => setShowExitConfirm(true)}
             onLeave={game.isOnline ? () => setShowExitConfirm(true) : undefined}
           />
@@ -98,49 +143,44 @@ export function GameScreen() {
 
       <div className="px-4 pb-24">
         <div className="max-w-2xl mx-auto">
-          {isPlacing && game.isMyTurn && !isMusicPlaying && <MysteryCard />}
+          {isPlacing && game.isMyTurn && !isMusicPlaying && !game.autoPlayOnDraw && <MysteryCard />}
 
-          {!game.isMyTurn && isPlacing && game.isOnline && (
-            <div className="bg-amber-900/30 border-2 border-amber-500 rounded-xl p-4 mb-4 text-center">
-              <p className="text-amber-300">
-                {game.currentPlayer.name} {t('online.isPlacing')}
-              </p>
-            </div>
-          )}
-
-          <div className="bg-surface rounded-xl p-4 mb-4">
-            <h3 className="text-lg font-bold text-white mb-4">
-              {game.isMyTurn ? (
-                isPlacing
-                  ? (!isMusicPlaying
-                      ? t('game.listenFirst')
-                      : selectedPosition !== null
-                        ? t('game.confirmSelection')
-                        : `${t('game.wherePlaceSong')} 🤔`)
-                  : `${t('game.yourTimeline')} (${displayedPlayer?.timeline.length || 0} / ${game.targetScore})`
-              ) : game.isOnline ? (
-                `${t('game.timelineOf')} ${game.currentPlayer.name}`
-              ) : (
-                `${t('game.yourTimeline')} (${game.currentPlayer.timeline.length} / ${game.targetScore})`
+          <div
+            className="bg-surface rounded-xl overflow-hidden mb-4"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            {game.players.length > 1 && (
+              <div className="px-4 pt-4 pb-3 border-b border-surface-light/30">
+                <PlayerTabs
+                  players={game.players}
+                  currentPlayerId={game.currentPlayer.id}
+                  myPlayerId={game.myPlayerId}
+                  selectedPlayerId={effectiveSelectedId}
+                  targetScore={game.targetScore}
+                  onSelectPlayer={handleSelectPlayer}
+                />
+              </div>
+            )}
+            <div className="p-4">
+              <h3 className="text-lg font-bold text-white mb-4">
+                {getTimelineLabel()}
+              </h3>
+              {selectedPlayer && (
+                selectedPlayer.timeline.length === 0 && !canInteract ? (
+                  <p className="text-gray-500 text-center py-4">{t('game.noCards')}</p>
+                ) : (
+                  <Timeline
+                    songs={selectedPlayer.timeline}
+                    onSelectPosition={canInteract ? handleSelectPosition : undefined}
+                    selectedPosition={canInteract ? selectedPosition : null}
+                    isInteractive={canInteract}
+                    previewPosition={isViewingCurrentTurn && !game.isMyTurn && isPlacing && game.isOnline ? game.previewPosition : undefined}
+                  />
+                )
               )}
-            </h3>
-            <Timeline
-              songs={game.isMyTurn ? (displayedPlayer?.timeline || []) : game.currentPlayer.timeline}
-              onSelectPosition={showInteractiveTimeline ? handleSelectPosition : undefined}
-              selectedPosition={selectedPosition}
-              isInteractive={showInteractiveTimeline}
-              previewPosition={!game.isMyTurn && isPlacing && game.isOnline ? game.previewPosition : null}
-            />
+            </div>
           </div>
-
-          {game.phase === 'playing' && (
-            <OtherPlayers
-              players={game.players}
-              currentPlayerId={game.currentPlayer.id}
-              myPlayerId={game.myPlayerId}
-              onViewTimeline={handleViewTimeline}
-            />
-          )}
         </div>
       </div>
 
@@ -166,6 +206,7 @@ export function GameScreen() {
           onConfirmPlacement={() => {}}
           onMusicStarted={() => {}}
           isSpectator
+          musicStartedByGuesser={game.musicPlaying}
         />
       )}
 
@@ -177,14 +218,6 @@ export function GameScreen() {
             </p>
           </div>
         </div>
-      )}
-
-      {viewingPlayer && (
-        <TimelineViewerModal
-          playerName={viewingPlayer.name}
-          timeline={viewingPlayer.timeline}
-          onClose={() => setViewingPlayer(null)}
-        />
       )}
 
       {showExitConfirm && (

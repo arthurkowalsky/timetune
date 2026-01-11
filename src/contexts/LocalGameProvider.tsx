@@ -46,6 +46,10 @@ export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) 
     turnStartedAt,
     turnTimeout,
     autoPlayOnDraw,
+    voiceVotingEnabled: false,
+    votingState: null,
+    musicPlaying: false,
+    recordingDeadline: null,
     isOnline: false,
     currentPlayer,
     myPlayer: currentPlayer,
@@ -60,6 +64,9 @@ export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) 
       turnStartedAtRef.current = now;
       setTurnStartedAt(now);
     },
+    submitRecording: () => {},
+    skipRecording: () => {},
+    submitVote: () => {},
     onExit,
     exitConfirmConfig: {
       title: t('game.exitConfirmTitle'),

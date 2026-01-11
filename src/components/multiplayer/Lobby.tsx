@@ -95,6 +95,13 @@ export function Lobby({ onLeave }: LobbyProps) {
     });
   };
 
+  const handleVoiceVotingChange = (voiceVotingEnabled: boolean) => {
+    send({
+      type: 'UPDATE_SETTINGS',
+      payload: { voiceVotingEnabled },
+    });
+  };
+
   return (
     <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4">
       <div className="max-w-md w-full">
@@ -158,10 +165,13 @@ export function Lobby({ onLeave }: LobbyProps) {
             targetScore={roomState.gameState.targetScore}
             turnTimeout={roomState.gameState.turnTimeout}
             autoPlayOnDraw={roomState.gameState.autoPlayOnDraw}
+            voiceVotingEnabled={roomState.gameState.voiceVotingEnabled}
             onTargetScoreChange={handleTargetScoreChange}
             onTurnTimeoutChange={handleTimeoutChange}
             onAutoPlayChange={handleAutoPlayChange}
+            onVoiceVotingChange={handleVoiceVotingChange}
             isEditable={isHost}
+            showVoiceVoting={true}
           />
         </div>
 

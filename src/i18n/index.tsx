@@ -39,9 +39,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       return key;
     }
 
-    // Parameter interpolation: {name} → value
     if (params) {
-      return value.replace(/\{(\w+)\}/g, (_, k) => String(params[k] ?? `{${k}}`));
+      return value.replace(/\{\{(\w+)\}\}/g, (_, k) => String(params[k] ?? `{{${k}}}`));
     }
 
     return value;

@@ -38,7 +38,7 @@ export interface Player {
   bonusPoints: number;
 }
 
-export type GamePhase = 'setup' | 'playing' | 'placing' | 'reveal' | 'finished';
+export type GamePhase = 'setup' | 'playing' | 'placing' | 'recording' | 'reveal' | 'finished';
 
 export interface GameState {
   players: Player[];
@@ -66,9 +66,11 @@ export interface GameActions {
 export interface GameSettings {
   autoPlayOnDraw: boolean;
   turnTimeout: number | null;
+  voiceVotingEnabled: boolean;
 }
 
 export interface SettingsActions {
   setAutoPlayOnDraw: (value: boolean) => void;
   setTurnTimeout: (value: number | null) => void;
+  setVoiceVotingEnabled: (value: boolean) => void;
 }

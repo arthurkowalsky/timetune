@@ -199,7 +199,8 @@ export const useSettingsStore = create<SettingsStore>()(
   persist(
     (set) => ({
       autoPlayOnDraw: false,
-      turnTimeout: 300,
+      turnTimeout: null,
+      voiceVotingEnabled: true,
 
       setAutoPlayOnDraw: (value: boolean) => {
         set({ autoPlayOnDraw: value });
@@ -207,6 +208,10 @@ export const useSettingsStore = create<SettingsStore>()(
 
       setTurnTimeout: (value: number | null) => {
         set({ turnTimeout: value });
+      },
+
+      setVoiceVotingEnabled: (value: boolean) => {
+        set({ voiceVotingEnabled: value });
       },
     }),
     {

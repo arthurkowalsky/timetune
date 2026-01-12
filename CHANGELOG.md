@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Voice voting - record title/artist guess, other players vote (online mode)
 - Track issue reporting - report wrong YouTube videos directly to GitHub
+- Entrance/exit animations - smooth transitions between game phases
 
 ### Changed
 - Polish song database expanded to 639 songs (1950-2025)

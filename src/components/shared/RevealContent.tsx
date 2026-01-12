@@ -83,24 +83,24 @@ export function RevealContent({
   );
 
   return (
-    <div className="min-h-screen bg-bg p-4 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-bg p-4 flex flex-col items-center justify-center animate-screen">
       <div className="max-w-md w-full">
         <div className={`
-          text-center mb-8 p-6 rounded-2xl
+          text-center mb-8 p-6 rounded-2xl animate-slide-in
           ${lastGuessCorrect
             ? 'bg-green-900/30 border-2 border-green-500'
             : 'bg-red-900/30 border-2 border-red-500'
           }
         `}>
-          <div className="text-6xl mb-4">
+          <div className="text-6xl mb-4 animate-scale-bounce">
             {lastGuessCorrect ? '🎉' : '😢'}
           </div>
-          <h2 className={`text-3xl font-black mb-2 ${
+          <h2 className={`text-3xl font-black mb-2 animate-fade-in ${
             lastGuessCorrect ? 'text-green-400' : 'text-red-400'
-          }`}>
+          }`} style={{ animationDelay: '200ms' }}>
             {lastGuessCorrect ? t('reveal.correct') : t('reveal.wrong')}
           </h2>
-          <p className="text-gray-400">
+          <p className="text-gray-400 animate-fade-in" style={{ animationDelay: '300ms' }}>
             {lastGuessCorrect
               ? `${playerName} ${t('reveal.getsCard')}`
               : t('reveal.notThisTime')
@@ -108,9 +108,11 @@ export function RevealContent({
           </p>
         </div>
 
-        <YouTubePlayer song={currentSong} showYear={true} />
+        <div className="animate-stagger-in stagger-delay-2">
+          <YouTubePlayer song={currentSong} showYear={true} />
+        </div>
 
-        <div className="mt-3 text-center">
+        <div className="mt-3 text-center animate-stagger-in stagger-delay-3">
           <a
             href={generateGitHubIssueUrl(currentSong)}
             target="_blank"
@@ -122,7 +124,7 @@ export function RevealContent({
           </a>
         </div>
 
-        <div className="mt-6 text-center">
+        <div className="mt-6 text-center animate-stagger-in stagger-delay-4">
           <p className="text-gray-400">
             {playerName} {t('reveal.hasNow')}{' '}
             <span className="text-primary font-bold">
@@ -138,7 +140,7 @@ export function RevealContent({
         </div>
 
         {showStandardBonus && (
-          <div className="mt-6 bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-2 border-amber-500 rounded-xl p-4">
+          <div className="mt-6 bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-2 border-amber-500 rounded-xl p-4 animate-slide-in">
             <p className="text-amber-300 text-center mb-3 text-sm">
               {t('reveal.bonusQuestion')}
             </p>
@@ -155,7 +157,7 @@ export function RevealContent({
         )}
 
         {showVotePanel && votingState && (
-          <div className="mt-6">
+          <div className="mt-6 animate-slide-in">
             <VotePanel
               audioData={votingState.audioData}
               playerName={playerName}
@@ -168,7 +170,7 @@ export function RevealContent({
         )}
 
         {lastGuessCorrect && bonusClaimed && (
-          <div className="mt-6 bg-green-900/30 border-2 border-green-500 rounded-xl p-4 text-center">
+          <div className="mt-6 bg-green-900/30 border-2 border-green-500 rounded-xl p-4 text-center animate-scale-bounce">
             <span className="text-green-400 text-lg font-bold">✓ {t('reveal.bonusAwarded')}</span>
           </div>
         )}
@@ -176,12 +178,12 @@ export function RevealContent({
         {isMyTurn ? (
           <button
             onClick={onNextTurn}
-            className="w-full mt-6 bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] min-h-[56px]"
+            className="w-full mt-6 bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] min-h-[56px] animate-stagger-in stagger-delay-5"
           >
             {t('reveal.nextTurn')}
           </button>
         ) : (
-          <div className="mt-6 bg-surface rounded-xl p-4 text-center">
+          <div className="mt-6 bg-surface rounded-xl p-4 text-center animate-stagger-in stagger-delay-5">
             <p className="text-gray-400">
               {t('online.waitingFor')} <span className="text-primary font-bold">{playerName}</span>
             </p>

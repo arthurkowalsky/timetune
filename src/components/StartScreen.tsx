@@ -23,16 +23,21 @@ export function StartScreen({ onBack }: StartScreenProps) {
 
   const canStart = players.length >= 2;
 
+  const getStaggerClass = (index: number) => {
+    const delays = ['stagger-delay-1', 'stagger-delay-2', 'stagger-delay-3', 'stagger-delay-4', 'stagger-delay-5', 'stagger-delay-6', 'stagger-delay-7', 'stagger-delay-8'];
+    return delays[index % delays.length];
+  };
+
   return (
-    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4 animate-screen">
       <div className="max-w-md w-full">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 animate-slide-in">
           <h1 className="text-5xl font-black text-white mb-2">
             🎵 {t('app.name').toUpperCase()}
           </h1>
           <p className="text-gray-400 text-lg">{t('app.subtitle')}</p>
         </div>
-        <form onSubmit={handleAddTeam} className="mb-6">
+        <form onSubmit={handleAddTeam} className="mb-6 animate-stagger-in stagger-delay-1">
           <div className="flex gap-2">
             <input
               type="text"
@@ -54,7 +59,7 @@ export function StartScreen({ onBack }: StartScreenProps) {
             </button>
           </div>
         </form>
-        <div className="bg-surface rounded-xl p-4 mb-6">
+        <div className="bg-surface rounded-xl p-4 mb-6 animate-stagger-in stagger-delay-2">
           <h2 className="text-lg font-bold text-white mb-3">
             {t('start.teamsTitle')} ({players.length})
           </h2>
@@ -67,7 +72,7 @@ export function StartScreen({ onBack }: StartScreenProps) {
               {players.map((player, index) => (
                 <li
                   key={player.id}
-                  className="flex items-center justify-between bg-surface-light rounded-lg px-4 py-2"
+                  className={`flex items-center justify-between bg-surface-light rounded-lg px-4 py-2 animate-stagger-in ${getStaggerClass(index)}`}
                 >
                   <span className="text-white flex items-center gap-2">
                     <span className="text-2xl">
@@ -86,7 +91,7 @@ export function StartScreen({ onBack }: StartScreenProps) {
             </ul>
           )}
         </div>
-        <div className="mb-6">
+        <div className="mb-6 animate-stagger-in stagger-delay-3">
           <GameConfigSection
             targetScore={targetScore}
             turnTimeout={turnTimeout}
@@ -100,19 +105,19 @@ export function StartScreen({ onBack }: StartScreenProps) {
         <button
           onClick={startGame}
           disabled={!canStart}
-          className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] disabled:hover:scale-100"
+          className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] disabled:hover:scale-100 animate-stagger-in stagger-delay-4"
         >
           {canStart ? `🎮 ${t('start.startGame')}` : t('start.startGameDisabled')}
         </button>
 
         <button
           onClick={onBack}
-          className="w-full mt-4 bg-surface-light hover:bg-surface text-gray-400 hover:text-white py-3 rounded-xl font-bold transition-colors"
+          className="w-full mt-4 bg-surface-light hover:bg-surface text-gray-400 hover:text-white py-3 rounded-xl font-bold transition-colors animate-stagger-in stagger-delay-5"
         >
           ← {t('common.back')}
         </button>
 
-        <div className="mt-6 text-center text-gray-500 text-sm">
+        <div className="mt-6 text-center text-gray-500 text-sm animate-stagger-in stagger-delay-6">
           <p className="mb-2">📋 {t('start.rulesTitle')}</p>
           <p>{t('start.rulesDescription')}</p>
         </div>

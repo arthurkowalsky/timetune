@@ -126,7 +126,7 @@ export function GameScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-bg">
+    <div className="min-h-screen bg-bg animate-fade-in">
       <TurnTimer
         turnStartedAt={game.turnStartedAt}
         timeoutSeconds={game.turnTimeout}
@@ -143,10 +143,14 @@ export function GameScreen() {
 
       <div className="px-4 pb-24">
         <div className="max-w-2xl mx-auto">
-          {isPlacing && game.isMyTurn && !isMusicPlaying && !game.autoPlayOnDraw && <MysteryCard />}
+          {isPlacing && game.isMyTurn && !isMusicPlaying && !game.autoPlayOnDraw && (
+            <div className="animate-scale-bounce">
+              <MysteryCard />
+            </div>
+          )}
 
           <div
-            className="bg-surface rounded-xl overflow-hidden mb-4"
+            className="bg-surface rounded-xl overflow-hidden mb-4 animate-slide-in"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >

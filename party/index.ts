@@ -7,7 +7,7 @@ import type {
   ServerMessage,
   ErrorCode,
 } from '../src/multiplayer/types';
-import type { Song } from '../src/types';
+import type { Song, SongCategory, SongEra } from '../src/types';
 
 const ROOM_CONFIG = {
   MIN_PLAYERS: 2,
@@ -194,6 +194,8 @@ export default class TimeTuneRoom implements Party.Server {
       voiceVotingEnabled: true,
       votingState: null,
       musicPlaying: false,
+      songCategory: 'all',
+      selectedEra: 'all',
     };
 
     this.roomState = {
@@ -533,7 +535,7 @@ export default class TimeTuneRoom implements Party.Server {
 
   private async handleUpdateSettings(
     conn: Party.Connection,
-    payload: { targetScore?: number; maxPlayers?: number; deck?: Song[]; turnTimeout?: number | null; autoPlayOnDraw?: boolean; voiceVotingEnabled?: boolean }
+    payload: { targetScore?: number; maxPlayers?: number; deck?: Song[]; turnTimeout?: number | null; autoPlayOnDraw?: boolean; voiceVotingEnabled?: boolean; songCategory?: SongCategory; selectedEra?: SongEra }
   ) {
     if (!this.roomState) return;
 
@@ -560,11 +562,17 @@ export default class TimeTuneRoom implements Party.Server {
     if (payload.voiceVotingEnabled !== undefined) {
       this.roomState.gameState.voiceVotingEnabled = payload.voiceVotingEnabled;
     }
+    if (payload.songCategory !== undefined) {
+      this.roomState.gameState.songCategory = payload.songCategory;
+    }
+    if (payload.selectedEra !== undefined) {
+      this.roomState.gameState.selectedEra = payload.selectedEra;
+    }
 
     this.roomState.version++;
     this.roomState.lastUpdated = Date.now();
 
-    if (payload.targetScore !== undefined || payload.maxPlayers !== undefined || payload.turnTimeout !== undefined || payload.autoPlayOnDraw !== undefined || payload.voiceVotingEnabled !== undefined) {
+    if (payload.targetScore !== undefined || payload.maxPlayers !== undefined || payload.turnTimeout !== undefined || payload.autoPlayOnDraw !== undefined || payload.voiceVotingEnabled !== undefined || payload.songCategory !== undefined || payload.selectedEra !== undefined) {
       this.broadcast({
         type: 'SETTINGS_UPDATED',
         payload: {
@@ -573,6 +581,8 @@ export default class TimeTuneRoom implements Party.Server {
           turnTimeout: this.roomState.gameState.turnTimeout,
           autoPlayOnDraw: this.roomState.gameState.autoPlayOnDraw,
           voiceVotingEnabled: this.roomState.gameState.voiceVotingEnabled,
+          songCategory: this.roomState.gameState.songCategory,
+          selectedEra: this.roomState.gameState.selectedEra,
         },
       });
     }

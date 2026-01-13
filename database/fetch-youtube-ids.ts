@@ -21,7 +21,7 @@ interface ProcessingResult {
 }
 
 interface CliArgs {
-  origin: string;
+  origin: string | null;
   csvPath: string;
 }
 
@@ -38,15 +38,10 @@ function parseArgs(): CliArgs {
     }
   }
 
-  if (!origin) {
-    console.error("Error: --origin=XX is required (e.g., --origin=PL)");
-    console.error("Usage: npm run db:fetch-youtube -- --origin=PL database/polish.csv");
-    process.exit(1);
-  }
-
   if (!csvPath) {
     console.error("Error: CSV file path is required");
-    console.error("Usage: npm run db:fetch-youtube -- --origin=PL database/polish.csv");
+    console.error("Usage: npm run db:fetch-youtube -- [--origin=XX] database/file.csv");
+    console.error("  --origin is optional if CSV has Origin column");
     process.exit(1);
   }
 
@@ -55,7 +50,7 @@ function parseArgs(): CliArgs {
     process.exit(1);
   }
 
-  return { origin: origin.toUpperCase(), csvPath };
+  return { origin: origin ? origin.toUpperCase() : null, csvPath };
 }
 
 function parseCSVLine(line: string): string[] {
@@ -131,7 +126,6 @@ async function processSongs(): Promise<void> {
   const { origin, csvPath } = parseArgs();
 
   console.log(`Reading CSV file: ${csvPath}`);
-  console.log(`Origin: ${origin}`);
 
   const csvContent = readFileSync(csvPath, "utf-8");
   const lines = csvContent.split("\n").filter((line) => line.trim());
@@ -139,7 +133,18 @@ async function processSongs(): Promise<void> {
   const headerFields = parseCSVLine(lines[0]);
   const hasOriginColumn = headerFields.includes("Origin");
 
-  if (!hasOriginColumn) {
+  if (!hasOriginColumn && !origin) {
+    console.error("Error: CSV has no Origin column and --origin not provided");
+    console.error("Usage: npm run db:fetch-youtube -- --origin=XX database/file.csv");
+    process.exit(1);
+  }
+
+  if (origin) {
+    console.log(`Default origin: ${origin}`);
+  }
+  if (hasOriginColumn) {
+    console.log("Using Origin from CSV");
+  } else {
     console.log("Adding Origin column to CSV...");
   }
 
@@ -152,7 +157,7 @@ async function processSongs(): Promise<void> {
       title: fields[1] || "",
       year: fields[2] || "",
       youtubeId: fields[3] || "",
-      origin: fields[4] || origin,
+      origin: fields[4] || origin || "",
     };
   });
 
@@ -168,7 +173,7 @@ async function processSongs(): Promise<void> {
     const record = records[i];
     const progress = `[${i + 1}/${total}]`;
 
-    if (!record.origin) {
+    if (!record.origin && origin) {
       record.origin = origin;
     }
 

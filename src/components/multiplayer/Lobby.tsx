@@ -1,9 +1,12 @@
-import { useState, useEffect, startTransition } from 'react';
+import { useState, useEffect, useMemo, startTransition } from 'react';
 import { useTranslations } from '../../i18n';
 import { useMultiplayerStore, usePartySocket, useMyPlayer } from '../../multiplayer';
 import { RoomCodeDisplay } from './RoomCodeDisplay';
 import { GameConfigSection } from '../shared/GameConfigSection';
-import { getSongs } from '../../songs';
+import { SongCategorySelector } from '../shared/SongCategorySelector';
+import { EraSelector } from '../shared/EraSelector';
+import { getSongs, getSongCounts, filterByCategory, filterByEra, getEraCounts } from '../../songs';
+import type { SongCategory, SongEra } from '../../types';
 
 interface LobbyProps {
   onLeave: () => void;
@@ -15,6 +18,18 @@ export function Lobby({ onLeave }: LobbyProps) {
   const { roomCode, roomState, isHost, myPlayerId, reset, connectionError, setConnectionError } = useMultiplayerStore();
   const myPlayer = useMyPlayer();
   const [isStarting, setIsStarting] = useState(false);
+
+  const allSongs = useMemo(() => getSongs(), []);
+
+  const songCounts = useMemo<Record<SongCategory, number>>(() => {
+    return allSongs.length > 0 ? getSongCounts(allSongs) : { all: 0, polish: 0, international: 0 };
+  }, [allSongs]);
+
+  const eraCounts = useMemo<Record<SongEra, number>>(() => {
+    const currentCategory = roomState?.gameState.songCategory || 'all';
+    const filteredByCategory = filterByCategory(allSongs, currentCategory);
+    return getEraCounts(filteredByCategory);
+  }, [allSongs, roomState?.gameState.songCategory]);
 
   useEffect(() => {
     return () => setConnectionError(null);
@@ -51,16 +66,23 @@ export function Lobby({ onLeave }: LobbyProps) {
   };
 
   const handleStart = () => {
-    const songs = getSongs();
-    if (songs.length === 0) {
+    if (allSongs.length === 0) {
       setConnectionError('No songs loaded. Please refresh the page.');
+      return;
+    }
+    const currentCategory = roomState?.gameState.songCategory || 'all';
+    const currentEra = roomState?.gameState.selectedEra || 'all';
+    const filteredByCategory = filterByCategory(allSongs, currentCategory);
+    const filteredSongs = filterByEra(filteredByCategory, currentEra);
+    if (filteredSongs.length === 0) {
+      setConnectionError('No songs in selected category and era.');
       return;
     }
     setConnectionError(null);
     setIsStarting(true);
     send({
       type: 'UPDATE_SETTINGS',
-      payload: { deck: songs },
+      payload: { deck: filteredSongs },
     });
     setTimeout(() => {
       send({ type: 'START_GAME' });
@@ -102,12 +124,33 @@ export function Lobby({ onLeave }: LobbyProps) {
     });
   };
 
-  return (
-    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4">
-      <div className="max-w-md w-full">
-        <RoomCodeDisplay code={roomCode} />
+  const handleSongCategoryChange = (songCategory: SongCategory) => {
+    send({
+      type: 'UPDATE_SETTINGS',
+      payload: { songCategory },
+    });
+  };
 
-        <div className="bg-surface rounded-xl p-4 mb-6">
+  const handleEraChange = (selectedEra: SongEra) => {
+    send({
+      type: 'UPDATE_SETTINGS',
+      payload: { selectedEra },
+    });
+  };
+
+  const getStaggerClass = (index: number) => {
+    const delays = ['stagger-delay-1', 'stagger-delay-2', 'stagger-delay-3', 'stagger-delay-4', 'stagger-delay-5', 'stagger-delay-6', 'stagger-delay-7', 'stagger-delay-8'];
+    return delays[index % delays.length];
+  };
+
+  return (
+    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4 animate-screen">
+      <div className="max-w-md w-full">
+        <div className="animate-slide-in">
+          <RoomCodeDisplay code={roomCode} />
+        </div>
+
+        <div className="bg-surface rounded-xl p-4 mb-6 animate-stagger-in stagger-delay-1">
           <h2 className="text-lg font-bold text-white mb-3">
             {t('lobby.players')} ({players.length}/{roomState.maxPlayers})
           </h2>
@@ -115,7 +158,7 @@ export function Lobby({ onLeave }: LobbyProps) {
             {players.map((player, index) => (
               <div
                 key={player.id}
-                className={`flex items-center justify-between p-3 rounded-lg ${
+                className={`flex items-center justify-between p-3 rounded-lg animate-stagger-in ${getStaggerClass(index)} ${
                   player.isHost
                     ? 'bg-primary/20 border border-primary/50'
                     : 'bg-surface-light'
@@ -160,7 +203,25 @@ export function Lobby({ onLeave }: LobbyProps) {
           </div>
         </div>
 
-        <div className="mb-6">
+        <div className="mb-6 animate-stagger-in stagger-delay-2">
+          <SongCategorySelector
+            selected={roomState.gameState.songCategory || 'all'}
+            onChange={handleSongCategoryChange}
+            songCounts={songCounts}
+            isEditable={isHost}
+          />
+        </div>
+
+        <div className="mb-6 animate-stagger-in stagger-delay-3">
+          <EraSelector
+            selected={roomState.gameState.selectedEra || 'all'}
+            onChange={handleEraChange}
+            eraCounts={eraCounts}
+            isEditable={isHost}
+          />
+        </div>
+
+        <div className="mb-6 animate-stagger-in stagger-delay-4">
           <GameConfigSection
             targetScore={roomState.gameState.targetScore}
             turnTimeout={roomState.gameState.turnTimeout}
@@ -176,12 +237,12 @@ export function Lobby({ onLeave }: LobbyProps) {
         </div>
 
         {connectionError && (
-          <div className="bg-red-900/30 border border-red-500 text-red-300 px-4 py-3 rounded-xl mb-4 text-center">
+          <div className="bg-red-900/30 border border-red-500 text-red-300 px-4 py-3 rounded-xl mb-4 text-center animate-slide-in">
             {connectionError}
           </div>
         )}
 
-        <div className="space-y-3">
+        <div className="space-y-3 animate-stagger-in stagger-delay-5">
           {!isHost && myPlayer && (
             <button
               onClick={handleReady}

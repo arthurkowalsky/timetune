@@ -160,6 +160,18 @@
     "voiceVoting": "Bonus za tytuł",
     "voiceVotingDescription": "Nagraj odpowiedź, inni oceniają"
   },
+  "category": {
+    "title": "Utwory",
+    "all": "Wszystkie",
+    "polish": "Polskie",
+    "international": "Zagraniczne"
+  },
+  "era": {
+    "title": "Era",
+    "all": "All",
+    "oldSchool": "Old School",
+    "newSchool": "New School"
+  },
   "voting": {
     "recordYourGuess": "Powiedz tytuł lub wykonawcę!",
     "startRecording": "Nagrywaj",

@@ -3,6 +3,7 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import {Genre, Origin} from "../src/types";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,9 +18,6 @@ interface CSVRecord {
   genres: string;
 }
 
-type Origin = 'PL' | 'INT';
-type Genre = 'pop' | 'rock' | 'hip-hop' | 'disco-polo' | 'folk' | 'jazz' | 'electronic' | 'metal' | 'r&b' | 'alternative';
-
 interface Song {
   id: string;
   artist: string;
@@ -27,7 +25,7 @@ interface Song {
   year: number;
   youtubeId: string;
   origin: Origin;
-  genres: Genre[];
+  genres: Genre;
 }
 
 function parseArgs(): string[] {
@@ -136,7 +134,7 @@ function generateSongsJson(): void {
         ? (record.genres.split("|").map(g => g.trim()).filter(Boolean) as Genre[])
         : [];
 
-      const origin: Origin = (record.origin as Origin) || 'PL';
+      const origin = (record.origin || 'INT') as Origin;
 
       return {
         id: String(index + 1),

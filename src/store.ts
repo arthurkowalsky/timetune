@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { GameState, GameActions, Player, Song, GameSettings, SettingsActions } from './types';
-import { getSongs, shuffleSongs } from './songs';
+import type { GameState, GameActions, Player, Song, GameSettings, SettingsActions, SongCategory, SongEra } from './types';
+import { getSongs, shuffleSongs, filterByCategory, filterByEra } from './songs';
 
 type GameStore = GameState & GameActions;
 
@@ -22,6 +22,8 @@ export const useGameStore = create<GameStore>()(
       phase: 'setup',
       lastGuessCorrect: null,
       targetScore: 10,
+      songCategory: 'all',
+      selectedEra: 'all',
 
       addPlayer: (name: string) => {
         const trimmedName = name.trim();
@@ -42,11 +44,22 @@ export const useGameStore = create<GameStore>()(
         set({ targetScore: score });
       },
 
+      setSongCategory: (category: SongCategory) => {
+        set({ songCategory: category });
+      },
+
+      setSelectedEra: (era: SongEra) => {
+        set({ selectedEra: era });
+      },
+
       startGame: () => {
-        const { players } = get();
+        const { players, songCategory, selectedEra } = get();
         if (players.length < 2) return;
 
-        const shuffledDeck = shuffleSongs(getSongs());
+        const allSongs = getSongs();
+        const byCategory = filterByCategory(allSongs, songCategory);
+        const filteredSongs = filterByEra(byCategory, selectedEra);
+        const shuffledDeck = shuffleSongs(filteredSongs);
 
         const playersWithCards = players.map((player) => {
           const starterCard = shuffledDeck.pop()!;
@@ -159,6 +172,8 @@ export const useGameStore = create<GameStore>()(
           phase: 'setup',
           lastGuessCorrect: null,
           targetScore: 10,
+          songCategory: 'all',
+          selectedEra: 'all',
         });
       },
     }),
@@ -171,6 +186,8 @@ export const useGameStore = create<GameStore>()(
         phase: state.phase,
         currentPlayerIndex: state.currentPlayerIndex,
         targetScore: state.targetScore,
+        songCategory: state.songCategory,
+        selectedEra: state.selectedEra,
       }),
     }
   )

@@ -32,6 +32,11 @@ export function Timeline({
 
   const showPreview = !isInteractive && previewPosition !== null;
 
+  const getStaggerClass = (index: number) => {
+    const delays = ['stagger-delay-1', 'stagger-delay-2', 'stagger-delay-3', 'stagger-delay-4', 'stagger-delay-5', 'stagger-delay-6', 'stagger-delay-7', 'stagger-delay-8'];
+    return delays[index % delays.length];
+  };
+
   return (
     <div className="relative">
       <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-surface-light -translate-x-1/2" />
@@ -49,7 +54,7 @@ export function Timeline({
         {showPreview && previewPosition === 0 && <PreviewMarker />}
 
         {sortedSongs.map((song, index) => (
-          <div key={song.id}>
+          <div key={song.id} className={`animate-stagger-in ${getStaggerClass(index)}`}>
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="w-16 sm:w-20 text-right shrink-0">
                 <span className="bg-primary text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">

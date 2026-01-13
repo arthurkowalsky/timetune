@@ -5,14 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.6.0] - 2026-01-11
+## [0.6.0] - 2026-01-13
 ### Added
 - Voice voting - record title/artist guess, other players vote (online mode)
 - Track issue reporting - report wrong YouTube videos directly to GitHub
+- Entrance/exit animations - smooth transitions between game phases
+- Song category selector - filter by All/Polish/International songs
+- Era filter - choose All / Old School (–1989) / New School (1990+) songs
+- International songs database - 1052 worldwide hits (1950-2025)
 
 ### Changed
-- Polish song database expanded to 639 songs (1950-2025)
+- Total song database expanded to 1691 songs (639 Polish + 1052 International)
 - Simplified player timeline viewing
+- Database scripts: `--origin` parameter now optional (reads from CSV)
 
 ## [0.5.1] - 2026-01-06 
 ### Fixed

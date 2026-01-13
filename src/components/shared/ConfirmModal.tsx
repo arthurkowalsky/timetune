@@ -23,8 +23,8 @@ export function ConfirmModal({
       : 'bg-primary hover:bg-primary-dark';
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
-      <div className="bg-surface rounded-2xl p-6 max-w-sm w-full">
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 animate-backdrop">
+      <div className="bg-surface rounded-2xl p-6 max-w-sm w-full animate-modal">
         <h3 className="text-xl font-bold text-white mb-4 text-center">{title}</h3>
         <p className="text-gray-400 text-center mb-6">{message}</p>
         <div className="flex gap-3">

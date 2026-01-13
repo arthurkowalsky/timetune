@@ -1,4 +1,10 @@
-export type Origin = 'PL' | 'INT';
+export type Origin =
+  | 'PL'
+  | 'INT'
+  | 'US' | 'UK' | 'CA' | 'AU' | 'IE'
+  | 'DE' | 'FR' | 'IT' | 'ES' | 'SE' | 'NO' | 'FI' | 'DK' | 'NL' | 'BE' | 'AT'
+  | 'JP' | 'KR' | 'CO' | 'PR' | 'JM' | 'CU' | 'BB'
+  | (string & {});
 
 export type Genre =
   | 'pop'
@@ -11,6 +17,16 @@ export type Genre =
   | 'metal'
   | 'r&b'
   | 'alternative';
+
+export type SongCategory = 'all' | 'polish' | 'international';
+
+export type SongEra = 'all' | 'oldSchool' | 'newSchool';
+
+export const ERA_CONFIG: Record<SongEra, { minYear?: number; maxYear?: number }> = {
+  all: {},
+  oldSchool: { maxYear: 1989 },
+  newSchool: { minYear: 1990 },
+};
 
 export interface Song {
   id: string;
@@ -48,6 +64,8 @@ export interface GameState {
   phase: GamePhase;
   lastGuessCorrect: boolean | null;
   targetScore: number;
+  songCategory: SongCategory;
+  selectedEra: SongEra;
 }
 
 export interface GameActions {
@@ -55,6 +73,8 @@ export interface GameActions {
   removePlayer: (id: string) => void;
   startGame: () => void;
   setTargetScore: (score: number) => void;
+  setSongCategory: (category: SongCategory) => void;
+  setSelectedEra: (era: SongEra) => void;
   drawCard: () => void;
   placeSong: (position: number) => void;
   awardBonusPoint: () => void;

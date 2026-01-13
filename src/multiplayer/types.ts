@@ -1,4 +1,4 @@
-import type { Song, GamePhase } from '../types';
+import type { Song, GamePhase, SongCategory, SongEra } from '../types';
 
 export type GameMode = 'local' | 'online';
 
@@ -53,6 +53,8 @@ export interface OnlineGameState {
   voiceVotingEnabled: boolean;
   votingState: VotingState | null;
   musicPlaying: boolean;
+  songCategory: SongCategory;
+  selectedEra: SongEra;
 }
 
 export interface CreateRoomMessage {
@@ -100,6 +102,8 @@ export interface UpdateSettingsMessage {
     turnTimeout?: number | null;
     autoPlayOnDraw?: boolean;
     voiceVotingEnabled?: boolean;
+    songCategory?: SongCategory;
+    selectedEra?: SongEra;
   };
 }
 
@@ -238,6 +242,8 @@ export interface SettingsUpdatedEvent {
     turnTimeout: number | null;
     autoPlayOnDraw: boolean;
     voiceVotingEnabled: boolean;
+    songCategory: SongCategory;
+    selectedEra: SongEra;
   };
 }
 

@@ -1,4 +1,5 @@
-import type { Song, GameFilter } from './types';
+import type { Song, GameFilter, SongCategory, SongEra } from './types';
+import { ERA_CONFIG } from './types';
 
 let songsData: Song[] = [];
 let songsLoaded = false;
@@ -58,4 +59,41 @@ export function filterSongs(songs: Song[], filter: GameFilter): Song[] {
 
     return true;
   });
+}
+
+export function filterByCategory(songs: Song[], category: SongCategory): Song[] {
+  switch (category) {
+    case 'polish':
+      return filterSongs(songs, { origins: ['PL'] });
+    case 'international':
+      return songs.filter(s => s.origin !== 'PL');
+    case 'all':
+    default:
+      return songs;
+  }
+}
+
+export function getSongCounts(songs: Song[]): Record<SongCategory, number> {
+  return {
+    all: songs.length,
+    polish: songs.filter(s => s.origin === 'PL').length,
+    international: songs.filter(s => s.origin !== 'PL').length,
+  };
+}
+
+export function filterByEra(songs: Song[], era: SongEra): Song[] {
+  const config = ERA_CONFIG[era];
+  return songs.filter(song => {
+    if (config.minYear !== undefined && song.year < config.minYear) return false;
+    if (config.maxYear !== undefined && song.year > config.maxYear) return false;
+    return true;
+  });
+}
+
+export function getEraCounts(songs: Song[]): Record<SongEra, number> {
+  return {
+    all: songs.length,
+    oldSchool: songs.filter(s => s.year <= 1989).length,
+    newSchool: songs.filter(s => s.year >= 1990).length,
+  };
 }

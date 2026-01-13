@@ -130,6 +130,8 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
                     turnTimeout: message.payload.turnTimeout,
                     autoPlayOnDraw: message.payload.autoPlayOnDraw,
                     voiceVotingEnabled: message.payload.voiceVotingEnabled,
+                    songCategory: message.payload.songCategory,
+                    selectedEra: message.payload.selectedEra,
                   },
                 },
               });

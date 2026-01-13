@@ -1,25 +1,56 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
 import pl from './locales/pl.json';
+import en from './locales/en.json';
 
 type Locale = 'pl' | 'en';
 type Translations = typeof pl;
 
+const LOCALE_STORAGE_KEY = 'timetune-locale';
+
 interface I18nContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
+  toggleLocale: () => void;
   t: (key: string, params?: Record<string, string | number>) => string;
 }
 
 const translations: Record<Locale, Translations> = {
   pl,
-  en: pl, // Fallback to Polish - en.json will be added later
+  en,
 };
+
+function getInitialLocale(): Locale {
+  try {
+    const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
+    if (stored === 'pl' || stored === 'en') {
+      return stored;
+    }
+  } catch {} // eslint-disable-line no-empty
+
+  const browserLang = navigator.language?.toLowerCase() || '';
+  if (browserLang.startsWith('pl')) {
+    return 'pl';
+  }
+
+  return 'en';
+}
 
 const I18nContext = createContext<I18nContextType | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>('pl');
+  const [locale, setLocaleState] = useState<Locale>(getInitialLocale);
+
+  const setLocale = useCallback((newLocale: Locale) => {
+    setLocaleState(newLocale);
+    try {
+      localStorage.setItem(LOCALE_STORAGE_KEY, newLocale);
+    } catch {} // eslint-disable-line no-empty
+  }, []);
+
+  const toggleLocale = useCallback(() => {
+    setLocale(locale === 'pl' ? 'en' : 'pl');
+  }, [locale, setLocale]);
 
   const t = (key: string, params?: Record<string, string | number>): string => {
     const keys = key.split('.');
@@ -47,7 +78,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <I18nContext.Provider value={{ locale, setLocale, t }}>
+    <I18nContext.Provider value={{ locale, setLocale, toggleLocale, t }}>
       {children}
     </I18nContext.Provider>
   );

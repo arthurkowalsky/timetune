@@ -232,19 +232,19 @@ export default class TimeTuneRoom implements Party.Server {
     payload: { playerName: string }
   ) {
     if (!this.roomState) {
-      this.sendError(conn, 'ROOM_NOT_FOUND', 'Room not found');
+      this.sendError(conn, 'ROOM_NOT_FOUND');
       return;
     }
 
     if (this.roomState.roomPhase !== 'waiting') {
-      this.sendError(conn, 'GAME_ALREADY_STARTED', 'Game already in progress');
+      this.sendError(conn, 'GAME_ALREADY_STARTED');
       return;
     }
 
     if (
       this.roomState.gameState.players.length >= this.roomState.maxPlayers
     ) {
-      this.sendError(conn, 'ROOM_FULL', 'Room is full');
+      this.sendError(conn, 'ROOM_FULL');
       return;
     }
 
@@ -252,7 +252,7 @@ export default class TimeTuneRoom implements Party.Server {
       (p) => p.name.toLowerCase() === payload.playerName.toLowerCase()
     );
     if (nameTaken) {
-      this.sendError(conn, 'PLAYER_NAME_TAKEN', 'Name already taken');
+      this.sendError(conn, 'PLAYER_NAME_TAKEN');
       return;
     }
 
@@ -294,7 +294,7 @@ export default class TimeTuneRoom implements Party.Server {
     payload: { playerId: string }
   ) {
     if (!this.roomState) {
-      this.sendError(conn, 'ROOM_NOT_FOUND', 'Room not found');
+      this.sendError(conn, 'ROOM_NOT_FOUND');
       return;
     }
 
@@ -302,7 +302,7 @@ export default class TimeTuneRoom implements Party.Server {
       (p) => p.id === payload.playerId
     );
     if (!player) {
-      this.sendError(conn, 'ROOM_NOT_FOUND', 'Player not found in room');
+      this.sendError(conn, 'ROOM_NOT_FOUND');
       return;
     }
 
@@ -405,7 +405,7 @@ export default class TimeTuneRoom implements Party.Server {
     if (!this.roomState) return;
 
     if (this.roomState.hostId !== conn.id) {
-      this.sendError(conn, 'NOT_HOST', 'Only host can kick players');
+      this.sendError(conn, 'NOT_HOST');
       return;
     }
 
@@ -425,11 +425,7 @@ export default class TimeTuneRoom implements Party.Server {
           (c) => c.id === connId
         );
         if (kickedConn) {
-          this.sendError(
-            kickedConn,
-            'ROOM_NOT_FOUND',
-            'You have been kicked from the room'
-          );
+          this.sendError(kickedConn, 'KICKED');
           kickedConn.close();
         }
         this.connections.delete(connId);
@@ -475,28 +471,24 @@ export default class TimeTuneRoom implements Party.Server {
     if (!this.roomState) return;
 
     if (this.roomState.hostId !== conn.id) {
-      this.sendError(conn, 'NOT_HOST', 'Only host can start the game');
+      this.sendError(conn, 'NOT_HOST');
       return;
     }
 
     const players = this.roomState.gameState.players;
     if (players.length < ROOM_CONFIG.MIN_PLAYERS) {
-      this.sendError(
-        conn,
-        'NOT_ENOUGH_PLAYERS',
-        `Need at least ${ROOM_CONFIG.MIN_PLAYERS} players`
-      );
+      this.sendError(conn, 'NOT_ENOUGH_PLAYERS');
       return;
     }
 
     const allReady = players.every((p) => p.isReady || p.isHost);
     if (!allReady) {
-      this.sendError(conn, 'PLAYERS_NOT_READY', 'Not all players are ready');
+      this.sendError(conn, 'PLAYERS_NOT_READY');
       return;
     }
 
     if (!this.pendingDeck || this.pendingDeck.length === 0) {
-      this.sendError(conn, 'INVALID_ACTION', 'No songs provided');
+      this.sendError(conn, 'NO_SONGS_PROVIDED');
       return;
     }
 
@@ -540,7 +532,7 @@ export default class TimeTuneRoom implements Party.Server {
     if (!this.roomState) return;
 
     if (this.roomState.hostId !== conn.id) {
-      this.sendError(conn, 'NOT_HOST', 'Only host can update settings');
+      this.sendError(conn, 'NOT_HOST');
       return;
     }
 
@@ -600,12 +592,12 @@ export default class TimeTuneRoom implements Party.Server {
       ];
 
     if (connectionInfo?.playerId !== currentPlayer.id) {
-      this.sendError(conn, 'NOT_YOUR_TURN', 'Not your turn');
+      this.sendError(conn, 'NOT_YOUR_TURN');
       return;
     }
 
     if (this.roomState.gameState.phase !== 'playing') {
-      this.sendError(conn, 'INVALID_ACTION', 'Cannot draw card now');
+      this.sendError(conn, 'INVALID_ACTION');
       return;
     }
 
@@ -647,12 +639,12 @@ export default class TimeTuneRoom implements Party.Server {
     const currentPlayer = players[currentPlayerIndex];
 
     if (connectionInfo?.playerId !== currentPlayer.id) {
-      this.sendError(conn, 'NOT_YOUR_TURN', 'Not your turn');
+      this.sendError(conn, 'NOT_YOUR_TURN');
       return;
     }
 
     if (this.roomState.gameState.phase !== 'placing' || !currentSong) {
-      this.sendError(conn, 'INVALID_ACTION', 'Cannot place song now');
+      this.sendError(conn, 'INVALID_ACTION');
       return;
     }
 
@@ -792,12 +784,12 @@ export default class TimeTuneRoom implements Party.Server {
     const currentPlayer = players[currentPlayerIndex];
 
     if (connectionInfo?.playerId !== currentPlayer.id) {
-      this.sendError(conn, 'NOT_YOUR_TURN', 'Not your turn');
+      this.sendError(conn, 'NOT_YOUR_TURN');
       return;
     }
 
     if (this.roomState.gameState.phase !== 'reveal' || !lastGuessCorrect) {
-      this.sendError(conn, 'INVALID_ACTION', 'Cannot claim bonus now');
+      this.sendError(conn, 'INVALID_ACTION');
       return;
     }
 
@@ -824,12 +816,12 @@ export default class TimeTuneRoom implements Party.Server {
     const currentPlayer = players[currentPlayerIndex];
 
     if (connectionInfo?.playerId !== currentPlayer.id) {
-      this.sendError(conn, 'NOT_YOUR_TURN', 'Not your turn');
+      this.sendError(conn, 'NOT_YOUR_TURN');
       return;
     }
 
     if (this.roomState.gameState.phase !== 'reveal') {
-      this.sendError(conn, 'INVALID_ACTION', 'Cannot proceed to next turn now');
+      this.sendError(conn, 'INVALID_ACTION');
       return;
     }
 
@@ -871,7 +863,7 @@ export default class TimeTuneRoom implements Party.Server {
 
   private handleRequestSync(conn: Party.Connection) {
     if (!this.roomState) {
-      this.sendError(conn, 'ROOM_NOT_FOUND', 'Room not found');
+      this.sendError(conn, 'ROOM_NOT_FOUND');
       return;
     }
 
@@ -1101,12 +1093,12 @@ export default class TimeTuneRoom implements Party.Server {
     const currentPlayer = this.roomState.gameState.players[this.roomState.gameState.currentPlayerIndex];
 
     if (connectionInfo?.playerId !== currentPlayer.id) {
-      this.sendError(conn, 'NOT_YOUR_TURN', 'Not your turn');
+      this.sendError(conn, 'NOT_YOUR_TURN');
       return;
     }
 
     if (this.roomState.gameState.phase !== 'recording' || !this.pendingPlacement) {
-      this.sendError(conn, 'INVALID_ACTION', 'Cannot submit recording now');
+      this.sendError(conn, 'INVALID_ACTION');
       return;
     }
 
@@ -1125,12 +1117,12 @@ export default class TimeTuneRoom implements Party.Server {
     const currentPlayer = this.roomState.gameState.players[this.roomState.gameState.currentPlayerIndex];
 
     if (connectionInfo?.playerId !== currentPlayer.id) {
-      this.sendError(conn, 'NOT_YOUR_TURN', 'Not your turn');
+      this.sendError(conn, 'NOT_YOUR_TURN');
       return;
     }
 
     if (this.roomState.gameState.phase !== 'recording' || !this.pendingPlacement) {
-      this.sendError(conn, 'INVALID_ACTION', 'Cannot skip recording now');
+      this.sendError(conn, 'INVALID_ACTION');
       return;
     }
 
@@ -1150,7 +1142,7 @@ export default class TimeTuneRoom implements Party.Server {
 
     const votingState = this.roomState.gameState.votingState;
     if (!votingState) {
-      this.sendError(conn, 'INVALID_ACTION', 'No active voting');
+      this.sendError(conn, 'INVALID_ACTION');
       return;
     }
 
@@ -1158,7 +1150,7 @@ export default class TimeTuneRoom implements Party.Server {
     if (!connectionInfo?.playerId) return;
 
     if (connectionInfo.playerId === votingState.recordingPlayerId) {
-      this.sendError(conn, 'INVALID_ACTION', 'Cannot vote on your own guess');
+      this.sendError(conn, 'INVALID_ACTION');
       return;
     }
 
@@ -1275,12 +1267,11 @@ export default class TimeTuneRoom implements Party.Server {
 
   private sendError(
     conn: Party.Connection,
-    code: ErrorCode,
-    message: string
+    code: ErrorCode
   ) {
     const response: ServerMessage = {
       type: 'ERROR',
-      payload: { code, message },
+      payload: { code },
     };
     conn.send(JSON.stringify(response));
   }

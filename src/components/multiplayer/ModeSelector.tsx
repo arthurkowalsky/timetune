@@ -6,10 +6,18 @@ interface ModeSelectorProps {
 }
 
 export function ModeSelector({ onSelectLocal, onSelectOnline }: ModeSelectorProps) {
-  const { t } = useTranslations();
+  const { t, locale, toggleLocale } = useTranslations();
 
   return (
-    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4 animate-screen">
+    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4 relative animate-screen">
+      <button
+        onClick={toggleLocale}
+        className="absolute top-4 left-4 text-3xl hover:scale-110 active:scale-95 transition-transform"
+        aria-label={locale === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
+      >
+        {locale === 'pl' ? '🇵🇱' : '🇺🇸'}
+      </button>
+
       <div className="max-w-md w-full">
         <div className="text-center mb-8 animate-slide-in">
           <h1 className="text-5xl font-black text-white mb-2">

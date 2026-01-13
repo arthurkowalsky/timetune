@@ -91,7 +91,7 @@ export function CreateRoomForm({ onBack, onRoomCreated }: CreateRoomFormProps) {
 
           {connectionError && (
             <div className="bg-red-500/20 border border-red-500/50 rounded-xl p-4 text-red-400">
-              {connectionError}
+              {t(connectionError)}
             </div>
           )}
 

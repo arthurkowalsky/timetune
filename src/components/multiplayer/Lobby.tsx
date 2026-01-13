@@ -67,7 +67,7 @@ export function Lobby({ onLeave }: LobbyProps) {
 
   const handleStart = () => {
     if (allSongs.length === 0) {
-      setConnectionError('No songs loaded. Please refresh the page.');
+      setConnectionError('error.noSongsProvided');
       return;
     }
     const currentCategory = roomState?.gameState.songCategory || 'all';
@@ -75,7 +75,7 @@ export function Lobby({ onLeave }: LobbyProps) {
     const filteredByCategory = filterByCategory(allSongs, currentCategory);
     const filteredSongs = filterByEra(filteredByCategory, currentEra);
     if (filteredSongs.length === 0) {
-      setConnectionError('No songs in selected category and era.');
+      setConnectionError('error.noSongsInCategory');
       return;
     }
     setConnectionError(null);
@@ -238,7 +238,7 @@ export function Lobby({ onLeave }: LobbyProps) {
 
         {connectionError && (
           <div className="bg-red-900/30 border border-red-500 text-red-300 px-4 py-3 rounded-xl mb-4 text-center animate-slide-in">
-            {connectionError}
+            {t(connectionError)}
           </div>
         )}
 

@@ -54,7 +54,7 @@ export function usePartySocket() {
     });
 
     globalSocket.addEventListener('error', () => {
-      setConnectionError('Connection error. Trying to reconnect...');
+      setConnectionError('error.connectionError');
     });
   }, [handleServerMessage, setConnected, setConnecting, setConnectionError]);
 

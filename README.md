@@ -4,10 +4,11 @@ A music timeline guessing game. Listen to songs, guess the release year, and bui
 
 [![CI](https://github.com/arthurkowalsky/hitster/actions/workflows/ci.yml/badge.svg)](https://github.com/arthurkowalsky/hitster/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Songs](https://img.shields.io/badge/songs-1691-blue)](https://arthurkowalsky.github.io/timetune/)
 
 ## Play Now
 
-**[Play Online](https://arthurkowalsky.github.io/timetune/)** — Polish Edition (530 songs)
+**[Play Online](https://arthurkowalsky.github.io/timetune/)** — 1691 songs (Polish & International)
 
 ## Features
 
@@ -16,19 +17,28 @@ A music timeline guessing game. Listen to songs, guess the release year, and bui
 - Online multiplayer — create rooms and invite friends via link
 
 **Gameplay**
-- 530 Polish songs spanning 1950-2024
-- Song filtering by origin (Polish/International), genres, and year range
+- 1691 songs (639 Polish + 1052 International) spanning 1950-2025
+- Song filtering by origin, era, and genres
+- Voice voting for bonus points (online multiplayer)
+- Track issue reporting — flag wrong YouTube videos
 - Configurable turn timer and target score
 - Auto-play mode — skip manual play button
-- Voice voting for bonus points (online multiplayer)
 
 **Experience**
+- English & Polish language support
 - PWA — install as mobile app from browser
 - Mobile-first with fullscreen mode
+- Smooth entrance/exit animations
 - Animated audio visualizer with gradient glow
 - Mystery card animation on song draw
 - Haptic feedback on mobile
 - Auto-save progress (localStorage)
+
+## Screenshots
+
+<p align="center">
+  <img src="docs/demo.gif" alt="TimeTune gameplay demo" width="400">
+</p>
 
 ## Quick Start
 
@@ -63,7 +73,9 @@ React 19 | TypeScript | Vite 7 | Tailwind CSS 4 | Zustand | PartyKit
 
 ## Song Database
 
-Songs are stored in `public/data/songs.json`:
+**1691 songs** in `public/data/songs.json`:
+- 639 Polish songs (1950-2025)
+- 1052 International songs (1950-2025)
 
 ```json
 {

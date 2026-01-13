@@ -8,6 +8,7 @@ import type {
   OnlinePlayer,
 } from './types';
 import { initialMultiplayerState } from './types';
+import { getErrorTranslationKey } from './errorMessages';
 
 interface MultiplayerActions {
   setMode: (mode: GameMode) => void;
@@ -330,7 +331,7 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
             break;
 
           case 'ERROR':
-            set({ connectionError: message.payload.message });
+            set({ connectionError: getErrorTranslationKey(message.payload.code) });
             break;
 
           case 'POSITION_PREVIEW':

@@ -1,7 +1,7 @@
 {
   "app": {
     "name": "TimeTune",
-    "subtitle": "Polska Edycja",
+    "subtitle": "🎧 Zgadnij rok!",
     "loading": "Ładowanie piosenek...",
     "loadError": "Nie udało się załadować piosenek"
   },
@@ -21,7 +21,7 @@
     "ready": "Gotowy",
     "kick": "Wyrzuć",
     "cardsToWin": "kart do wygranej",
-    "setReady": "Jestem gotowy",
+    "setReady": "Gotowe!",
     "readyActive": "Gotowy!",
     "startGame": "Rozpocznij grę!",
     "starting": "Startowanie...",
@@ -44,7 +44,20 @@
     "roomFull": "Pokój jest pełny.",
     "nameTaken": "Ta nazwa jest już zajęta.",
     "reconnectFailed": "Nie udało się połączyć z pokojem",
-    "roomMayNotExist": "Pokój mógł zostać zamknięty lub nie istnieje."
+    "roomMayNotExist": "Pokój mógł zostać zamknięty lub nie istnieje.",
+    "connectionError": "Błąd połączenia. Próbuję ponownie...",
+    "recordingNotSupported": "Nagrywanie nie jest wspierane",
+    "recordingFailed": "Nie udało się przetworzyć nagrania",
+    "recordingStartFailed": "Nie udało się rozpocząć nagrywania",
+    "notHost": "Tylko host może wykonać tę akcję",
+    "notEnoughPlayers": "Potrzeba minimum 2 graczy",
+    "playersNotReady": "Nie wszyscy gracze są gotowi",
+    "invalidAction": "Nie można wykonać tej akcji teraz",
+    "notYourTurn": "To nie Twoja tura",
+    "kicked": "Zostałeś wyrzucony z pokoju",
+    "noSongsProvided": "Brak piosenek do gry",
+    "noSongsInCategory": "Brak piosenek w wybranej kategorii i epoce",
+    "microphoneDenied": "Brak dostępu do mikrofonu"
   },
   "common": {
     "back": "Wróć"
@@ -88,7 +101,7 @@
     "yourTimeline": "Twoja oś czasu",
     "drawCard": "Losuj piosenkę!",
     "newCard": "NOWA KARTA",
-    "drawnCard": "Wylosowałeś kartę!",
+    "drawnCard": "Nowa karta!",
     "listenAndGuess": "Posłuchaj i zgadnij rok wydania",
     "confirmSelection": "Kliknij \"Zatwierdź\" aby potwierdzić wybór",
     "wherePlaceSong": "Gdzie umieścisz tę piosenkę?",
@@ -184,8 +197,8 @@
     "microphoneDenied": "Brak dostępu do mikrofonu",
     "waitingForVotes": "Czekamy na głosy...",
     "waitingForRecording": "{{name}} nagrywa odpowiedź...",
-    "playerSaid": "{{name}} mówi:",
-    "didTheyGuess": "Czy zgadł?",
+    "playerSaid": "{{name}}:",
+    "didTheyGuess": "Trafione?",
     "correct": "Tak",
     "incorrect": "Nie",
     "voted": "Głos oddany!",

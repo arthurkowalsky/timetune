@@ -17,7 +17,7 @@ export function DisconnectOverlay() {
           {t('error.disconnected')}
         </h2>
         <p className="text-gray-400 mb-6">
-          {connectionError || t('error.disconnectedDescription')}
+          {connectionError ? t(connectionError) : t('error.disconnectedDescription')}
         </p>
         <div className="space-y-3">
           <button

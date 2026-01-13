@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.6.0] - 2026-01-13
 ### Added
+- English language support with language switcher (flag toggle in top-left corner)
 - Voice voting - record title/artist guess, other players vote (online mode)
 - Track issue reporting - report wrong YouTube videos directly to GitHub
 - Entrance/exit animations - smooth transitions between game phases

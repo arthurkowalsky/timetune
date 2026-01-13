@@ -315,7 +315,6 @@ export interface ErrorEvent {
   type: 'ERROR';
   payload: {
     code: ErrorCode;
-    message: string;
   };
 }
 
@@ -441,6 +440,8 @@ export type ErrorCode =
   | 'PLAYER_NAME_TAKEN'
   | 'INVALID_ROOM_CODE'
   | 'PLAYERS_NOT_READY'
+  | 'NO_SONGS_PROVIDED'
+  | 'KICKED'
   | 'UNKNOWN_ERROR';
 
 export interface MultiplayerState {

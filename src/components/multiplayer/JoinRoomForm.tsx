@@ -73,15 +73,6 @@ export function JoinRoomForm({ onBack, onRoomJoined, initialRoomCode }: JoinRoom
     if (connectionError) setConnectionError(null);
   };
 
-  const getErrorMessage = (error: string) => {
-    switch (error) {
-      case 'Game already in progress': return t('error.gameAlreadyStarted');
-      case 'Room not found': return t('error.roomNotFound');
-      case 'Room full': return t('error.roomFull');
-      case 'Name already taken': return t('error.nameTaken');
-      default: return error;
-    }
-  };
 
   return (
     <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4">
@@ -131,7 +122,7 @@ export function JoinRoomForm({ onBack, onRoomJoined, initialRoomCode }: JoinRoom
 
           {connectionError && (
             <div className="bg-red-500/20 border border-red-500/50 rounded-xl p-4 text-red-400">
-              {getErrorMessage(connectionError)}
+              {t(connectionError)}
             </div>
           )}
 

@@ -107,7 +107,7 @@ export function useHoldToRecord(options: UseHoldToRecordOptions): UseHoldToRecor
 
   const startRecording = useCallback(async (buttonElement: HTMLElement | null): Promise<boolean> => {
     if (!isSupported) {
-      setError('Recording not supported');
+      setError('error.recordingNotSupported');
       return false;
     }
 
@@ -165,7 +165,7 @@ export function useHoldToRecord(options: UseHoldToRecordOptions): UseHoldToRecor
         };
         reader.onerror = () => {
           cleanup();
-          setError('Failed to process recording');
+          setError('error.recordingFailed');
         };
         reader.readAsDataURL(blob);
       };
@@ -191,9 +191,9 @@ export function useHoldToRecord(options: UseHoldToRecordOptions): UseHoldToRecor
     } catch (err) {
       if (err instanceof DOMException && err.name === 'NotAllowedError') {
         setPermissionState('denied');
-        setError('Microphone access denied');
+        setError('error.microphoneDenied');
       } else {
-        setError('Failed to start recording');
+        setError('error.recordingStartFailed');
       }
       cleanup();
       return false;

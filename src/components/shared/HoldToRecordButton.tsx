@@ -70,7 +70,7 @@ export function HoldToRecordButton({ onComplete, onCancel, disabled = false }: H
 
   return (
     <div className="flex flex-col items-center gap-4">
-      {error && <p className="text-red-400 text-sm">{error}</p>}
+      {error && <p className="text-red-400 text-sm">{t(error)}</p>}
 
       <div
         className="relative select-none touch-none"

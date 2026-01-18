@@ -1,16 +1,30 @@
 import { useTranslations } from '../../i18n';
+import { TurnTimer } from '../TurnTimer';
 
 interface GameHeaderProps {
   onReset?: () => void;
   onLeave?: () => void;
+  turnStartedAt?: number | null;
+  turnTimeout?: number | null;
+  isTimerActive?: boolean;
 }
 
-export function GameHeader({ onReset, onLeave }: GameHeaderProps) {
+export function GameHeader({
+  onReset,
+  onLeave,
+  turnStartedAt = null,
+  turnTimeout = null,
+  isTimerActive = false,
+}: GameHeaderProps) {
   const { t } = useTranslations();
 
   return (
     <div className="flex items-center justify-between">
-      <div className="w-10" />
+      <TurnTimer
+        turnStartedAt={turnStartedAt}
+        timeoutSeconds={turnTimeout}
+        isActive={isTimerActive}
+      />
       <h1 className="text-2xl sm:text-3xl font-black text-white">
         {t('app.name').toUpperCase()}
       </h1>

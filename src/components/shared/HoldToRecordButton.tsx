@@ -1,5 +1,7 @@
+import { m } from 'motion/react';
 import { useHoldToRecord } from '../../hooks/useHoldToRecord';
 import { useTranslations } from '../../i18n';
+import { useMotionPreference } from '../../motion';
 
 interface HoldToRecordButtonProps {
   onComplete: (audioData: string) => void;
@@ -33,6 +35,7 @@ function AudioWaveform({ level }: { level: number }) {
 
 export function HoldToRecordButton({ onComplete, onCancel, disabled = false }: HoldToRecordButtonProps) {
   const { t } = useTranslations();
+  const { shouldReduceMotion } = useMotionPreference();
 
   const {
     isRecording,
@@ -134,7 +137,11 @@ export function HoldToRecordButton({ onComplete, onCancel, disabled = false }: H
 
         {isRecording && (
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute inset-2 rounded-full bg-red-500/20 animate-ping" />
+            <m.div
+              className="absolute inset-2 rounded-full bg-red-500/20"
+              animate={shouldReduceMotion ? {} : { scale: [1, 2], opacity: [0.75, 0] }}
+              transition={{ duration: 1, repeat: Infinity, ease: 'easeOut' }}
+            />
           </div>
         )}
       </div>

@@ -1,5 +1,14 @@
+import { m } from 'motion/react';
 import { useTranslations, pluralize } from '../../i18n';
 import { getPlayerScore } from '../../utils/gameUtils';
+import {
+  useMotionPreference,
+  screenSlideUp,
+  trophyBounce,
+  fadeIn,
+  staggerContainer,
+  staggerItem
+} from '../../motion';
 import type { Song } from '../../types';
 
 interface PlayerData {
@@ -18,6 +27,7 @@ interface EndContentProps {
 
 export function EndContent({ players, targetScore, onAction, actionLabel }: EndContentProps) {
   const { t } = useTranslations();
+  const { getVariants, shouldReduceMotion } = useMotionPreference();
 
   const sortedPlayers = [...players].sort(
     (a, b) => getPlayerScore(b) - getPlayerScore(a)
@@ -29,33 +39,59 @@ export function EndContent({ players, targetScore, onAction, actionLabel }: EndC
   const getCardWord = (count: number) =>
     pluralize(count, t('reveal.card_one'), t('reveal.card_few'), t('reveal.card_many'));
 
-  const getStaggerClass = (index: number) => {
-    const delays = ['stagger-delay-1', 'stagger-delay-2', 'stagger-delay-3', 'stagger-delay-4', 'stagger-delay-5', 'stagger-delay-6', 'stagger-delay-7', 'stagger-delay-8'];
-    return delays[index % delays.length];
-  };
-
   return (
-    <div className="min-h-screen bg-bg p-4 flex flex-col items-center justify-center animate-screen">
+    <m.div
+      className="min-h-screen bg-bg p-4 flex flex-col items-center justify-center"
+      variants={getVariants(screenSlideUp)}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="max-w-md w-full text-center">
-        <div className="text-8xl mb-4 animate-trophy">🏆</div>
-        <h1 className="text-4xl font-black text-white mb-2 animate-fade-in" style={{ animationDelay: '300ms' }}>
+        <m.div
+          className="text-8xl mb-4"
+          variants={getVariants(trophyBounce)}
+          initial="hidden"
+          animate="visible"
+        >
+          🏆
+        </m.div>
+
+        <m.h1
+          className="text-4xl font-black text-white mb-2"
+          variants={getVariants(fadeIn)}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: shouldReduceMotion ? 0 : 0.3 }}
+        >
           {hasWinner ? t('end.winner') : t('end.gameOver')}
-        </h1>
+        </m.h1>
 
         {hasWinner && (
-          <p className="text-2xl text-primary font-bold mb-8 animate-fade-in" style={{ animationDelay: '400ms' }}>
+          <m.p
+            className="text-2xl text-primary font-bold mb-8"
+            variants={getVariants(fadeIn)}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: shouldReduceMotion ? 0 : 0.4 }}
+          >
             {winner.name} {t('end.wins')}
-          </p>
+          </m.p>
         )}
 
-        <div className="bg-surface rounded-xl p-4 mb-6 animate-stagger-in stagger-delay-3">
+        <m.div
+          className="bg-surface rounded-xl p-4 mb-6"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
           <h2 className="text-lg font-bold text-white mb-4">{t('end.finalRanking')}</h2>
           <div className="space-y-3">
             {sortedPlayers.map((player, index) => (
-              <div
+              <m.div
                 key={player.id}
+                variants={staggerItem}
                 className={`
-                  flex items-center justify-between p-3 rounded-lg animate-stagger-in ${getStaggerClass(index)}
+                  flex items-center justify-between p-3 rounded-lg
                   ${index === 0
                     ? 'bg-gradient-to-r from-yellow-600/30 to-orange-600/30 border border-yellow-500/50'
                     : 'bg-surface-light'
@@ -85,23 +121,29 @@ export function EndContent({ players, targetScore, onAction, actionLabel }: EndC
                     </span>
                   )}
                 </div>
-              </div>
+              </m.div>
             ))}
           </div>
-        </div>
+        </m.div>
 
         {hasWinner && winner.timeline.length > 0 && (
-          <div className="bg-surface rounded-xl p-4 mb-6 text-left animate-stagger-in stagger-delay-4">
+          <m.div
+            className="bg-surface rounded-xl p-4 mb-6 text-left"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
             <h2 className="text-lg font-bold text-white mb-4">
               {t('end.winnerTimeline')}
             </h2>
             <div className="space-y-2 max-h-60 overflow-y-auto">
               {[...winner.timeline]
                 .sort((a, b) => a.year - b.year)
-                .map((song, index) => (
-                  <div
+                .map((song) => (
+                  <m.div
                     key={song.id}
-                    className={`flex items-center gap-3 bg-surface-light rounded-lg px-3 py-2 animate-stagger-in ${getStaggerClass(index)}`}
+                    variants={staggerItem}
+                    className="flex items-center gap-3 bg-surface-light rounded-lg px-3 py-2"
                   >
                     <span className="text-primary font-bold w-12">
                       {song.year}
@@ -110,19 +152,22 @@ export function EndContent({ players, targetScore, onAction, actionLabel }: EndC
                       <div className="text-white text-sm truncate">{song.title}</div>
                       <div className="text-gray-500 text-xs truncate">{song.artist}</div>
                     </div>
-                  </div>
+                  </m.div>
                 ))}
             </div>
-          </div>
+          </m.div>
         )}
 
-        <button
+        <m.button
           onClick={onAction}
-          className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] animate-stagger-in stagger-delay-5"
+          variants={staggerItem}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-colors"
         >
           {actionLabel}
-        </button>
+        </m.button>
       </div>
-    </div>
+    </m.div>
   );
 }

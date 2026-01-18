@@ -80,7 +80,6 @@ function AudioVisualizer() {
 
   return (
     <div className="bg-gradient-to-br from-primary/30 via-purple-600/20 to-pink-500/20 rounded-2xl p-8 flex flex-col items-center relative overflow-hidden">
-      {/* Glow background effect */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent animate-pulse-slow" />
 
       <div className="text-6xl mb-6 drop-shadow-lg relative z-10">🎧</div>

@@ -1,12 +1,15 @@
+import { m } from 'motion/react';
 import { useGame } from '../contexts';
 import { VoiceRecorder } from './shared/VoiceRecorder';
 import { GameHeader } from './shared/GameHeader';
 import { PlayerTabs } from './shared/PlayerTabs';
 import { useTranslations } from '../i18n';
+import { useMotionPreference } from '../motion';
 
 export function RecordingScreen() {
   const game = useGame();
   const { t } = useTranslations();
+  const { shouldReduceMotion } = useMotionPreference();
 
   if (!game.currentPlayer) return null;
 
@@ -44,7 +47,11 @@ export function RecordingScreen() {
                   {t('voting.waitingForRecording', { name: game.currentPlayer.name })}
                 </h2>
                 <div className="flex items-center justify-center gap-3">
-                  <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse" />
+                  <m.div
+                    className="w-3 h-3 bg-amber-500 rounded-full"
+                    animate={shouldReduceMotion ? {} : { opacity: [1, 0.5, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  />
                   <span className="text-gray-400">{t('voting.waitingForVotes')}</span>
                 </div>
               </>

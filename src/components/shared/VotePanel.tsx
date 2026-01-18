@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { m } from 'motion/react';
 import { AudioPlayback } from './AudioPlayback';
 import { useTranslations } from '../../i18n';
+import { useMotionPreference } from '../../motion';
 
 interface VotePanelProps {
   audioData: string;
@@ -20,6 +22,7 @@ export function VotePanel({
   onVote,
 }: VotePanelProps) {
   const { t } = useTranslations();
+  const { shouldReduceMotion } = useMotionPreference();
   const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
@@ -43,7 +46,11 @@ export function VotePanel({
       </div>
 
       <div className="flex items-center justify-center gap-2 mb-4">
-        <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+        <m.div
+          className="w-2 h-2 bg-amber-500 rounded-full"
+          animate={shouldReduceMotion ? {} : { opacity: [1, 0.5, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        />
         <span className="text-amber-400 font-mono">{timeLeft}s</span>
       </div>
 

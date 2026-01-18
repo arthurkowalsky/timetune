@@ -1,5 +1,7 @@
-import type { Song } from '../types';
+import { m } from 'motion/react';
+import { useMotionPreference, staggerItem } from '../motion';
 import { useTranslations } from '../i18n';
+import type { Song } from '../types';
 
 interface TimelineProps {
   songs: Song[];
@@ -19,6 +21,7 @@ export function Timeline({
   previewPosition = null,
 }: TimelineProps) {
   const { t } = useTranslations();
+  const { shouldReduceMotion } = useMotionPreference();
 
   const sortedSongs = [...songs].sort((a, b) => a.year - b.year);
 
@@ -32,16 +35,26 @@ export function Timeline({
 
   const showPreview = !isInteractive && previewPosition !== null;
 
-  const getStaggerClass = (index: number) => {
-    const delays = ['stagger-delay-1', 'stagger-delay-2', 'stagger-delay-3', 'stagger-delay-4', 'stagger-delay-5', 'stagger-delay-6', 'stagger-delay-7', 'stagger-delay-8'];
-    return delays[index % delays.length];
+  const containerVariants = {
+    hidden: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.05
+      }
+    }
   };
 
   return (
     <div className="relative">
       <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-surface-light -translate-x-1/2" />
 
-      <div className="relative space-y-2">
+      <m.div
+        className="relative space-y-2"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {isInteractive && (
           <PlacementSlot
             position={0}
@@ -54,7 +67,7 @@ export function Timeline({
         {showPreview && previewPosition === 0 && <PreviewMarker />}
 
         {sortedSongs.map((song, index) => (
-          <div key={song.id} className={`animate-stagger-in ${getStaggerClass(index)}`}>
+          <m.div key={song.id} variants={staggerItem}>
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="w-16 sm:w-20 text-right shrink-0">
                 <span className="bg-primary text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
@@ -76,9 +89,9 @@ export function Timeline({
               />
             )}
             {showPreview && previewPosition === index + 1 && <PreviewMarker />}
-          </div>
+          </m.div>
         ))}
-      </div>
+      </m.div>
     </div>
   );
 }
@@ -126,9 +139,10 @@ function PlacementSlot({ position, onSelect, isSelected, isHighlighted, isFirst 
   const styles = getSlotStyles();
 
   return (
-    <button
+    <m.button
       onClick={handleClick}
       className="w-full flex items-center gap-3 sm:gap-4 py-2 group"
+      whileTap={{ scale: 0.98 }}
     >
       <div className="w-16 sm:w-20 shrink-0" />
       <div
@@ -151,7 +165,7 @@ function PlacementSlot({ position, onSelect, isSelected, isHighlighted, isFirst 
           {isSelected ? `✓ ${t('timeline.selected')}` : (isFirst ? t('timeline.placeHereOldest') : t('timeline.placeHere'))}
         </div>
       </div>
-    </button>
+    </m.button>
   );
 }
 
@@ -159,7 +173,11 @@ function PreviewMarker() {
   const { t } = useTranslations();
 
   return (
-    <div className="w-full flex items-center gap-3 sm:gap-4 py-2 animate-pulse">
+    <m.div
+      className="w-full flex items-center gap-3 sm:gap-4 py-2"
+      animate={{ opacity: [0.5, 1, 0.5] }}
+      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+    >
       <div className="w-16 sm:w-20 shrink-0" />
       <div className="w-12 h-12 rounded-full border-2 border-dashed border-amber-500 bg-amber-500/20 z-10 shrink-0 flex items-center justify-center">
         <div className="w-3 h-3 rounded-full bg-amber-500" />
@@ -169,6 +187,6 @@ function PreviewMarker() {
           {t('timeline.considering')}
         </div>
       </div>
-    </div>
+    </m.div>
   );
 }

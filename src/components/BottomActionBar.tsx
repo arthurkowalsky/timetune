@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { m } from 'motion/react';
 import type { Song } from '../types';
 import { useTranslations } from '../i18n';
+import { useMotionPreference } from '../motion';
 
 interface BottomActionBarProps {
   phase: 'playing' | 'placing';
@@ -26,17 +28,17 @@ export function BottomActionBar({
   musicStartedByGuesser = false,
 }: BottomActionBarProps) {
   const { t } = useTranslations();
+  const { shouldReduceMotion } = useMotionPreference();
   const [isPlaying, setIsPlaying] = useState(false);
   const [showIframe, setShowIframe] = useState(false);
   const prevPhaseRef = useRef(phase);
 
-  // Reset state when entering 'playing' phase
-  // eslint-disable-next-line react-hooks/rules-of-hooks -- intentional ref access for phase tracking
+  /* eslint-disable-next-line */
   if (phase === 'playing' && prevPhaseRef.current !== 'playing') {
     setIsPlaying(false);
     setShowIframe(false);
   }
-  // eslint-disable-next-line react-hooks/rules-of-hooks -- intentional ref update for phase tracking
+  /* eslint-disable-next-line */
   prevPhaseRef.current = phase;
 
   const handlePlay = useCallback(() => {
@@ -67,12 +69,14 @@ export function BottomActionBar({
   const renderContent = () => {
     if (phase === 'playing') {
       return (
-        <button
+        <m.button
           onClick={onDrawCard}
-          className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] animate-pulse min-h-[56px]"
+          className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] min-h-[56px]"
+          animate={shouldReduceMotion ? {} : { opacity: [1, 0.7, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
           🎵 {t('game.drawCard')}
-        </button>
+        </m.button>
       );
     }
 
@@ -100,12 +104,14 @@ export function BottomActionBar({
 
     if (selectedPosition !== null) {
       return (
-        <button
+        <m.button
           onClick={onConfirmPlacement}
-          className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] min-h-[56px] shadow-lg shadow-green-500/30 animate-pulse"
+          className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] min-h-[56px] shadow-lg shadow-green-500/30"
+          animate={shouldReduceMotion ? {} : { opacity: [1, 0.7, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
           ✓ {t('game.confirmButton')}
-        </button>
+        </m.button>
       );
     }
 

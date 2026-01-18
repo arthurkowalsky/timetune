@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] - 2026-01-18
+### Added
+- Motion library integration - consistent animations with `prefers-reduced-motion` support
+- Compact turn timer in game header (left side, symmetrical to exit button)
+
+### Changed
+- Migrated all CSS animations to Motion library (pulse, ping, fade, slide, scale)
+- Fullscreen button hidden during gameplay to avoid overlap with exit button
+
+### Fixed
+- `crypto.randomUUID` error on non-HTTPS connections (PWA fallback)
+
+
 ## [0.6.0] - 2026-01-13
 ### Added
 - English language support with language switcher (flag toggle in top-left corner)

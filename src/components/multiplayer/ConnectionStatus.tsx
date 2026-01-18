@@ -1,9 +1,12 @@
+import { m } from 'motion/react';
 import { useMultiplayerStore } from '../../multiplayer';
 import { useTranslations } from '../../i18n';
+import { useMotionPreference } from '../../motion';
 
 export function ConnectionStatus() {
   const { isConnected, isConnecting, mode } = useMultiplayerStore();
   const { t } = useTranslations();
+  const { shouldReduceMotion } = useMotionPreference();
 
   if (mode !== 'online') return null;
 
@@ -18,14 +21,16 @@ export function ConnectionStatus() {
             : 'bg-red-500/20 text-red-400'
         }`}
       >
-        <span
+        <m.span
           className={`w-2 h-2 rounded-full ${
             isConnecting
-              ? 'bg-yellow-400 animate-pulse'
+              ? 'bg-yellow-400'
               : isConnected
               ? 'bg-green-400'
               : 'bg-red-400'
           }`}
+          animate={isConnecting && !shouldReduceMotion ? { opacity: [1, 0.5, 1] } : {}}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         />
         {isConnecting
           ? t('connection.connecting')

@@ -1,13 +1,13 @@
 {
   "name": "timetune",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "type": "module",
   "overrides": {
     "esbuild": "^0.25.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "dev:party": "partykit dev",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:party\"",
     "build": "tsc -b && vite build",
@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "canvas-confetti": "^1.9.4",
+    "motion": "^12.26.2",
     "partysocket": "^1.1.10",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",

@@ -21,6 +21,7 @@ interface MultiplayerActions {
   setIsHost: (isHost: boolean) => void;
   handleServerMessage: (message: ServerMessage) => void;
   reset: () => void;
+  clearRoom: () => void;
   updatePlayerReady: (playerId: string, isReady: boolean) => void;
   removePlayer: (playerId: string) => void;
   addPlayer: (player: OnlinePlayer) => void;
@@ -437,6 +438,13 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
       },
 
       reset: () => set(initialMultiplayerState),
+
+      clearRoom: () => set({
+        roomCode: null,
+        roomState: null,
+        myPlayerId: null,
+        isHost: false,
+      }),
 
       updatePlayerReady: (playerId, isReady) => {
         const state = get();

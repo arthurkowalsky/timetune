@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useGame } from '../contexts';
 import { RevealContent } from './shared/RevealContent';
 import { ConfirmModal } from './shared/ConfirmModal';
@@ -7,7 +6,6 @@ import { useTranslations } from '../i18n';
 export function RevealScreen() {
   const game = useGame();
   const { t } = useTranslations();
-  const [showExitConfirm, setShowExitConfirm] = useState(false);
 
   if (!game.currentSong || game.lastGuessCorrect === null || !game.currentPlayer) {
     return null;
@@ -18,7 +16,7 @@ export function RevealScreen() {
       {game.isOnline && (
         <div className="absolute top-4 right-4 z-10">
           <button
-            onClick={() => setShowExitConfirm(true)}
+            onClick={() => game.setShowExitConfirm(true)}
             className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-red-400 transition-colors bg-surface/80 rounded-full"
             title={t('lobby.leave')}
           >
@@ -46,7 +44,7 @@ export function RevealScreen() {
         onVote={game.submitVote}
       />
 
-      {showExitConfirm && (
+      {game.showExitConfirm && (
         <ConfirmModal
           title={game.exitConfirmConfig.title}
           message={game.exitConfirmConfig.message}
@@ -54,9 +52,9 @@ export function RevealScreen() {
           cancelLabel={t('game.cancel')}
           onConfirm={() => {
             game.onExit();
-            setShowExitConfirm(false);
+            game.setShowExitConfirm(false);
           }}
-          onCancel={() => setShowExitConfirm(false)}
+          onCancel={() => game.setShowExitConfirm(false)}
           confirmVariant={game.exitConfirmConfig.confirmVariant}
         />
       )}

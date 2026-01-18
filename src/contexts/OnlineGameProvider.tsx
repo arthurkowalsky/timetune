@@ -7,9 +7,11 @@ import type { UnifiedGameContext, UnifiedPlayer } from '../types/unified';
 interface OnlineGameProviderProps {
   children: ReactNode;
   onLeave: () => void;
+  showExitConfirm: boolean;
+  setShowExitConfirm: (show: boolean) => void;
 }
 
-export function OnlineGameProvider({ children, onLeave }: OnlineGameProviderProps) {
+export function OnlineGameProvider({ children, onLeave, showExitConfirm, setShowExitConfirm }: OnlineGameProviderProps) {
   const { roomState, myPlayerId } = useMultiplayerStore();
   const { send, disconnect } = usePartySocket();
   const { t } = useTranslations();
@@ -103,6 +105,8 @@ export function OnlineGameProvider({ children, onLeave }: OnlineGameProviderProp
       confirmLabel: t('game.exit'),
       confirmVariant: 'danger',
     },
+    showExitConfirm,
+    setShowExitConfirm,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

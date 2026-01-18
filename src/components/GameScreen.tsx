@@ -15,7 +15,6 @@ export function GameScreen() {
   const { t } = useTranslations();
   const { getVariants } = useMotionPreference();
 
-  const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null);
@@ -139,8 +138,8 @@ export function GameScreen() {
       <div className="sticky top-0 z-10 bg-bg pt-4 px-4 pb-2">
         <div className="max-w-2xl mx-auto">
           <GameHeader
-            onReset={game.isOnline ? undefined : () => setShowExitConfirm(true)}
-            onLeave={game.isOnline ? () => setShowExitConfirm(true) : undefined}
+            onReset={game.isOnline ? undefined : () => game.setShowExitConfirm(true)}
+            onLeave={game.isOnline ? () => game.setShowExitConfirm(true) : undefined}
             turnStartedAt={game.turnStartedAt}
             turnTimeout={game.turnTimeout}
             isTimerActive={isTimerActive}
@@ -236,7 +235,7 @@ export function GameScreen() {
       )}
 
       <AnimatePresence>
-        {showExitConfirm && (
+        {game.showExitConfirm && (
           <ConfirmModal
             title={game.exitConfirmConfig.title}
             message={game.exitConfirmConfig.message}
@@ -244,9 +243,9 @@ export function GameScreen() {
             cancelLabel={t('game.cancel')}
             onConfirm={() => {
               game.onExit();
-              setShowExitConfirm(false);
+              game.setShowExitConfirm(false);
             }}
-            onCancel={() => setShowExitConfirm(false)}
+            onCancel={() => game.setShowExitConfirm(false)}
             confirmVariant={game.exitConfirmConfig.confirmVariant}
           />
         )}

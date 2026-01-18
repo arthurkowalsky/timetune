@@ -34,6 +34,7 @@ export interface UnifiedGameState {
   musicPlaying: boolean;
   recordingDeadline: number | null;
   isOnline: boolean;
+  bonusClaimed: boolean;
 }
 
 export interface UnifiedGameActions {

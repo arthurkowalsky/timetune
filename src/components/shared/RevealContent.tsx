@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { m } from 'motion/react';
 import confetti from 'canvas-confetti';
-import { YouTubePlayer } from '../YouTubePlayer';
 import { useTranslations, pluralize } from '../../i18n';
 import { generateGitHubIssueUrl } from '../../utils/gameUtils';
 import { VotePanel } from './VotePanel';
@@ -11,6 +10,7 @@ import {
   slideIn,
   scaleBounce,
   fadeIn,
+  shake,
   staggerContainer,
   staggerItemY
 } from '../../motion';
@@ -23,6 +23,7 @@ interface RevealContentProps {
   playerName: string;
   cardCount: number;
   bonusPoints: number;
+  bonusClaimed?: boolean;
   isMyTurn?: boolean;
   isOnline?: boolean;
   voiceVotingEnabled?: boolean;
@@ -39,6 +40,7 @@ export function RevealContent({
   playerName,
   cardCount,
   bonusPoints,
+  bonusClaimed: bonusClaimedProp = false,
   isMyTurn = true,
   isOnline = false,
   voiceVotingEnabled = false,
@@ -49,15 +51,17 @@ export function RevealContent({
   onVote,
 }: RevealContentProps) {
   const { t } = useTranslations();
-  const [bonusClaimed, setBonusClaimed] = useState(false);
+  const [localBonusClaimed, setLocalBonusClaimed] = useState(false);
   const [lastSongId, setLastSongId] = useState(currentSong?.id);
   const [hasVoted, setHasVoted] = useState(false);
 
   if (currentSong?.id !== lastSongId) {
     setLastSongId(currentSong?.id);
-    setBonusClaimed(false);
+    setLocalBonusClaimed(false);
     setHasVoted(false);
   }
+
+  const bonusClaimed = bonusClaimedProp || localBonusClaimed;
 
   const { shouldReduceMotion, getVariants } = useMotionPreference();
   const showVotePanel = isOnline && votingState && !isMyTurn && votingState.recordingPlayerId !== myPlayerId;
@@ -88,7 +92,7 @@ export function RevealContent({
   const handleClaimBonus = () => {
     if (!isMyTurn) return;
     onClaimBonus();
-    setBonusClaimed(true);
+    setLocalBonusClaimed(true);
     if ('vibrate' in navigator) {
       navigator.vibrate([50, 30, 100]);
     }
@@ -127,7 +131,7 @@ export function RevealContent({
               : 'bg-red-900/30 border-2 border-red-500'
             }
           `}
-          variants={getVariants(slideIn)}
+          variants={getVariants(lastGuessCorrect ? slideIn : shake)}
         >
           <m.div
             className="text-6xl mb-4"
@@ -154,8 +158,13 @@ export function RevealContent({
           </m.p>
         </m.div>
 
-        <m.div variants={staggerItemY}>
-          <YouTubePlayer song={currentSong} showYear={true} />
+        <m.div
+          className="bg-surface rounded-2xl p-6 text-center"
+          variants={staggerItemY}
+        >
+          <h3 className="text-2xl font-bold text-white mb-2">{currentSong.title}</h3>
+          <p className="text-lg text-gray-400">{currentSong.artist}</p>
+          <div className="mt-4 text-5xl font-black text-primary">{currentSong.year}</div>
         </m.div>
 
         <m.div className="mt-3 text-center" variants={staggerItemY}>

@@ -35,6 +35,7 @@ export function RevealScreen() {
         playerName={game.currentPlayer.name}
         cardCount={game.currentPlayer.timeline.length}
         bonusPoints={game.currentPlayer.bonusPoints}
+        bonusClaimed={game.bonusClaimed}
         isMyTurn={game.isMyTurn}
         isOnline={game.isOnline}
         voiceVotingEnabled={game.voiceVotingEnabled}

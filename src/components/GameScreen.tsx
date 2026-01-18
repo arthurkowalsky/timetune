@@ -111,7 +111,7 @@ export function GameScreen() {
 
     if (isViewingMyTimeline && game.isMyTurn) {
       if (!isPlacing) return t('game.yourTimeline');
-      if (!isMusicPlaying) return t('game.listenFirst');
+      if (!isMusicPlaying && !game.autoPlayOnDraw) return t('game.listenFirst');
       if (selectedPosition !== null) return t('game.confirmSelection');
       return t('game.wherePlaceSong');
     }

@@ -14,6 +14,7 @@ export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) 
   const { turnTimeout, autoPlayOnDraw } = useSettingsStore();
   const { t } = useTranslations();
   const [turnStartedAt, setTurnStartedAt] = useState(() => Date.now());
+  const [bonusClaimed, setBonusClaimed] = useState(false);
   const turnStartedAtRef = useRef<number>(turnStartedAt);
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) 
     turnStartedAtRef.current = now;
     startTransition(() => {
       setTurnStartedAt(now);
+      setBonusClaimed(false);
     });
   }, [gameStore.currentPlayerIndex]);
 
@@ -32,6 +34,11 @@ export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) 
   }));
 
   const currentPlayer = players[gameStore.currentPlayerIndex] || null;
+
+  const handleClaimBonus = () => {
+    gameStore.awardBonusPoint();
+    setBonusClaimed(true);
+  };
 
   const value: UnifiedGameContext = {
     phase: gameStore.phase,
@@ -51,11 +58,12 @@ export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) 
     musicPlaying: false,
     recordingDeadline: null,
     isOnline: false,
+    bonusClaimed,
     currentPlayer,
     myPlayer: currentPlayer,
     drawCard: gameStore.drawCard,
     placeSong: gameStore.placeSong,
-    claimBonus: gameStore.awardBonusPoint,
+    claimBonus: handleClaimBonus,
     nextTurn: gameStore.nextTurn,
     skipTurn: gameStore.skipTurn,
     sendPositionPreview: () => {},

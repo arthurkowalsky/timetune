@@ -3,6 +3,8 @@ import { useMultiplayerStore, usePartySocket } from '../multiplayer';
 import { useTranslations } from '../i18n';
 import { GameContext } from './GameContext';
 import type { UnifiedGameContext, UnifiedPlayer } from '../types/unified';
+import { useTurnNotification } from '../hooks/useTurnNotification';
+import { TurnNotificationBanner } from '../components/shared/TurnNotificationBanner';
 
 interface OnlineGameProviderProps {
   children: ReactNode;
@@ -29,6 +31,13 @@ export function OnlineGameProvider({ children, onLeave }: OnlineGameProviderProp
   const currentPlayer = players[currentPlayerIndex] || null;
   const myPlayer = players.find((p) => p.id === myPlayerId) || null;
   const isMyTurn = currentPlayer?.id === myPlayerId;
+
+  useTurnNotification({
+    isMyTurn,
+    isOnline: true,
+    notificationTitle: 'TimeTune',
+    notificationBody: t('notification.yourTurn'),
+  });
 
   const handleExit = () => {
     disconnect();
@@ -105,5 +114,10 @@ export function OnlineGameProvider({ children, onLeave }: OnlineGameProviderProp
     },
   };
 
-  return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
+  return (
+    <GameContext.Provider value={value}>
+      <TurnNotificationBanner isMyTurn={isMyTurn} isOnline={true} />
+      {children}
+    </GameContext.Provider>
+  );
 }

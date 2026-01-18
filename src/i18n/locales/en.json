@@ -185,6 +185,10 @@
     "oldSchool": "Old School",
     "newSchool": "New School"
   },
+  "notification": {
+    "yourTurn": "Your turn! Come back to the game.",
+    "yourTurnBanner": "Your turn!"
+  },
   "voting": {
     "recordYourGuess": "Say the title or artist!",
     "startRecording": "Record",

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Motion library integration - consistent animations with `prefers-reduced-motion` support
 - Compact turn timer in game header (left side, symmetrical to exit button)
+- Hardware back button support for PWA - navigates to start screen or shows exit confirmation when in game
 
 ### Changed
 - Migrated all CSS animations to Motion library (pulse, ping, fade, slide, scale)

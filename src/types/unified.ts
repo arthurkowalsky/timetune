@@ -55,4 +55,6 @@ export interface UnifiedGameContext extends UnifiedGameState, UnifiedGameActions
   currentPlayer: UnifiedPlayer | null;
   myPlayer: UnifiedPlayer | null;
   exitConfirmConfig: ConfirmModalConfig;
+  showExitConfirm: boolean;
+  setShowExitConfirm: (show: boolean) => void;
 }

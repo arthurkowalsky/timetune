@@ -7,9 +7,11 @@ import type { UnifiedGameContext, UnifiedPlayer } from '../types/unified';
 interface LocalGameProviderProps {
   children: ReactNode;
   onExit: () => void;
+  showExitConfirm: boolean;
+  setShowExitConfirm: (show: boolean) => void;
 }
 
-export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) {
+export function LocalGameProvider({ children, onExit, showExitConfirm, setShowExitConfirm }: LocalGameProviderProps) {
   const gameStore = useGameStore();
   const { turnTimeout, autoPlayOnDraw } = useSettingsStore();
   const { t } = useTranslations();
@@ -82,6 +84,8 @@ export function LocalGameProvider({ children, onExit }: LocalGameProviderProps) 
       confirmLabel: t('game.exit'),
       confirmVariant: 'danger',
     },
+    showExitConfirm,
+    setShowExitConfirm,
   };
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;

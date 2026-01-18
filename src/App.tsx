@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, startTransition } from 'react';
+import { useEffect, useState, useRef, startTransition, useCallback } from 'react';
 import { useGameStore } from './store';
 import { loadSongs } from './songs';
 import { StartScreen } from './components/StartScreen';
@@ -20,6 +20,7 @@ import {
 import { LocalGameProvider, OnlineGameProvider } from './contexts';
 import { FloatingFullscreenButton } from './components/shared/FloatingFullscreenButton';
 import { useFullscreen } from './hooks/useFullscreen';
+import { useBackHandler } from './hooks/useBackHandler';
 import { MotionProvider } from './motion';
 
 type OnlineStep = 'menu' | 'create' | 'join' | 'lobby';
@@ -27,7 +28,7 @@ type LocalStep = 'mode-select' | 'setup';
 
 function AppContent() {
   const { phase, resetGame } = useGameStore();
-  const { mode, setMode, roomState, roomCode, myPlayerId, reset: resetMultiplayer } = useMultiplayerStore();
+  const { mode, setMode, roomState, roomCode, myPlayerId, reset: resetMultiplayer, clearRoom } = useMultiplayerStore();
   const { t } = useTranslations();
   const { reconnect } = usePartySocket();
   const { isFullscreen, toggleFullscreen } = useFullscreen();
@@ -38,11 +39,39 @@ function AppContent() {
   const [isReconnecting, setIsReconnecting] = useState(false);
   const [reconnectFailed, setReconnectFailed] = useState(false);
   const [pendingRoomCode, setPendingRoomCode] = useState<string | null>(null);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
   const reconnectAttemptedRef = useRef(false);
 
   const isInActiveGame =
     (mode === 'local' && phase !== 'setup') ||
     (mode === 'online' && (roomState?.roomPhase === 'playing' || roomState?.roomPhase === 'finished'));
+
+  const goToStart = useCallback(() => {
+    resetGame();
+    setMode('local');
+    resetMultiplayer();
+    setLocalStep('mode-select');
+    setShowExitConfirm(false);
+  }, [resetGame, setMode, resetMultiplayer]);
+
+  const handleBack = useCallback(() => {
+    if (showExitConfirm) {
+      setShowExitConfirm(false);
+      return;
+    }
+
+    const inGame = (mode === 'local' && ['playing', 'placing', 'reveal'].includes(phase)) ||
+      (mode === 'online' && roomState?.roomPhase === 'playing');
+
+    if (inGame) {
+      setShowExitConfirm(true);
+      return;
+    }
+
+    goToStart();
+  }, [showExitConfirm, mode, phase, roomState, goToStart]);
+
+  useBackHandler(handleBack);
 
   useEffect(() => {
     loadSongs().then((songs) => {
@@ -55,13 +84,13 @@ function AppContent() {
     const params = new URLSearchParams(window.location.search);
     const joinCode = params.get('join');
     if (joinCode && /^[A-Z0-9]{6}$/i.test(joinCode)) {
-      const roomCode = joinCode.toUpperCase();
+      const roomCodeValue = joinCode.toUpperCase();
       startTransition(() => {
         setMode('online');
         setOnlineStep('join');
-        setPendingRoomCode(roomCode);
+        setPendingRoomCode(roomCodeValue);
       });
-      window.history.replaceState({}, '', '/timetune/');
+      window.history.replaceState({ app: true }, '', '/timetune/');
     }
   }, [setMode]);
 
@@ -142,16 +171,18 @@ function AppContent() {
     setOnlineStep('menu');
   };
 
-  const handleBackToModeSelect = () => {
-    setMode('local');
-    resetMultiplayer();
-    setOnlineStep('menu');
-    setLocalStep('mode-select');
-    resetGame();
-  };
+  const handleBackToModeSelect = goToStart;
 
   const handleBackToOnlineMenu = () => {
     setOnlineStep('menu');
+  };
+
+  const handleCreateRoom = () => {
+    setOnlineStep('create');
+  };
+
+  const handleJoinRoom = () => {
+    setOnlineStep('join');
   };
 
   const handleRoomCreatedOrJoined = () => {
@@ -159,9 +190,11 @@ function AppContent() {
   };
 
   const handleLeaveRoom = () => {
-    resetMultiplayer();
+    clearRoom();
     setOnlineStep('menu');
   };
+
+  const handleExitGame = goToStart;
 
   if (mode === 'local') {
     if (localStep === 'mode-select') {
@@ -188,7 +221,7 @@ function AppContent() {
     return (
       <>
         {!isInActiveGame && <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />}
-        <LocalGameProvider onExit={handleBackToModeSelect}>
+        <LocalGameProvider onExit={handleExitGame} showExitConfirm={showExitConfirm} setShowExitConfirm={setShowExitConfirm}>
           {(phase === 'playing' || phase === 'placing') && <GameScreen />}
           {phase === 'reveal' && <RevealScreen />}
           {phase === 'finished' && <EndScreen />}
@@ -242,7 +275,7 @@ function AppContent() {
       return (
         <>
           {!isInActiveGame && <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />}
-          <OnlineGameProvider onLeave={handleLeaveRoom}>
+          <OnlineGameProvider onLeave={handleExitGame} showExitConfirm={showExitConfirm} setShowExitConfirm={setShowExitConfirm}>
             <DisconnectOverlay />
             {(onlinePhase === 'playing' || onlinePhase === 'placing') && <GameScreen />}
             {onlinePhase === 'recording' && <RecordingScreen />}
@@ -270,8 +303,8 @@ function AppContent() {
           <>
             {!isInActiveGame && <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />}
             <OnlineMenu
-              onCreateRoom={() => setOnlineStep('create')}
-              onJoinRoom={() => setOnlineStep('join')}
+              onCreateRoom={handleCreateRoom}
+              onJoinRoom={handleJoinRoom}
               onBack={handleBackToModeSelect}
             />
           </>
@@ -313,8 +346,8 @@ function AppContent() {
           <>
             {!isInActiveGame && <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />}
             <OnlineMenu
-              onCreateRoom={() => setOnlineStep('create')}
-              onJoinRoom={() => setOnlineStep('join')}
+              onCreateRoom={handleCreateRoom}
+              onJoinRoom={handleJoinRoom}
               onBack={handleBackToModeSelect}
             />
           </>

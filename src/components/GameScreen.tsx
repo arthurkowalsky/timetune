@@ -1,17 +1,19 @@
 import { useState, useEffect, startTransition, useRef } from 'react';
+import { m, AnimatePresence } from 'motion/react';
 import { useGame } from '../contexts';
 import { Timeline } from './Timeline';
 import { BottomActionBar } from './BottomActionBar';
 import { MysteryCard } from './MysteryCard';
-import { TurnTimer } from './TurnTimer';
 import { GameHeader } from './shared/GameHeader';
 import { PlayerTabs } from './shared/PlayerTabs';
 import { ConfirmModal } from './shared/ConfirmModal';
 import { useTranslations } from '../i18n';
+import { useMotionPreference, fadeIn, slideIn, scaleBounce } from '../motion';
 
 export function GameScreen() {
   const game = useGame();
   const { t } = useTranslations();
+  const { getVariants } = useMotionPreference();
 
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState<number | null>(null);
@@ -125,18 +127,23 @@ export function GameScreen() {
     return `${t('game.timelineOf')} ${selectedPlayer.name} (${selectedPlayer.timeline.length}/${game.targetScore})`;
   };
 
+  const isTimerActive = game.isMyTurn && game.phase === 'placing' && isMusicPlaying;
+
   return (
-    <div className="min-h-screen bg-bg animate-fade-in">
-      <TurnTimer
-        turnStartedAt={game.turnStartedAt}
-        timeoutSeconds={game.turnTimeout}
-        isActive={game.isMyTurn && game.phase === 'placing' && isMusicPlaying}
-      />
+    <m.div
+      className="min-h-screen bg-bg"
+      variants={getVariants(fadeIn)}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="sticky top-0 z-10 bg-bg pt-4 px-4 pb-2">
         <div className="max-w-2xl mx-auto">
           <GameHeader
             onReset={game.isOnline ? undefined : () => setShowExitConfirm(true)}
             onLeave={game.isOnline ? () => setShowExitConfirm(true) : undefined}
+            turnStartedAt={game.turnStartedAt}
+            turnTimeout={game.turnTimeout}
+            isTimerActive={isTimerActive}
           />
         </div>
       </div>
@@ -144,13 +151,16 @@ export function GameScreen() {
       <div className="px-4 pb-24">
         <div className="max-w-2xl mx-auto">
           {isPlacing && game.isMyTurn && !isMusicPlaying && !game.autoPlayOnDraw && (
-            <div className="animate-scale-bounce">
+            <m.div variants={getVariants(scaleBounce)} initial="hidden" animate="visible">
               <MysteryCard />
-            </div>
+            </m.div>
           )}
 
-          <div
-            className="bg-surface rounded-xl overflow-hidden mb-4 animate-slide-in"
+          <m.div
+            className="bg-surface rounded-xl overflow-hidden mb-4"
+            variants={getVariants(slideIn)}
+            initial="hidden"
+            animate="visible"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
@@ -175,6 +185,7 @@ export function GameScreen() {
                   <p className="text-gray-500 text-center py-4">{t('game.noCards')}</p>
                 ) : (
                   <Timeline
+                    key={effectiveSelectedId}
                     songs={selectedPlayer.timeline}
                     onSelectPosition={canInteract ? handleSelectPosition : undefined}
                     selectedPosition={canInteract ? selectedPosition : null}
@@ -184,7 +195,7 @@ export function GameScreen() {
                 )
               )}
             </div>
-          </div>
+          </m.div>
         </div>
       </div>
 
@@ -224,20 +235,22 @@ export function GameScreen() {
         </div>
       )}
 
-      {showExitConfirm && (
-        <ConfirmModal
-          title={game.exitConfirmConfig.title}
-          message={game.exitConfirmConfig.message}
-          confirmLabel={game.exitConfirmConfig.confirmLabel}
-          cancelLabel={t('game.cancel')}
-          onConfirm={() => {
-            game.onExit();
-            setShowExitConfirm(false);
-          }}
-          onCancel={() => setShowExitConfirm(false)}
-          confirmVariant={game.exitConfirmConfig.confirmVariant}
-        />
-      )}
-    </div>
+      <AnimatePresence>
+        {showExitConfirm && (
+          <ConfirmModal
+            title={game.exitConfirmConfig.title}
+            message={game.exitConfirmConfig.message}
+            confirmLabel={game.exitConfirmConfig.confirmLabel}
+            cancelLabel={t('game.cancel')}
+            onConfirm={() => {
+              game.onExit();
+              setShowExitConfirm(false);
+            }}
+            onCancel={() => setShowExitConfirm(false)}
+            confirmVariant={game.exitConfirmConfig.confirmVariant}
+          />
+        )}
+      </AnimatePresence>
+    </m.div>
   );
 }

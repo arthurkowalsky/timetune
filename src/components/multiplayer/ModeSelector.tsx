@@ -1,4 +1,12 @@
+import { m } from 'motion/react';
 import { useTranslations } from '../../i18n';
+import {
+  useMotionPreference,
+  screenSlideUp,
+  slideIn,
+  staggerContainer,
+  staggerItem
+} from '../../motion';
 
 interface ModeSelectorProps {
   onSelectLocal: () => void;
@@ -7,29 +15,45 @@ interface ModeSelectorProps {
 
 export function ModeSelector({ onSelectLocal, onSelectOnline }: ModeSelectorProps) {
   const { t, locale, toggleLocale } = useTranslations();
+  const { getVariants } = useMotionPreference();
 
   return (
-    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4 relative animate-screen">
-      <button
+    <m.div
+      className="min-h-screen bg-bg flex flex-col items-center justify-center p-4 relative"
+      variants={getVariants(screenSlideUp)}
+      initial="hidden"
+      animate="visible"
+    >
+      <m.button
         onClick={toggleLocale}
-        className="absolute top-4 left-4 text-3xl hover:scale-110 active:scale-95 transition-transform"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className="absolute top-4 left-4 text-3xl"
         aria-label={locale === 'pl' ? 'Switch to English' : 'Przełącz na polski'}
       >
         {locale === 'pl' ? '🇵🇱' : '🇺🇸'}
-      </button>
+      </m.button>
 
-      <div className="max-w-md w-full">
-        <div className="text-center mb-8 animate-slide-in">
+      <m.div
+        className="max-w-md w-full"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        <m.div className="text-center mb-8" variants={getVariants(slideIn)}>
           <h1 className="text-5xl font-black text-white mb-2">
             🎵 {t('app.name').toUpperCase()}
           </h1>
           <p className="text-gray-400 text-lg">{t('app.subtitle')}</p>
-        </div>
+        </m.div>
 
         <div className="space-y-4">
-          <button
+          <m.button
             onClick={onSelectLocal}
-            className="w-full bg-surface hover:bg-surface-light rounded-xl p-6 text-left transition-colors group animate-stagger-in stagger-delay-1"
+            variants={staggerItem}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-surface hover:bg-surface-light rounded-xl p-6 text-left transition-colors group"
           >
             <div className="flex items-center gap-4">
               <span className="text-4xl">📱</span>
@@ -42,11 +66,14 @@ export function ModeSelector({ onSelectLocal, onSelectOnline }: ModeSelectorProp
                 </p>
               </div>
             </div>
-          </button>
+          </m.button>
 
-          <button
+          <m.button
             onClick={onSelectOnline}
-            className="w-full bg-surface hover:bg-surface-light rounded-xl p-6 text-left transition-colors group animate-stagger-in stagger-delay-2"
+            variants={staggerItem}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-surface hover:bg-surface-light rounded-xl p-6 text-left transition-colors group"
           >
             <div className="flex items-center gap-4">
               <span className="text-4xl">🌐</span>
@@ -59,14 +86,14 @@ export function ModeSelector({ onSelectLocal, onSelectOnline }: ModeSelectorProp
                 </p>
               </div>
             </div>
-          </button>
+          </m.button>
         </div>
 
-        <div className="mt-8 text-center text-gray-500 text-sm animate-stagger-in stagger-delay-3">
+        <m.div className="mt-8 text-center text-gray-500 text-sm" variants={staggerItem}>
           <p className="mb-2">📋 {t('start.rulesTitle')}</p>
           <p>{t('start.rulesDescription')}</p>
-        </div>
-      </div>
-    </div>
+        </m.div>
+      </m.div>
+    </m.div>
   );
 }

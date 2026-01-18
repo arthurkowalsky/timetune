@@ -1,8 +1,19 @@
 import { useEffect, useState } from 'react';
+import { m } from 'motion/react';
+import confetti from 'canvas-confetti';
 import { YouTubePlayer } from '../YouTubePlayer';
 import { useTranslations, pluralize } from '../../i18n';
 import { generateGitHubIssueUrl } from '../../utils/gameUtils';
 import { VotePanel } from './VotePanel';
+import {
+  useMotionPreference,
+  screenSlideUp,
+  slideIn,
+  scaleBounce,
+  fadeIn,
+  staggerContainer,
+  staggerItemY
+} from '../../motion';
 import type { Song } from '../../types';
 import type { VotingState } from '../../multiplayer/types';
 
@@ -48,6 +59,7 @@ export function RevealContent({
     setHasVoted(false);
   }
 
+  const { shouldReduceMotion, getVariants } = useMotionPreference();
   const showVotePanel = isOnline && votingState && !isMyTurn && votingState.recordingPlayerId !== myPlayerId;
   const showStandardBonus = lastGuessCorrect && isMyTurn && !bonusClaimed && !(isOnline && voiceVotingEnabled);
 
@@ -59,7 +71,19 @@ export function RevealContent({
         navigator.vibrate(300);
       }
     }
-  }, [lastGuessCorrect]);
+
+    if (lastGuessCorrect && !shouldReduceMotion) {
+      const musicNote = confetti.shapeFromText({ text: '🎵', scalar: 2 });
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
+        shapes: ['circle', musicNote],
+        colors: ['#10B981', '#34D399', '#6EE7B7', '#FFD700'],
+        disableForReducedMotion: true
+      });
+    }
+  }, [lastGuessCorrect, shouldReduceMotion]);
 
   const handleClaimBonus = () => {
     if (!isMyTurn) return;
@@ -83,36 +107,58 @@ export function RevealContent({
   );
 
   return (
-    <div className="min-h-screen bg-bg p-4 flex flex-col items-center justify-center animate-screen">
-      <div className="max-w-md w-full">
-        <div className={`
-          text-center mb-8 p-6 rounded-2xl animate-slide-in
-          ${lastGuessCorrect
-            ? 'bg-green-900/30 border-2 border-green-500'
-            : 'bg-red-900/30 border-2 border-red-500'
-          }
-        `}>
-          <div className="text-6xl mb-4 animate-scale-bounce">
+    <m.div
+      className="min-h-screen bg-bg p-4 flex flex-col items-center justify-center"
+      variants={getVariants(screenSlideUp)}
+      initial="hidden"
+      animate="visible"
+    >
+      <m.div
+        className="max-w-md w-full"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        <m.div
+          className={`
+            text-center mb-8 p-6 rounded-2xl
+            ${lastGuessCorrect
+              ? 'bg-green-900/30 border-2 border-green-500'
+              : 'bg-red-900/30 border-2 border-red-500'
+            }
+          `}
+          variants={getVariants(slideIn)}
+        >
+          <m.div
+            className="text-6xl mb-4"
+            variants={getVariants(scaleBounce)}
+          >
             {lastGuessCorrect ? '🎉' : '😢'}
-          </div>
-          <h2 className={`text-3xl font-black mb-2 animate-fade-in ${
-            lastGuessCorrect ? 'text-green-400' : 'text-red-400'
-          }`} style={{ animationDelay: '200ms' }}>
+          </m.div>
+          <m.h2
+            className={`text-3xl font-black mb-2 ${
+              lastGuessCorrect ? 'text-green-400' : 'text-red-400'
+            }`}
+            variants={getVariants(fadeIn)}
+          >
             {lastGuessCorrect ? t('reveal.correct') : t('reveal.wrong')}
-          </h2>
-          <p className="text-gray-400 animate-fade-in" style={{ animationDelay: '300ms' }}>
+          </m.h2>
+          <m.p
+            className="text-gray-400"
+            variants={getVariants(fadeIn)}
+          >
             {lastGuessCorrect
               ? `${playerName} ${t('reveal.getsCard')}`
               : t('reveal.notThisTime')
             }
-          </p>
-        </div>
+          </m.p>
+        </m.div>
 
-        <div className="animate-stagger-in stagger-delay-2">
+        <m.div variants={staggerItemY}>
           <YouTubePlayer song={currentSong} showYear={true} />
-        </div>
+        </m.div>
 
-        <div className="mt-3 text-center animate-stagger-in stagger-delay-3">
+        <m.div className="mt-3 text-center" variants={staggerItemY}>
           <a
             href={generateGitHubIssueUrl(currentSong)}
             target="_blank"
@@ -122,9 +168,9 @@ export function RevealContent({
             <span>🚩</span>
             <span>{t('reveal.reportIssue')}</span>
           </a>
-        </div>
+        </m.div>
 
-        <div className="mt-6 text-center animate-stagger-in stagger-delay-4">
+        <m.div className="mt-6 text-center" variants={staggerItemY}>
           <p className="text-gray-400">
             {playerName} {t('reveal.hasNow')}{' '}
             <span className="text-primary font-bold">
@@ -137,27 +183,37 @@ export function RevealContent({
               </span>
             )}
           </p>
-        </div>
+        </m.div>
 
         {showStandardBonus && (
-          <div className="mt-6 bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-2 border-amber-500 rounded-xl p-4 animate-slide-in">
+          <m.div
+            className="mt-6 bg-gradient-to-r from-amber-900/30 to-orange-900/30 border-2 border-amber-500 rounded-xl p-4"
+            variants={getVariants(slideIn)}
+          >
             <p className="text-amber-300 text-center mb-3 text-sm">
               {t('reveal.bonusQuestion')}
             </p>
-            <button
+            <m.button
               onClick={handleClaimBonus}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               className="w-full bg-gradient-to-r from-amber-500 to-orange-500
                          hover:from-amber-600 hover:to-orange-600 text-white
-                         py-3 rounded-xl font-bold transition-all hover:scale-[1.02] min-h-[48px]
+                         py-3 rounded-xl font-bold transition-colors min-h-[48px]
                          shadow-lg shadow-amber-500/20"
             >
               {t('reveal.bonusButton')}
-            </button>
-          </div>
+            </m.button>
+          </m.div>
         )}
 
         {showVotePanel && votingState && (
-          <div className="mt-6 animate-slide-in">
+          <m.div
+            className="mt-6"
+            variants={getVariants(slideIn)}
+            initial="hidden"
+            animate="visible"
+          >
             <VotePanel
               audioData={votingState.audioData}
               playerName={playerName}
@@ -166,30 +222,41 @@ export function RevealContent({
               hasVoted={hasVoted}
               onVote={handleVote}
             />
-          </div>
+          </m.div>
         )}
 
         {lastGuessCorrect && bonusClaimed && (
-          <div className="mt-6 bg-green-900/30 border-2 border-green-500 rounded-xl p-4 text-center animate-scale-bounce">
+          <m.div
+            className="mt-6 bg-green-900/30 border-2 border-green-500 rounded-xl p-4 text-center"
+            variants={getVariants(scaleBounce)}
+            initial="hidden"
+            animate="visible"
+          >
             <span className="text-green-400 text-lg font-bold">✓ {t('reveal.bonusAwarded')}</span>
-          </div>
+          </m.div>
         )}
 
         {isMyTurn ? (
-          <button
+          <m.button
             onClick={onNextTurn}
-            className="w-full mt-6 bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] min-h-[56px] animate-stagger-in stagger-delay-5"
+            variants={staggerItemY}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full mt-6 bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 text-white py-4 rounded-xl text-xl font-bold transition-colors min-h-[56px]"
           >
             {t('reveal.nextTurn')}
-          </button>
+          </m.button>
         ) : (
-          <div className="mt-6 bg-surface rounded-xl p-4 text-center animate-stagger-in stagger-delay-5">
+          <m.div
+            className="mt-6 bg-surface rounded-xl p-4 text-center"
+            variants={staggerItemY}
+          >
             <p className="text-gray-400">
               {t('online.waitingFor')} <span className="text-primary font-bold">{playerName}</span>
             </p>
-          </div>
+          </m.div>
         )}
-      </div>
-    </div>
+      </m.div>
+    </m.div>
   );
 }

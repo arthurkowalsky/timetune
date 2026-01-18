@@ -1,10 +1,19 @@
 import { useState, useMemo } from 'react';
+import { m, AnimatePresence } from 'motion/react';
 import { useGameStore, useSettingsStore } from '../store';
 import { useTranslations } from '../i18n';
 import { GameConfigSection } from './shared/GameConfigSection';
 import { SongCategorySelector } from './shared/SongCategorySelector';
 import { EraSelector } from './shared/EraSelector';
 import { getSongs, getSongCounts, filterByCategory, getEraCounts } from '../songs';
+import {
+  useMotionPreference,
+  screenSlideUp,
+  slideIn,
+  staggerContainer,
+  staggerItem,
+  listItemVariants
+} from '../motion';
 import type { SongCategory, SongEra } from '../types';
 
 interface StartScreenProps {
@@ -16,6 +25,7 @@ export function StartScreen({ onBack }: StartScreenProps) {
   const { players, addPlayer, removePlayer, startGame, targetScore, setTargetScore, songCategory, setSongCategory, selectedEra, setSelectedEra } = useGameStore();
   const { autoPlayOnDraw, setAutoPlayOnDraw, turnTimeout, setTurnTimeout } = useSettingsStore();
   const { t } = useTranslations();
+  const { getVariants, shouldReduceMotion } = useMotionPreference();
 
   const allSongs = useMemo(() => getSongs(), []);
 
@@ -38,21 +48,27 @@ export function StartScreen({ onBack }: StartScreenProps) {
 
   const canStart = players.length >= 2;
 
-  const getStaggerClass = (index: number) => {
-    const delays = ['stagger-delay-1', 'stagger-delay-2', 'stagger-delay-3', 'stagger-delay-4', 'stagger-delay-5', 'stagger-delay-6', 'stagger-delay-7', 'stagger-delay-8'];
-    return delays[index % delays.length];
-  };
-
   return (
-    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4 animate-screen">
-      <div className="max-w-md w-full">
-        <div className="text-center mb-8 animate-slide-in">
+    <m.div
+      className="min-h-screen bg-bg flex flex-col items-center justify-center p-4"
+      variants={getVariants(screenSlideUp)}
+      initial="hidden"
+      animate="visible"
+    >
+      <m.div
+        className="max-w-md w-full"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        <m.div className="text-center mb-8" variants={getVariants(slideIn)}>
           <h1 className="text-5xl font-black text-white mb-2">
             🎵 {t('app.name').toUpperCase()}
           </h1>
           <p className="text-gray-400 text-lg">{t('app.subtitle')}</p>
-        </div>
-        <form onSubmit={handleAddTeam} className="mb-6 animate-stagger-in stagger-delay-1">
+        </m.div>
+
+        <m.form onSubmit={handleAddTeam} className="mb-6" variants={staggerItem}>
           <div className="flex gap-2">
             <input
               type="text"
@@ -68,13 +84,14 @@ export function StartScreen({ onBack }: StartScreenProps) {
             <button
               type="submit"
               disabled={!teamName.trim()}
-              className="bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-bold transition-colors"
+              className="bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-bold transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               {t('start.addButton')}
             </button>
           </div>
-        </form>
-        <div className="bg-surface rounded-xl p-4 mb-6 animate-stagger-in stagger-delay-2">
+        </m.form>
+
+        <m.div className="bg-surface rounded-xl p-4 mb-6" variants={staggerItem}>
           <h2 className="text-lg font-bold text-white mb-3">
             {t('start.teamsTitle')} ({players.length})
           </h2>
@@ -84,43 +101,55 @@ export function StartScreen({ onBack }: StartScreenProps) {
             </p>
           ) : (
             <ul className="space-y-2">
-              {players.map((player, index) => (
-                <li
-                  key={player.id}
-                  className={`flex items-center justify-between bg-surface-light rounded-lg px-4 py-2 animate-stagger-in ${getStaggerClass(index)}`}
-                >
-                  <span className="text-white flex items-center gap-2">
-                    <span className="text-2xl">
-                      {['🎸', '🎤', '🎹', '🥁', '🎷', '🎺', '🎻', '🪗'][index % 8]}
-                    </span>
-                    {player.name}
-                  </span>
-                  <button
-                    onClick={() => removePlayer(player.id)}
-                    className="text-gray-400 hover:text-red-500 transition-colors"
+              <AnimatePresence mode="popLayout">
+                {players.map((player, index) => (
+                  <m.li
+                    key={player.id}
+                    layout={!shouldReduceMotion}
+                    variants={listItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="flex items-center justify-between bg-surface-light rounded-lg px-4 py-2"
                   >
-                    ✕
-                  </button>
-                </li>
-              ))}
+                    <span className="text-white flex items-center gap-2">
+                      <span className="text-2xl">
+                        {['🎸', '🎤', '🎹', '🥁', '🎷', '🎺', '🎻', '🪗'][index % 8]}
+                      </span>
+                      {player.name}
+                    </span>
+                    <m.button
+                      onClick={() => removePlayer(player.id)}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="text-gray-400 hover:text-red-500 transition-colors"
+                    >
+                      ✕
+                    </m.button>
+                  </m.li>
+                ))}
+              </AnimatePresence>
             </ul>
           )}
-        </div>
-        <div className="mb-6 animate-stagger-in stagger-delay-3">
+        </m.div>
+
+        <m.div className="mb-6" variants={staggerItem}>
           <SongCategorySelector
             selected={songCategory}
             onChange={setSongCategory}
             songCounts={songCounts}
           />
-        </div>
-        <div className="mb-6 animate-stagger-in stagger-delay-4">
+        </m.div>
+
+        <m.div className="mb-6" variants={staggerItem}>
           <EraSelector
             selected={selectedEra}
             onChange={setSelectedEra}
             eraCounts={eraCounts}
           />
-        </div>
-        <div className="mb-6 animate-stagger-in stagger-delay-5">
+        </m.div>
+
+        <m.div className="mb-6" variants={staggerItem}>
           <GameConfigSection
             targetScore={targetScore}
             turnTimeout={turnTimeout}
@@ -130,27 +159,34 @@ export function StartScreen({ onBack }: StartScreenProps) {
             onAutoPlayChange={setAutoPlayOnDraw}
             isEditable
           />
-        </div>
-        <button
+        </m.div>
+
+        <m.button
           onClick={startGame}
           disabled={!canStart}
-          className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] disabled:hover:scale-100 animate-stagger-in stagger-delay-6"
+          variants={staggerItem}
+          whileHover={canStart ? { scale: 1.02 } : {}}
+          whileTap={canStart ? { scale: 0.98 } : {}}
+          className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white py-4 rounded-xl text-xl font-bold transition-colors"
         >
           {canStart ? `🎮 ${t('start.startGame')}` : t('start.startGameDisabled')}
-        </button>
+        </m.button>
 
-        <button
+        <m.button
           onClick={onBack}
-          className="w-full mt-4 bg-surface-light hover:bg-surface text-gray-400 hover:text-white py-3 rounded-xl font-bold transition-colors animate-stagger-in stagger-delay-7"
+          variants={staggerItem}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full mt-4 bg-surface-light hover:bg-surface text-gray-400 hover:text-white py-3 rounded-xl font-bold transition-colors"
         >
           ← {t('common.back')}
-        </button>
+        </m.button>
 
-        <div className="mt-6 text-center text-gray-500 text-sm animate-stagger-in stagger-delay-8">
+        <m.div className="mt-6 text-center text-gray-500 text-sm" variants={staggerItem}>
           <p className="mb-2">📋 {t('start.rulesTitle')}</p>
           <p>{t('start.rulesDescription')}</p>
-        </div>
-      </div>
-    </div>
+        </m.div>
+      </m.div>
+    </m.div>
   );
 }

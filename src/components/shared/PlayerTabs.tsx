@@ -1,5 +1,7 @@
 import { useRef, useEffect } from 'react';
+import { m } from 'motion/react';
 import { useTranslations } from '../../i18n';
+import { pulseBorder } from '../../motion';
 import type { UnifiedPlayer } from '../../types/unified';
 
 interface PlayerTabsProps {
@@ -42,7 +44,7 @@ export function PlayerTabs({
   }, [selectedPlayerId]);
 
   const getTabClasses = (isSelected: boolean, isMe: boolean, isCurrentTurn: boolean) => {
-    const base = 'flex flex-col items-start px-3 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all shrink-0 min-w-[80px] border-2';
+    const base = 'flex flex-col items-start px-3 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-colors shrink-0 min-w-[80px] border-2';
 
     if (isSelected) {
       if (isMe) {
@@ -58,7 +60,7 @@ export function PlayerTabs({
       return `${base} bg-transparent border-green-500/50 text-green-400 hover:border-green-500`;
     }
     if (isCurrentTurn) {
-      return `${base} bg-transparent border-primary/70 text-primary animate-pulse-border`;
+      return `${base} bg-transparent border-primary/70 text-primary`;
     }
     return `${base} bg-transparent border-surface-light/50 text-gray-400 hover:border-surface-light hover:text-gray-300`;
   };
@@ -74,13 +76,18 @@ export function PlayerTabs({
         const isSelected = player.id === selectedPlayerId;
         const timelineScore = player.timeline.length;
         const bonusScore = player.bonusPoints;
+        const shouldPulse = isCurrentTurn && !isSelected;
 
         return (
-          <button
+          <m.button
             key={player.id}
             data-player-id={player.id}
             onClick={() => onSelectPlayer(player.id)}
             className={getTabClasses(isSelected, isMe, isCurrentTurn)}
+            animate={shouldPulse ? 'pulse' : undefined}
+            variants={shouldPulse ? pulseBorder : undefined}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <div className="flex items-center gap-1.5">
               {player.isConnected === false && (
@@ -97,7 +104,7 @@ export function PlayerTabs({
                 <span className="text-amber-400">+{bonusScore}</span>
               )}
             </div>
-          </button>
+          </m.button>
         );
       })}
     </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, startTransition } from 'react';
+import { m, AnimatePresence } from 'motion/react';
 import { useTranslations } from '../../i18n';
 import { useMultiplayerStore, usePartySocket, useMyPlayer } from '../../multiplayer';
 import { RoomCodeDisplay } from './RoomCodeDisplay';
@@ -6,6 +7,14 @@ import { GameConfigSection } from '../shared/GameConfigSection';
 import { SongCategorySelector } from '../shared/SongCategorySelector';
 import { EraSelector } from '../shared/EraSelector';
 import { getSongs, getSongCounts, filterByCategory, filterByEra, getEraCounts } from '../../songs';
+import {
+  useMotionPreference,
+  screenSlideUp,
+  slideIn,
+  staggerContainer,
+  staggerItem,
+  listItemVariants
+} from '../../motion';
 import type { SongCategory, SongEra } from '../../types';
 
 interface LobbyProps {
@@ -18,6 +27,7 @@ export function Lobby({ onLeave }: LobbyProps) {
   const { roomCode, roomState, isHost, myPlayerId, reset, connectionError, setConnectionError } = useMultiplayerStore();
   const myPlayer = useMyPlayer();
   const [isStarting, setIsStarting] = useState(false);
+  const { getVariants, shouldReduceMotion } = useMotionPreference();
 
   const allSongs = useMemo(() => getSongs(), []);
 
@@ -138,90 +148,104 @@ export function Lobby({ onLeave }: LobbyProps) {
     });
   };
 
-  const getStaggerClass = (index: number) => {
-    const delays = ['stagger-delay-1', 'stagger-delay-2', 'stagger-delay-3', 'stagger-delay-4', 'stagger-delay-5', 'stagger-delay-6', 'stagger-delay-7', 'stagger-delay-8'];
-    return delays[index % delays.length];
-  };
-
   return (
-    <div className="min-h-screen bg-bg flex flex-col items-center justify-center p-4 animate-screen">
-      <div className="max-w-md w-full">
-        <div className="animate-slide-in">
+    <m.div
+      className="min-h-screen bg-bg flex flex-col items-center justify-center p-4"
+      variants={getVariants(screenSlideUp)}
+      initial="hidden"
+      animate="visible"
+    >
+      <m.div
+        className="max-w-md w-full"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        <m.div variants={getVariants(slideIn)}>
           <RoomCodeDisplay code={roomCode} />
-        </div>
+        </m.div>
 
-        <div className="bg-surface rounded-xl p-4 mb-6 animate-stagger-in stagger-delay-1">
+        <m.div className="bg-surface rounded-xl p-4 mb-6" variants={staggerItem}>
           <h2 className="text-lg font-bold text-white mb-3">
             {t('lobby.players')} ({players.length}/{roomState.maxPlayers})
           </h2>
           <div className="space-y-2">
-            {players.map((player, index) => (
-              <div
-                key={player.id}
-                className={`flex items-center justify-between p-3 rounded-lg animate-stagger-in ${getStaggerClass(index)} ${
-                  player.isHost
-                    ? 'bg-primary/20 border border-primary/50'
-                    : 'bg-surface-light'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span
-                    className={`w-3 h-3 rounded-full ${
-                      player.isConnected ? 'bg-green-500' : 'bg-gray-500 animate-pulse'
-                    }`}
-                  />
-                  <span className="text-2xl">
-                    {['🎸', '🎤', '🎹', '🥁', '🎷', '🎺', '🎻', '🪗'][index % 8]}
-                  </span>
-                  <span className="text-white">{player.name}</span>
-                  {player.isHost && (
-                    <span className="text-xs bg-primary px-2 py-0.5 rounded-full text-white">
-                      {t('lobby.host')}
+            <AnimatePresence mode="popLayout">
+              {players.map((player, index) => (
+                <m.div
+                  key={player.id}
+                  layout={!shouldReduceMotion}
+                  variants={listItemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className={`flex items-center justify-between p-3 rounded-lg ${
+                    player.isHost
+                      ? 'bg-primary/20 border border-primary/50'
+                      : 'bg-surface-light'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`w-3 h-3 rounded-full ${
+                        player.isConnected ? 'bg-green-500' : 'bg-gray-500 animate-pulse'
+                      }`}
+                    />
+                    <span className="text-2xl">
+                      {['🎸', '🎤', '🎹', '🥁', '🎷', '🎺', '🎻', '🪗'][index % 8]}
                     </span>
-                  )}
-                  {player.id === myPlayerId && (
-                    <span className="text-xs bg-surface-light px-2 py-0.5 rounded-full text-gray-400">
-                      {t('lobby.you')}
-                    </span>
-                  )}
-                </div>
-                <div className="flex items-center gap-2">
-                  {player.isReady && !player.isHost && (
-                    <span className="text-green-400 text-sm">{t('lobby.ready')}</span>
-                  )}
-                  {isHost && !player.isHost && (
-                    <button
-                      onClick={() => handleKick(player.id)}
-                      className="text-gray-400 hover:text-red-400 transition-colors text-sm"
-                    >
-                      {t('lobby.kick')}
-                    </button>
-                  )}
-                </div>
-              </div>
-            ))}
+                    <span className="text-white">{player.name}</span>
+                    {player.isHost && (
+                      <span className="text-xs bg-primary px-2 py-0.5 rounded-full text-white">
+                        {t('lobby.host')}
+                      </span>
+                    )}
+                    {player.id === myPlayerId && (
+                      <span className="text-xs bg-surface-light px-2 py-0.5 rounded-full text-gray-400">
+                        {t('lobby.you')}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {player.isReady && !player.isHost && (
+                      <span className="text-green-400 text-sm">{t('lobby.ready')}</span>
+                    )}
+                    {isHost && !player.isHost && (
+                      <m.button
+                        onClick={() => handleKick(player.id)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="text-gray-400 hover:text-red-400 transition-colors text-sm"
+                      >
+                        {t('lobby.kick')}
+                      </m.button>
+                    )}
+                  </div>
+                </m.div>
+              ))}
+            </AnimatePresence>
           </div>
-        </div>
+        </m.div>
 
-        <div className="mb-6 animate-stagger-in stagger-delay-2">
+        <m.div className="mb-6" variants={staggerItem}>
           <SongCategorySelector
             selected={roomState.gameState.songCategory || 'all'}
             onChange={handleSongCategoryChange}
             songCounts={songCounts}
             isEditable={isHost}
           />
-        </div>
+        </m.div>
 
-        <div className="mb-6 animate-stagger-in stagger-delay-3">
+        <m.div className="mb-6" variants={staggerItem}>
           <EraSelector
             selected={roomState.gameState.selectedEra || 'all'}
             onChange={handleEraChange}
             eraCounts={eraCounts}
             isEditable={isHost}
           />
-        </div>
+        </m.div>
 
-        <div className="mb-6 animate-stagger-in stagger-delay-4">
+        <m.div className="mb-6" variants={staggerItem}>
           <GameConfigSection
             targetScore={roomState.gameState.targetScore}
             turnTimeout={roomState.gameState.turnTimeout}
@@ -234,33 +258,45 @@ export function Lobby({ onLeave }: LobbyProps) {
             isEditable={isHost}
             showVoiceVoting={true}
           />
-        </div>
+        </m.div>
 
-        {connectionError && (
-          <div className="bg-red-900/30 border border-red-500 text-red-300 px-4 py-3 rounded-xl mb-4 text-center animate-slide-in">
-            {t(connectionError)}
-          </div>
-        )}
+        <AnimatePresence>
+          {connectionError && (
+            <m.div
+              className="bg-red-900/30 border border-red-500 text-red-300 px-4 py-3 rounded-xl mb-4 text-center"
+              variants={getVariants(slideIn)}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {t(connectionError)}
+            </m.div>
+          )}
+        </AnimatePresence>
 
-        <div className="space-y-3 animate-stagger-in stagger-delay-5">
+        <m.div className="space-y-3" variants={staggerItem}>
           {!isHost && myPlayer && (
-            <button
+            <m.button
               onClick={handleReady}
-              className={`w-full py-4 rounded-xl text-xl font-bold transition-all ${
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className={`w-full py-4 rounded-xl text-xl font-bold transition-colors ${
                 myPlayer.isReady
                   ? 'bg-green-600 hover:bg-green-700 text-white'
                   : 'bg-surface-light hover:bg-surface text-gray-300 hover:text-white'
               }`}
             >
               {myPlayer.isReady ? `✓ ${t('lobby.readyActive')}` : t('lobby.setReady')}
-            </button>
+            </m.button>
           )}
 
           {isHost && (
-            <button
+            <m.button
               onClick={handleStart}
               disabled={!canStart || isStarting}
-              className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white py-4 rounded-xl text-xl font-bold transition-all hover:scale-[1.02] disabled:hover:scale-100"
+              whileHover={canStart && !isStarting ? { scale: 1.02 } : {}}
+              whileTap={canStart && !isStarting ? { scale: 0.98 } : {}}
+              className="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-primary-dark hover:to-purple-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white py-4 rounded-xl text-xl font-bold transition-colors"
             >
               {isStarting ? (
                 <span className="flex items-center justify-center gap-2">
@@ -271,17 +307,19 @@ export function Lobby({ onLeave }: LobbyProps) {
               ) : (
                 t('lobby.waitingForReady')
               )}
-            </button>
+            </m.button>
           )}
 
-          <button
+          <m.button
             onClick={handleLeave}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             className="w-full bg-surface-light hover:bg-surface text-gray-400 hover:text-white py-3 rounded-xl font-bold transition-colors"
           >
             {t('lobby.leave')}
-          </button>
-        </div>
-      </div>
-    </div>
+          </m.button>
+        </m.div>
+      </m.div>
+    </m.div>
   );
 }

@@ -204,6 +204,7 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
                   gameState: {
                     ...state.roomState.gameState,
                     players: updatedPlayers,
+                    bonusClaimed: true,
                   },
                 },
               });
@@ -225,6 +226,7 @@ export const useMultiplayerStore = create<MultiplayerStore>()(
                     turnStartedAt: message.payload.turnStartedAt,
                     previewPosition: null,
                     musicPlaying: false,
+                    bonusClaimed: false,
                   },
                 },
               });

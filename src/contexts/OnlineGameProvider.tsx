@@ -53,6 +53,7 @@ export function OnlineGameProvider({ children, onLeave }: OnlineGameProviderProp
     musicPlaying: gameState?.musicPlaying ?? false,
     recordingDeadline: roomState?.recordingDeadline ?? null,
     isOnline: true,
+    bonusClaimed: gameState?.bonusClaimed ?? false,
     currentPlayer,
     myPlayer,
     drawCard: () => {

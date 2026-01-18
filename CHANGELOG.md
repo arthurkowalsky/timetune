@@ -16,7 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - `crypto.randomUUID` error on non-HTTPS connections (PWA fallback)
-
+- Auto-play no longer flashes "listen first" message
+- Removed redundant player from reveal screen
+- Bonus now visible to all players in multiplayer
+- Added shake animation on incorrect guess
 
 ## [0.6.0] - 2026-01-13
 ### Added

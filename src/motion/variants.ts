@@ -56,6 +56,15 @@ export const trophyBounce: Variants = {
   }
 }
 
+export const shake: Variants = {
+  hidden: { opacity: 0, x: 0 },
+  visible: {
+    opacity: 1,
+    x: [0, -8, 8, -8, 8, -4, 4, 0],
+    transition: { duration: 0.5, ease: 'easeInOut' }
+  }
+}
+
 export const modalVariants: Variants = {
   hidden: {
     opacity: 0,

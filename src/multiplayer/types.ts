@@ -55,6 +55,7 @@ export interface OnlineGameState {
   musicPlaying: boolean;
   songCategory: SongCategory;
   selectedEra: SongEra;
+  bonusClaimed: boolean;
 }
 
 export interface CreateRoomMessage {

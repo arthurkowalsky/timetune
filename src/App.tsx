@@ -27,7 +27,7 @@ type OnlineStep = 'menu' | 'create' | 'join' | 'lobby';
 type LocalStep = 'mode-select' | 'setup';
 
 function AppContent() {
-  const { phase, resetGame } = useGameStore();
+  const { phase, resetGame, restartGame } = useGameStore();
   const { mode, setMode, roomState, roomCode, myPlayerId, reset: resetMultiplayer, clearRoom } = useMultiplayerStore();
   const { t } = useTranslations();
   const { reconnect } = usePartySocket();
@@ -198,6 +198,10 @@ function AppContent() {
 
   const handleExitGame = goToStart;
 
+  const handlePlayAgain = useCallback(() => {
+    restartGame();
+  }, [restartGame]);
+
   if (mode === 'local') {
     if (localStep === 'mode-select') {
       return (
@@ -223,7 +227,7 @@ function AppContent() {
     return (
       <>
         {!isInActiveGame && <FloatingFullscreenButton isFullscreen={isFullscreen} onToggle={toggleFullscreen} />}
-        <LocalGameProvider onExit={handleExitGame} showExitConfirm={showExitConfirm} setShowExitConfirm={setShowExitConfirm}>
+        <LocalGameProvider onExit={handleExitGame} onPlayAgain={handlePlayAgain} showExitConfirm={showExitConfirm} setShowExitConfirm={setShowExitConfirm}>
           {(phase === 'playing' || phase === 'placing') && <GameScreen />}
           {phase === 'reveal' && <RevealScreen />}
           {phase === 'finished' && <EndScreen />}

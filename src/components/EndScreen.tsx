@@ -10,11 +10,13 @@ export function EndScreen() {
     ? t('lobby.leave')
     : `🔄 ${t('end.playAgain')}`;
 
+  const onAction = game.isOnline ? game.onExit : (game.onPlayAgain ?? game.onExit);
+
   return (
     <EndContent
       players={game.players}
       targetScore={game.targetScore}
-      onAction={game.onExit}
+      onAction={onAction}
       actionLabel={actionLabel}
     />
   );

@@ -35,7 +35,9 @@ function AppContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [songCount, setSongCount] = useState(0);
   const [onlineStep, setOnlineStep] = useState<OnlineStep>('menu');
-  const [localStep, setLocalStep] = useState<LocalStep>('mode-select');
+  const [localStep, setLocalStep] = useState<LocalStep>(() =>
+    useGameStore.getState().phase !== 'setup' ? 'setup' : 'mode-select'
+  );
   const [isReconnecting, setIsReconnecting] = useState(false);
   const [reconnectFailed, setReconnectFailed] = useState(false);
   const [pendingRoomCode, setPendingRoomCode] = useState<string | null>(null);

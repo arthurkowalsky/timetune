@@ -200,6 +200,7 @@ export const useGameStore = create<GameStore>()(
         targetScore: state.targetScore,
         songCategory: state.songCategory,
         selectedEra: state.selectedEra,
+        lastGuessCorrect: state.lastGuessCorrect,
       }),
     }
   )

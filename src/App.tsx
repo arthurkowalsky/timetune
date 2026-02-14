@@ -198,9 +198,7 @@ function AppContent() {
 
   const handleExitGame = goToStart;
 
-  const handlePlayAgain = useCallback(() => {
-    restartGame();
-  }, [restartGame]);
+  const handlePlayAgain = restartGame;
 
   if (mode === 'local') {
     if (localStep === 'mode-select') {

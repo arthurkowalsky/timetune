@@ -4,7 +4,8 @@
   "version": "0.7.0",
   "type": "module",
   "overrides": {
-    "esbuild": "^0.25.0"
+    "esbuild": "^0.25.0",
+    "miniflare": "^4.20250712.0"
   },
   "scripts": {
     "dev": "vite --host",

@@ -188,6 +188,18 @@ export const useGameStore = create<GameStore>()(
           selectedEra: 'all',
         });
       },
+
+      restartGame: () => {
+        const { players } = get();
+        set({
+          players: players.map(p => ({ ...p, timeline: [], bonusPoints: 0 })),
+          currentPlayerIndex: 0,
+          deck: [],
+          currentSong: null,
+          phase: 'setup',
+          lastGuessCorrect: null,
+        });
+      },
     }),
     {
       name: 'timetune-game-storage',

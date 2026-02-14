@@ -49,6 +49,7 @@ export interface UnifiedGameActions {
   skipRecording: () => void;
   submitVote: (correct: boolean) => void;
   onExit: () => void;
+  onPlayAgain?: () => void;
 }
 
 export interface UnifiedGameContext extends UnifiedGameState, UnifiedGameActions {

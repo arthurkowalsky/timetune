@@ -81,6 +81,7 @@ export interface GameActions {
   nextTurn: () => void;
   skipTurn: () => void;
   resetGame: () => void;
+  restartGame: () => void;
 }
 
 export interface GameSettings {
